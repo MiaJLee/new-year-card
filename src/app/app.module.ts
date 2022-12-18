@@ -8,6 +8,7 @@ import { EditorComponent } from './editor/editor.component';
 import { PostcardComponent } from './postcard/postcard.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormCardShapeComponent } from './form-card-shape/form-card-shape.component';
+import { FormCardBgComponent } from './form-card-bg/form-card-bg.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { FormCardShapeComponent } from './form-card-shape/form-card-shape.compon
     EditorComponent,
     PostcardComponent,
     FormCardShapeComponent,
+    FormCardBgComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],

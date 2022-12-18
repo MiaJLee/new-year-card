@@ -4,20 +4,17 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
 @UntilDestroy()
 @Component({
-  selector: 'app-form-card-shape',
+  selector: 'form-card-shape',
   templateUrl: './form-card-shape.component.html',
   styleUrls: ['./form-card-shape.component.scss'],
 })
 export class FormCardShapeComponent {
-  @Input() formControlName: string = '';
+  @Input() controlName: string = '';
   ctrl = new FormControl('rabbit01');
-
-  @Output()
-  cuChange = new EventEmitter<string>();
 
   constructor(private rootFormGroup: FormGroupDirective) {
     this.ctrl.valueChanges.pipe(untilDestroyed(this)).subscribe((v) => {
-      this.rootFormGroup.control.get(this.formControlName)?.setValue(v);
+      this.rootFormGroup.control.get(this.controlName)?.setValue(v);
     });
   }
 }

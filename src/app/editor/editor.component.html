@@ -1,44 +1,57 @@
 <ng-container *ngIf="currentStep$ | async as currentStep">
-  <div class="editor-container">
-    <div class="title">
-      <h3>{{ title[currentStep].kr }}</h3>
-      <h1>{{ title[currentStep].en }}</h1>
-    </div>
-    <img
-      *ngIf="form.controls.shape.value"
-      class="preview"
-      src="../../assets/card_{{ form.controls.shape.value }}.svg"
-    />
-    <form [formGroup]="form">
+  <form [formGroup]="form">
+    <div class="editor-container">
+      <div class="title">
+        <h3>{{ title[currentStep].kr }}</h3>
+        <h1>{{ title[currentStep].en }}</h1>
+      </div>
+      <div class="flip-card" [class.flipped]="currentStep === step.Text">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img
+              *ngIf="form.controls.shape.value"
+              class="preview"
+              src="../../assets/card_{{ form.controls.shape.value }}.svg"
+            />
+          </div>
+          <div *ngIf="currentStep === step.Text" class="flip-card-back">
+            <span>to.</span
+            ><input type="text" formControlName="reciever" maxlength="25" />
+            <textarea
+              type="textbox"
+              formControlName="text"
+              maxlength="200"
+            ></textarea>
+            <span>from.</span
+            ><input type="text" formControlName="sender" maxlength="25" />
+          </div>
+        </div>
+      </div>
+
       <ng-container [ngSwitch]="currentStep">
         <ng-container *ngSwitchCase="step.Card">
-          <app-form-card-shape formControlName="shape"></app-form-card-shape>
+          <form-card-shape controlName="shape"></form-card-shape>
         </ng-container>
         <ng-container *ngSwitchCase="step.Background">
-          <h1>배경을 골라주세요</h1>
+          <form-card-bg controlName="background"></form-card-bg>
         </ng-container>
         <ng-container *ngSwitchCase="step.Lettering">
-          <h1>레터링을 골라주세요</h1>
+          <h1>* 레터링 선택 컴포넌트 추가 *</h1>
         </ng-container>
-        <ng-container *ngSwitchCase="step.Text">
-          <h1>편지를 작성해주세요</h1>
-        </ng-container>
+        <ng-container *ngSwitchCase="step.Text"> </ng-container>
         <ng-container *ngSwitchCase="step.Music">
-          <h1>음악을 골라주세요</h1>
+          <h1>* 음악 선택 컴포넌트 추가 *</h1>
         </ng-container>
       </ng-container>
 
       <div class="btn-container">
-        <button *ngIf="currentStep === step.Card" (click)="onClickMain()">
-          첫 화면으로
+        <button (click)="onClickPrev()">
+          {{ currentStep === step.Card ? "첫 화면으로" : "이전 단계" }}
         </button>
-        <button (click)="onClickPrev()" *ngIf="currentStep !== step.Card">
-          이전단계
-        </button>
-        <button (click)="onClickNext()" *ngIf="currentStep !== step.Music">
-          다음단계
+        <button (click)="onClickNext()">
+          {{ currentStep === step.Music ? "완성된 카드 확인" : "다음 단계" }}
         </button>
       </div>
-    </form>
-  </div>
+    </div>
+  </form>
 </ng-container>
