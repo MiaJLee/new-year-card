@@ -11,6 +11,7 @@ import { FormCardShapeComponent } from './form-card-shape/form-card-shape.compon
 import { FormCardBgComponent } from './form-card-bg/form-card-bg.component';
 import { FormMusicPlaylistComponent } from './form-music-playlist/form-music-playlist.component';
 import { NewlineToBrPipe } from './modules/newlinetobr.pipe';
+import { YoutubePlayerModule } from './youtube-player/youtube-player.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,13 @@ import { NewlineToBrPipe } from './modules/newlinetobr.pipe';
     FormMusicPlaylistComponent,
     NewlineToBrPipe,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    YoutubePlayerModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

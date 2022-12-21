@@ -4,7 +4,7 @@
     <ng-container *ngFor="let music of musics">
       <label>
         <input type="radio" value="{{ music.id }}" [formControl]="ctrl" />
-        <div (click)="selectMusic(music.id)" class="music-item">
+        <div (click)="selectMusic(music)" class="music-item">
           <div
             class="album-image"
             [ngStyle]="{ 'background-image': 'url(' + music.image + ')' }"
@@ -22,4 +22,12 @@
     </ng-container>
     <div class="whitespace"></div>
   </div>
+</div>
+
+<div id="player">
+  <app-youtube-player
+    *ngIf="videoId"
+    [videoId]="videoId"
+    (close)="onClose($event)"
+  ></app-youtube-player>
 </div>

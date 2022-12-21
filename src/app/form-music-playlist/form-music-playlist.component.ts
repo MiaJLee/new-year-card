@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroupDirective } from '@angular/forms';
 import { MUSICS } from '../app.value';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { getUrlParameter } from '../app.utils';
 
 @UntilDestroy()
 @Component({
@@ -10,8 +11,10 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
   styleUrls: ['./form-music-playlist.component.scss'],
 })
 export class FormMusicPlaylistComponent {
-  readonly musics = MUSICS;
   @Input() controlName: string = '';
+  readonly musics = MUSICS;
+
+  videoId?: string;
 
   ctrl = new FormControl('');
 
@@ -21,7 +24,17 @@ export class FormMusicPlaylistComponent {
     });
   }
 
-  selectMusic(id: number): void {
-    this.rootFormGroup.control.get(this.controlName)?.setValue(id);
+  selectMusic(music: any): void {
+    this.videoId = undefined;
+    this.ctrl.setValue(music.id);
+
+    // [workaround] youtube-player를 DOM에서 삭제 후 새로 그리기 위함.
+    setTimeout(() => {
+      this.videoId = getUrlParameter(music.youtubeLink, 'v');
+    }, 10);
+  }
+
+  onClose(e: any) {
+    this.videoId = undefined;
   }
 }
