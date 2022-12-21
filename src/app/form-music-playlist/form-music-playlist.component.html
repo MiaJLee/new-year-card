@@ -1,0 +1,25 @@
+<div class="playlist-container">
+  <div class="playlist-wrapper">
+    <div class="whitespace"></div>
+    <ng-container *ngFor="let music of musics">
+      <label>
+        <input type="radio" value="{{ music.id }}" [formControl]="ctrl" />
+        <div (click)="selectMusic(music.id)" class="music-item">
+          <div
+            class="album-image"
+            [ngStyle]="{ 'background-image': 'url(' + music.image + ')' }"
+          ></div>
+          <div class="music-info">
+            <p class="music-name">{{ music.name }}</p>
+            <p class="music-artist">{{ music.artist }}</p>
+            <p
+              class="music-lyrics"
+              [innerHtml]="music.lyrics | newlineToBr"
+            ></p>
+          </div>
+        </div>
+      </label>
+    </ng-container>
+    <div class="whitespace"></div>
+  </div>
+</div>

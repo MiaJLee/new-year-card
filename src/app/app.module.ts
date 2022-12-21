@@ -9,6 +9,8 @@ import { PostcardComponent } from './postcard/postcard.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormCardShapeComponent } from './form-card-shape/form-card-shape.component';
 import { FormCardBgComponent } from './form-card-bg/form-card-bg.component';
+import { FormMusicPlaylistComponent } from './form-music-playlist/form-music-playlist.component';
+import { NewlineToBrPipe } from './modules/newlinetobr.pipe';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,8 @@ import { FormCardBgComponent } from './form-card-bg/form-card-bg.component';
     PostcardComponent,
     FormCardShapeComponent,
     FormCardBgComponent,
+    FormMusicPlaylistComponent,
+    NewlineToBrPipe,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],

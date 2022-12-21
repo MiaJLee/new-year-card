@@ -20,7 +20,7 @@ export class EditorComponent {
   form: FormGroup;
 
   constructor(private fb: FormBuilder, private router: Router) {
-    this.form = fb.group({
+    this.form = this.fb.group({
       shape: 'rabbit01',
       color: '',
       lettering: '',
