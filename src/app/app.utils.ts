@@ -3,16 +3,7 @@ export function getUrlParameter(
   target: string
 ): string | undefined {
   const _url = new URL(url);
-  let sPageURL = _url.search.substring(1),
-    sURLVariables = sPageURL.split('&'),
-    sParameterName;
+  const params = _url.searchParams;
 
-  for (let i = 0; i < sURLVariables.length; i++) {
-    sParameterName = sURLVariables[i].split('=');
-
-    if (sParameterName[0] === target) {
-      return sParameterName[1];
-    }
-  }
-  return undefined;
+  return params.get(target) ?? undefined;
 }
