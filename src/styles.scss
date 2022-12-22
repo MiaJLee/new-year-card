@@ -1,4 +1,60 @@
 /* You can add global styles to this file, and also import other style files */
 * {
   font-family: "Noto Sans KR";
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+.font-h1 {
+  font-family: "Yeseva One";
+  font-size: 50px;
+  margin: 0;
+}
+
+.font-h3 {
+  font-family: "Noto Sans KR";
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 1.5;
+}
+
+.button {
+  border: none;
+  width: 200px;
+  height: 60px;
+  font-family: "Noto Sans KR";
+  font-weight: 500;
+  font-size: 18px;
+  border-radius: 16px; // @TODO: 보더 줄까 말까..
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.button-default {
+  @extend .button;
+  border: #000 solid 1px;
+  background-color: #fff;
+  color: #000;
+
+  &:hover {
+    border: none;
+    background-color: #000;
+    color: #fff;
+  }
+}
+
+.button-highlight {
+  @extend .button;
+  background-color: #000;
+  color: #fff;
+
+  &:hover {
+    border: #000 solid 1px;
+    background-color: #fff;
+    color: #000;
+  }
 }

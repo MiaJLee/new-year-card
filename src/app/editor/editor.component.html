@@ -2,8 +2,8 @@
   <form [formGroup]="form">
     <div class="editor-container">
       <div class="title">
-        <h3>{{ title[currentStep].kr }}</h3>
-        <h1>{{ title[currentStep].en }}</h1>
+        <h3 class="font-h3">{{ title[currentStep].kr }}</h3>
+        <h1 class="font-h1">{{ title[currentStep].en }}</h1>
       </div>
       <div class="flip-card" [class.flipped]="currentStep === step.Text">
         <div class="flip-card-inner">
@@ -45,10 +45,10 @@
       </ng-container>
 
       <div class="btn-container">
-        <button (click)="onClickPrev()">
+        <button class="button-default" (click)="onClickPrev()">
           {{ currentStep === step.Card ? "첫 화면으로" : "이전 단계" }}
         </button>
-        <button (click)="onClickNext()">
+        <button class="button-highlight" (click)="onClickNext()">
           {{ currentStep === step.Music ? "완성된 카드 확인" : "다음 단계" }}
         </button>
       </div>
