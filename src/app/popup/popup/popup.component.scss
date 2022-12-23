@@ -1,10 +1,56 @@
 @import "src/styles";
 
 .popup-container {
+  z-index: 1000;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: $color-white;
   border: 1px solid $color-black;
+  width: 400px;
+  min-height: 200px;
+  padding: 30px 30px 88px 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 16px;
+}
+
+.dimmed {
+  z-index: 100;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba($color: $color-black, $alpha: 0.5);
+}
+
+.button-wrapper {
+  position: absolute;
+  bottom: 30px;
+  display: flex;
+  justify-content: center;
+
+  button {
+    border: 1px solid $color-black;
+    background-color: $color-white;
+    width: 100px;
+    height: 40px;
+    font-family: "Noto Sans KR";
+    font-weight: 500;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: $color-black;
+    border-radius: 16px;
+  }
+}
+
+.cancel-button {
+  margin-right: 20px;
 }

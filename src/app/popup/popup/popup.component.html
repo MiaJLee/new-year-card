@@ -1,1 +1,16 @@
-<div class="popup-container">popup works!</div>
+<div class="popup-container">
+  <p class="font-desc" [innerHtml]="content | newlineToBr"></p>
+  <div class="button-wrapper">
+    <button
+      class="cancel-button"
+      (click)="onCancel()"
+      *ngIf="type === 'confirm'"
+    >
+      {{ option?.cancel?.text ?? "취소" }}
+    </button>
+    <button class="confirm-button" (click)="onConfirm()">
+      {{ option?.confirm?.text ?? "확인" }}
+    </button>
+  </div>
+</div>
+<div class="dimmed" (click)="onCancel()"></div>

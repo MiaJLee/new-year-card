@@ -1,5 +1,7 @@
 import { Step } from './app.models';
 
+export type Popup = 'none' | 'alert' | 'confirm' | 'link';
+
 export const EDITOR_TITLE = {
   [Step.Card]: { kr: '카드를 선택해주세요', en: 'Select the card' },
   [Step.Lettering]: {

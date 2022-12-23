@@ -10,9 +10,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormCardShapeComponent } from './form-card-shape/form-card-shape.component';
 import { FormCardBgComponent } from './form-card-bg/form-card-bg.component';
 import { FormMusicPlaylistComponent } from './form-music-playlist/form-music-playlist.component';
-import { NewlineToBrPipe } from './services/newlinetobr.pipe';
 import { YoutubePlayerModule } from './youtube-player/youtube-player.module';
 import { PopupModule } from './popup/popup.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,6 @@ import { PopupModule } from './popup/popup.module';
     FormCardShapeComponent,
     FormCardBgComponent,
     FormMusicPlaylistComponent,
-    NewlineToBrPipe,
   ],
   imports: [
     BrowserModule,
@@ -32,6 +31,7 @@ import { PopupModule } from './popup/popup.module';
     ReactiveFormsModule,
     YoutubePlayerModule,
     PopupModule,
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

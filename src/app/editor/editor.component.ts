@@ -5,6 +5,7 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { BehaviorSubject } from 'rxjs';
 import { Step } from '../app.models';
 import { EDITOR_TITLE, MAX_LENGTH } from '../app.value';
+import { PopupService } from '../popup/popup.service';
 
 @UntilDestroy()
 @Component({
@@ -19,7 +20,11 @@ export class EditorComponent {
   title = EDITOR_TITLE;
   form: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private popupService: PopupService
+  ) {
     this.form = this.fb.group({
       shape: 'rabbit01',
       color: '',
@@ -65,7 +70,6 @@ export class EditorComponent {
   }
 
   onClickNext(): void {
-    console.log(this.form);
     switch (this.currentStep$.getValue()) {
       case Step.Card:
         this.currentStep$.next(Step.Lettering);
@@ -78,10 +82,13 @@ export class EditorComponent {
         break;
       case Step.Text:
         if (this.form.invalid) {
-          /**
-           * @TODO 모든 인풋을 입력해달라는 얼럿 띄우기
-           */
+          this.popupService.alert(
+            `앗, ${this.validationAlertMessage()}를 깜빡하신 것 같아요!`
+          );
+
+          return;
         }
+
         this.currentStep$.next(Step.Music);
         break;
       case Step.Music:
@@ -96,5 +103,22 @@ export class EditorComponent {
      *  @TODO 경고 얼럿 추가하기
      */
     this.router.navigate(['/']);
+  }
+
+  private validationAlertMessage(): string | undefined {
+    const { sender, reciever, text } = this.form.controls;
+
+    if (reciever.invalid) {
+      return '받는 이';
+    }
+
+    if (text.invalid) {
+      return '편지';
+    }
+
+    if (sender.invalid) {
+      return '보내는 이';
+    }
+    return undefined;
   }
 }
