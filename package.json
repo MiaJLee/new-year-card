@@ -20,6 +20,8 @@
     "@angular/router": "^15.0.4",
     "@angular/youtube-player": "^15.0.3",
     "@ngneat/until-destroy": "^9.2.2",
+    "@types/lodash-es": "^4.17.6",
+    "lodash-es": "^4.17.21",
     "normalize.css": "^8.0.1",
     "rxjs": "^7.8.0",
     "tslib": "^2.4.1",

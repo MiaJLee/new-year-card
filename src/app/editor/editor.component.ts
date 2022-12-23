@@ -31,7 +31,7 @@ export class EditorComponent {
       lettering: '',
       background: 'bg01',
       text: ['', Validators.required],
-      musicId: '',
+      musicId: ['', Validators.required],
       sender: ['', Validators.required],
       reciever: ['', Validators.required],
     });
@@ -60,11 +60,11 @@ export class EditorComponent {
       case Step.Background:
         this.currentStep$.next(Step.Lettering);
         break;
-      case Step.Text:
+      case Step.Music:
         this.currentStep$.next(Step.Background);
         break;
-      case Step.Music:
-        this.currentStep$.next(Step.Text);
+      case Step.Text:
+        this.currentStep$.next(Step.Music);
         break;
     }
   }
@@ -78,8 +78,18 @@ export class EditorComponent {
         this.currentStep$.next(Step.Background);
         break;
       case Step.Background:
+        this.currentStep$.next(Step.Music);
+        break;
+      case Step.Music:
+        if (this.form.controls.musicId.invalid) {
+          this.popupService.alert(
+            '받으시는 분이 감동할만한 음악을 선택해주세요.\n 음악을 클릭하면 미리 들어볼 수 있어요.'
+          );
+          return;
+        }
         this.currentStep$.next(Step.Text);
         break;
+
       case Step.Text:
         if (this.form.invalid) {
           this.popupService.alert(
@@ -88,13 +98,11 @@ export class EditorComponent {
 
           return;
         }
+        /**
+         * 완성된 카드 미리보기 화면으로 이동
+         */
 
-        this.currentStep$.next(Step.Music);
         break;
-      case Step.Music:
-      /**
-       * 완성된 카드 미리보기 화면으로 이동
-       */
     }
   }
 

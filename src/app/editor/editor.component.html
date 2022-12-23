@@ -38,10 +38,10 @@
         <ng-container *ngSwitchCase="step.Background">
           <form-card-bg controlName="background"></form-card-bg>
         </ng-container>
-        <ng-container *ngSwitchCase="step.Text"> </ng-container>
         <ng-container *ngSwitchCase="step.Music">
           <form-music-playlist controlName="musicId"></form-music-playlist>
         </ng-container>
+        <ng-container *ngSwitchCase="step.Text"> </ng-container>
       </ng-container>
 
       <div class="btn-container">
@@ -49,7 +49,7 @@
           {{ currentStep === step.Card ? "첫 화면으로" : "이전 단계" }}
         </button>
         <button class="button-highlight" (click)="onClickNext()">
-          {{ currentStep === step.Music ? "완성된 카드 확인" : "다음 단계" }}
+          {{ currentStep === step.Text ? "완성된 카드 확인" : "다음 단계" }}
         </button>
       </div>
     </div>

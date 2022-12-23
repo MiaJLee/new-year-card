@@ -3,6 +3,7 @@ import { FormControl, FormGroupDirective } from '@angular/forms';
 import { MUSICS } from '../app.value';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { getUrlParameter } from '../app.utils';
+import { isNil, isEmpty } from 'lodash-es';
 
 @UntilDestroy()
 @Component({
@@ -14,11 +15,24 @@ export class FormMusicPlaylistComponent {
   @Input() controlName: string = '';
   readonly musics = MUSICS;
 
-  videoId?: string;
+  get selectedId(): number | undefined {
+    const selectedId = this.ctrl.value;
 
+    if (!isNil(selectedId) && !isEmpty(selectedId)) {
+      return parseInt(selectedId);
+    }
+
+    return;
+  }
+
+  videoId?: string;
   ctrl = new FormControl('');
 
   constructor(private rootFormGroup: FormGroupDirective) {
+    // @TODO 다시 돌아왔을때 부모 컴포넌트의 값을 받아올 수 있도록 해야함. 이외 모든 단계 마찬가지 (카드, 배경 선택)
+    // this.ctrl.setValue(this.rootFormGroup.control.get(this.controlName)?.value);
+
+    console.log(this.rootFormGroup.control.get(this.controlName)?.value);
     this.ctrl.valueChanges.pipe(untilDestroyed(this)).subscribe((v) => {
       this.rootFormGroup.control.get(this.controlName)?.setValue(v);
     });

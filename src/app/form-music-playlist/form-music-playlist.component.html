@@ -3,7 +3,12 @@
     <div class="whitespace"></div>
     <ng-container *ngFor="let music of musics">
       <label>
-        <input type="radio" value="{{ music.id }}" [formControl]="ctrl" />
+        <input
+          type="radio"
+          value="{{ music.id }}"
+          [formControl]="ctrl"
+          [checked]="music.id === selectedId"
+        />
         <div (click)="selectMusic(music)" class="music-item">
           <div
             class="album-image"

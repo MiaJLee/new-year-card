@@ -12,11 +12,11 @@ export const EDITOR_TITLE = {
     kr: '배경지를 선택해주세요',
     en: 'Select the background',
   },
-  [Step.Text]: { kr: '편지를 작성해주세요', en: 'Write the letter' },
   [Step.Music]: {
     kr: '희망찬 새해를 위한 첫 음악을 선물해주세요',
     en: 'Choose the new-year-song',
   },
+  [Step.Text]: { kr: '편지를 작성해주세요', en: 'Write the letter' },
 };
 
 export const MAX_LENGTH = 200;
