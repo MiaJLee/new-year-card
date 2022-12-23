@@ -21,7 +21,7 @@
     "@angular/youtube-player": "^15.0.3",
     "@ngneat/until-destroy": "^9.2.2",
     "normalize.css": "^8.0.1",
-    "rxjs": "~6.6.7",
+    "rxjs": "^7.8.0",
     "tslib": "^2.4.1",
     "zone.js": "~0.11.8"
   },
