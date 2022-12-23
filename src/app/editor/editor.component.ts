@@ -31,9 +31,17 @@ export class EditorComponent {
       reciever: ['', Validators.required],
     });
 
-    this.currentStep$
+    this.form.controls.shape.valueChanges
       .pipe(untilDestroyed(this))
-      .subscribe((v) => console.log(v));
+      .subscribe(() => {
+        const cardElemenet = document.querySelector('.flip-card');
+
+        cardElemenet?.classList.add('selected-motion');
+
+        setTimeout(() => {
+          cardElemenet?.classList.remove('selected-motion');
+        }, 400);
+      });
   }
 
   onClickPrev(): void {
@@ -41,14 +49,14 @@ export class EditorComponent {
       case Step.Card:
         this.goMain();
         break;
-      case Step.Background:
+      case Step.Lettering:
         this.currentStep$.next(Step.Card);
         break;
-      case Step.Lettering:
-        this.currentStep$.next(Step.Background);
+      case Step.Background:
+        this.currentStep$.next(Step.Lettering);
         break;
       case Step.Text:
-        this.currentStep$.next(Step.Lettering);
+        this.currentStep$.next(Step.Background);
         break;
       case Step.Music:
         this.currentStep$.next(Step.Text);
@@ -60,12 +68,12 @@ export class EditorComponent {
     console.log(this.form);
     switch (this.currentStep$.getValue()) {
       case Step.Card:
-        this.currentStep$.next(Step.Background);
-        break;
-      case Step.Background:
         this.currentStep$.next(Step.Lettering);
         break;
       case Step.Lettering:
+        this.currentStep$.next(Step.Background);
+        break;
+      case Step.Background:
         this.currentStep$.next(Step.Text);
         break;
       case Step.Text:

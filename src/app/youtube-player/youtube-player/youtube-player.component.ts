@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-youtube-player',
@@ -6,7 +6,6 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class YoutubePlayerComponent implements OnInit {
   @Input() videoId?: string;
-  @Output() close: EventEmitter<any> = new EventEmitter();
   private apiLoaded = false;
 
   ngOnInit() {
@@ -18,9 +17,5 @@ export class YoutubePlayerComponent implements OnInit {
       document.body.appendChild(tag);
       this.apiLoaded = true;
     }
-  }
-
-  onClose() {
-    this.close.emit(null);
   }
 }

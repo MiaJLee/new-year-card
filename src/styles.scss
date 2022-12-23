@@ -7,8 +7,14 @@
   text-decoration: none;
 }
 
+$color-primary: #ff5a28;
+$color-black: #000000;
+$color-white: #ffffff;
+
 .font-h1 {
-  font-family: "Yeseva One";
+  font-family: guyot-headline, sans-serif;
+  font-weight: 300;
+  font-style: italic;
   font-size: 50px;
   margin: 0;
 }
@@ -16,7 +22,7 @@
 .font-h3 {
   font-family: "Noto Sans KR";
   font-weight: 300;
-  font-size: 24px;
+  font-size: 26px;
   line-height: 1.5;
 }
 
@@ -36,25 +42,23 @@
 
 .button-default {
   @extend .button;
-  border: #000 solid 1px;
-  background-color: #fff;
-  color: #000;
+  border: $color-black solid 1px;
+  background-color: $color-white;
+  color: $color-black;
 
   &:hover {
     border: none;
-    background-color: #000;
-    color: #fff;
+    background-color: $color-black;
+    color: $color-white;
   }
 }
 
 .button-highlight {
   @extend .button;
-  background-color: #000;
-  color: #fff;
+  background-color: $color-black;
+  color: $color-white;
 
   &:hover {
-    border: #000 solid 1px;
-    background-color: #fff;
-    color: #000;
+    background-color: $color-primary;
   }
 }

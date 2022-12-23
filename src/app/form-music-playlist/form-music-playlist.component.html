@@ -24,10 +24,9 @@
   </div>
 </div>
 
-<div id="player">
-  <app-youtube-player
-    *ngIf="videoId"
-    [videoId]="videoId"
-    (close)="onClose($event)"
-  ></app-youtube-player>
+<div *ngIf="videoId" class="player-ui">
+  <div (click)="onClose()">x</div>
+</div>
+<div id="player" class="playing-motion">
+  <app-youtube-player *ngIf="videoId" [videoId]="videoId"></app-youtube-player>
 </div>

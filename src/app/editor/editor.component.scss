@@ -1,3 +1,5 @@
+@import "src/styles";
+
 .editor-container {
   width: 100vw;
   height: 100vh;
@@ -12,6 +14,9 @@
   display: flex;
   width: 100%;
   justify-content: space-between;
+  position: fixed;
+  bottom: 7vh;
+  width: 90vw;
 }
 
 .preview {
@@ -26,7 +31,32 @@
   top: 50px;
 
   h3 {
-    margin: 0 0 12px 0;
+    margin: 0 0 -10px 0;
+  }
+}
+
+.selected-motion {
+  -webkit-animation-name: cssAnimation;
+  -webkit-animation-duration: 0.4s;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease-in-out;
+  -webkit-animation-fill-mode: forwards;
+  animation-name: cssAnimation;
+  animation-duration: 0.4s;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes cssAnimation {
+  0% {
+    -webkit-transform: rotate(0deg) scale(1) skew(0deg);
+  }
+  50% {
+    -webkit-transform: rotate(5deg) scale(1) skew(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg) scale(1) skew(0deg);
   }
 }
 
@@ -75,8 +105,9 @@
   padding: 20px;
   box-sizing: border-box;
   border-radius: 30px;
-  --shadow-color: rgb(255, 65, 125);
-  filter: drop-shadow(1px 2px 8px var(--shadow-color));
+  border: 1px solid $color-black;
+  // --shadow-color: $color-primary;
+  // filter: drop-shadow(1px 2px 8px var(--shadow-color));
   transform: rotateY(180deg);
 }
 

@@ -34,7 +34,7 @@ export class FormMusicPlaylistComponent {
     }, 10);
   }
 
-  onClose(e: any) {
+  onClose() {
     this.videoId = undefined;
   }
 }

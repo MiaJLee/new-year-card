@@ -1,3 +1,5 @@
+@import "src/styles";
+
 .container {
   position: fixed;
   top: 0;
@@ -85,7 +87,7 @@ h3 {
   box-shadow: 100vmin 0 13.372878560933023vmin currentColor;
 }
 .background span:nth-child(2) {
-  color: #ef1f5d;
+  color: $color-primary;
   top: 58%;
   left: 86%;
   animation-duration: 16s;
@@ -103,7 +105,7 @@ h3 {
   box-shadow: -100vmin 0 13.136064861006185vmin currentColor;
 }
 .background span:nth-child(4) {
-  color: #f81b53;
+  color: $color-primary;
   top: 63%;
   left: 50%;
   animation-duration: 18s;
@@ -130,7 +132,7 @@ h3 {
   box-shadow: -100vmin 0 13.393476956551151vmin currentColor;
 }
 .background span:nth-child(7) {
-  color: #f81b53;
+  color: $color-primary;
   top: 13%;
   left: 21%;
   animation-duration: 35s;
@@ -157,7 +159,7 @@ h3 {
   box-shadow: 100vmin 0 13.491531530493578vmin currentColor;
 }
 .background span:nth-child(10) {
-  color: #ef1f5d;
+  color: $color-primary;
   top: 12%;
   left: 20%;
   animation-duration: 30s;
@@ -166,7 +168,7 @@ h3 {
   box-shadow: 100vmin 0 13.342751044691685vmin currentColor;
 }
 .background span:nth-child(11) {
-  color: #f81b53;
+  color: $color-primary;
   top: 56%;
   left: 94%;
   animation-duration: 309s;
@@ -184,7 +186,7 @@ h3 {
   box-shadow: 100vmin 0 12.784306077083679vmin currentColor;
 }
 .background span:nth-child(13) {
-  color: #f81b53;
+  color: $color-primary;
   top: 16%;
   left: 68%;
   animation-duration: 268s;
@@ -211,7 +213,7 @@ h3 {
   box-shadow: -100vmin 0 13.153390284341443vmin currentColor;
 }
 .background span:nth-child(16) {
-  color: #ef1f5d;
+  color: $color-primary;
   top: 5%;
   left: 5%;
   animation-duration: 94s;
@@ -220,7 +222,7 @@ h3 {
   box-shadow: -100vmin 0 13.132446407441822vmin currentColor;
 }
 .background span:nth-child(17) {
-  color: #ef1f5d;
+  color: $color-primary;
   top: 26%;
   left: 10%;
   animation-duration: 10s;
@@ -238,7 +240,7 @@ h3 {
   box-shadow: -100vmin 0 13.369289001795638vmin currentColor;
 }
 .background span:nth-child(19) {
-  color: #f81b53;
+  color: $color-primary;
   top: 94%;
   left: 88%;
   animation-duration: 19s;
