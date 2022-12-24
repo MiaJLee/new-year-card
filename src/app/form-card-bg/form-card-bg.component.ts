@@ -13,6 +13,8 @@ export class FormCardBgComponent {
   ctrl = new FormControl('bg00');
 
   constructor(private rootFormGroup: FormGroupDirective) {
+    this.ctrl.setValue(this.rootFormGroup.control.value.background);
+
     this.ctrl.valueChanges.pipe(untilDestroyed(this)).subscribe((v) => {
       this.rootFormGroup.control.get(this.controlName)?.setValue(v);
 

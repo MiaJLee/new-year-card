@@ -32,7 +32,7 @@ export class FormMusicPlaylistComponent {
     // @TODO 다시 돌아왔을때 부모 컴포넌트의 값을 받아올 수 있도록 해야함. 이외 모든 단계 마찬가지 (카드, 배경 선택)
     // this.ctrl.setValue(this.rootFormGroup.control.get(this.controlName)?.value);
 
-    console.log(this.rootFormGroup.control.get(this.controlName)?.value);
+    this.ctrl.setValue(this.rootFormGroup.control.value.musicId);
     this.ctrl.valueChanges.pipe(untilDestroyed(this)).subscribe((v) => {
       this.rootFormGroup.control.get(this.controlName)?.setValue(v);
     });
