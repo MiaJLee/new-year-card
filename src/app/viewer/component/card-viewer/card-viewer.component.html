@@ -1,1 +1,24 @@
-<p>card-viewer works!</p>
+<!-- @TODO: 뷰어 진입시 봉투를 보여준다. 오픈 눌러야 모션 + 카드노출 -->
+<!-- + 음악 자동재생 -->
+<ng-container *ngIf="card">
+  <div class="card-container">
+    <div class="flip-card selected-motion flipped-hover">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img
+            *ngIf="card.shape"
+            class="preview"
+            src="../../assets/card_{{ card.shape }}.svg"
+          />
+        </div>
+        <!-- @TODO: 프리뷰 버전 편지 적용하기 (뒤집힌 카드에) -->
+        <div class="flip-card-back">
+          <span>to. {{ card.reciever }}</span>
+          <p>{{ card.text }}</p>
+          <span>from. {{ card.sender }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <bg-canvas [color]="card.background" [effect]="card.effect"></bg-canvas>
+</ng-container>

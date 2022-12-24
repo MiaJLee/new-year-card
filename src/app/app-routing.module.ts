@@ -7,7 +7,11 @@ import { CardViewerComponent } from './viewer/component/card-viewer/card-viewer.
 const routes: Routes = [
   { path: '', component: LandingComponent },
   { path: 'editor', component: EditorComponent },
-  { path: 'card/:id', component: CardViewerComponent },
+  {
+    path: 'card/:id',
+    component: CardViewerComponent,
+    children: [{ path: 'preview', component: CardViewerComponent }],
+  },
 ];
 
 @NgModule({

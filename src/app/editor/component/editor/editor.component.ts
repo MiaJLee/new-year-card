@@ -2,9 +2,9 @@ import { AfterViewInit, Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { BehaviorSubject } from 'rxjs';
-import { Step } from '../../../app.value';
-import { EDITOR_TITLE, MAX_LENGTH } from '../../../app.value';
+import { BehaviorSubject, catchError, EMPTY, switchMap } from 'rxjs';
+import { ApiService } from '../../../../api/api.service';
+import { Step, EDITOR_TITLE } from '../../../app.value';
 import { PopupService } from '../../../popup/popup.service';
 
 @UntilDestroy()
@@ -35,7 +35,8 @@ export class EditorComponent implements AfterViewInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private popupService: PopupService
+    private popupService: PopupService,
+    private apiService: ApiService
   ) {
     this.form = this.fb.group({
       shape: 'rabbit01',
@@ -123,7 +124,29 @@ export class EditorComponent implements AfterViewInit {
       {
         confirm: {
           text: '저장',
-          fn: () => {} /** 카드 POST API 호출 */,
+          fn: () =>
+            this.apiService
+              .postCard({ ...this.form.value })
+              .pipe(
+                switchMap((res) => {
+                  if (res.cardId) {
+                    this.popupService.alert('카드가 성공적으로 저장되었어요!', {
+                      confirm: {
+                        text: '보러갈래요',
+                        fn: () => this.router.navigate(['/card', res.cardId]),
+                      },
+                    });
+                  }
+
+                  return EMPTY;
+                }),
+                catchError((e) => {
+                  this.popupService.alert(e.message);
+
+                  return EMPTY;
+                })
+              )
+              .subscribe(),
         },
       }
     );
