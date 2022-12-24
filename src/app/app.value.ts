@@ -23,6 +23,17 @@ export type Card =
   | 'shape02'
   | 'shape03';
 
+export type Lettering = 'happyNewYear' | 'saeHaeBok';
+
+export type Background =
+  | 'white'
+  | 'orange'
+  | 'black'
+  | 'snow'
+  | 'gradient'
+  | 'confetti'
+  | 'kirakira';
+
 export type Popup = 'none' | 'alert' | 'confirm' | 'link';
 
 export const EDITOR_TITLE: Title = {
