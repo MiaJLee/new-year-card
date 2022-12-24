@@ -8,6 +8,7 @@
       <div
         class="flip-card selected-motion"
         [class.flipped]="currentStep === step.Text"
+        [class.flipped-hover]="currentStep === step.Preview"
       >
         <div class="flip-card-inner">
           <div class="flip-card-front">
@@ -18,6 +19,19 @@
             />
           </div>
           <div *ngIf="currentStep === step.Text" class="flip-card-back">
+            <span>to.</span
+            ><input type="text" formControlName="reciever" maxlength="25" />
+            <textarea
+              type="textbox"
+              formControlName="text"
+              maxlength="200"
+            ></textarea>
+            <span>from.</span
+            ><input type="text" formControlName="sender" maxlength="25" />
+          </div>
+
+          <!-- @TODO: 프리뷰 버전 편지 적용하기 (뒤집힌 카드에) -->
+          <div *ngIf="currentStep === step.Preview" class="flip-card-back">
             <span>to.</span
             ><input type="text" formControlName="reciever" maxlength="25" />
             <textarea
@@ -45,15 +59,26 @@
           <form-music-playlist controlName="musicId"></form-music-playlist>
         </ng-container>
         <ng-container *ngSwitchCase="step.Text"> </ng-container>
+        <ng-container *ngSwitchCase="step.Preview"> </ng-container>
       </ng-container>
 
       <div class="btn-container">
         <button class="button-default" (click)="onClickPrev()">
           {{ currentStep === step.Card ? "첫 화면으로" : "이전 단계" }}
         </button>
-        <button class="button-highlight" (click)="onClickNext()">
+        <button
+          *ngIf="currentStep !== step.Preview; else preview"
+          class="button-highlight"
+          (click)="onClickNext()"
+        >
           {{ currentStep === step.Text ? "완성된 카드 확인" : "다음 단계" }}
         </button>
+
+        <ng-template #preview>
+          <button #preview class="button-highlight" (click)="onSave()">
+            {{ "저장하고 친구에게 보내기" }}
+          </button>
+        </ng-template>
       </div>
     </div>
   </form>

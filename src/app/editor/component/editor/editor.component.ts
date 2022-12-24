@@ -111,24 +111,22 @@ export class EditorComponent implements AfterViewInit {
 
           return;
         }
-        /**
-         * 완성된 카드 미리보기 화면으로 이동
-         */
+        this.currentStep$.next(Step.Preview);
 
         break;
-      case Step.Preview:
-        this.popupService.confirm(
-          '카드를 저장한 후에는 수정할 수 없어요.\n카드를 저장하시겠어요?',
-          {
-            confirm: {
-              text: '저장',
-              fn: () => {} /** 카드 POST API 호출 */,
-            },
-          }
-        );
-
-        return;
     }
+  }
+
+  onSave(): void {
+    this.popupService.confirm(
+      '카드를 저장한 후에는 수정할 수 없어요.\n카드를 저장하시겠어요?',
+      {
+        confirm: {
+          text: '저장',
+          fn: () => {} /** 카드 POST API 호출 */,
+        },
+      }
+    );
   }
 
   private goMain(): void {
