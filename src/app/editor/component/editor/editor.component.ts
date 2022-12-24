@@ -3,9 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { BehaviorSubject } from 'rxjs';
-import { Step } from '../app.value';
-import { EDITOR_TITLE, MAX_LENGTH } from '../app.value';
-import { PopupService } from '../popup/popup.service';
+import { Step } from '../../../app.value';
+import { EDITOR_TITLE, MAX_LENGTH } from '../../../app.value';
+import { PopupService } from '../../../popup/popup.service';
 
 @UntilDestroy()
 @Component({

@@ -1,8 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormControl, FormGroupDirective } from '@angular/forms';
-import { MUSICS } from '../app.value';
+import { MUSICS } from '../../../app.value';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { getUrlParameter } from '../app.utils';
+import { getUrlParameter } from '../../../app.utils';
 import { isNil, isEmpty } from 'lodash-es';
 
 @UntilDestroy()

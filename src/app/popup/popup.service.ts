@@ -44,10 +44,10 @@ export class PopupService {
 
   close(): void {
     this._popupType = 'none';
-    this.openPopup.emit(this.isOpen());
+    this._setPopup(undefined, {});
   }
 
-  private _setPopup(content: string, option?: PopupOption): void {
+  private _setPopup(content?: string, option?: PopupOption): void {
     this._content = content;
 
     if (option) {

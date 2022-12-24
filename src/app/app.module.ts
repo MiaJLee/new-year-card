@@ -4,34 +4,20 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { LandingComponent } from './landing/landing.component';
-import { EditorComponent } from './editor/editor.component';
 import { PostcardComponent } from './postcard/postcard.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FormCardShapeComponent } from './form-card-shape/form-card-shape.component';
-import { FormCardBgComponent } from './form-card-bg/form-card-bg.component';
-import { FormMusicPlaylistComponent } from './form-music-playlist/form-music-playlist.component';
-import { YoutubePlayerModule } from './youtube-player/youtube-player.module';
 import { PopupModule } from './popup/popup.module';
 import { SharedModule } from './shared/shared.module';
+import { EditorModule } from './editor/editor.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LandingComponent,
-    EditorComponent,
-    PostcardComponent,
-    FormCardShapeComponent,
-    FormCardBgComponent,
-    FormMusicPlaylistComponent,
-  ],
+  declarations: [AppComponent, LandingComponent, PostcardComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    YoutubePlayerModule,
     PopupModule,
     SharedModule,
+    EditorModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
