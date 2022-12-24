@@ -2,5 +2,6 @@
   [height]="200"
   [width]="200"
   videoId="{{ videoId }}"
-  [playerVars]="{ autoplay: 1 }"
+  [playerVars]="{ autoplay: 1, controls: 0, color: 'white' }"
 ></youtube-player>
+<!-- @TODO 모바일에서 자동재생 되는지 꼭 체크하기, 안되면 컨트롤 생성 -->

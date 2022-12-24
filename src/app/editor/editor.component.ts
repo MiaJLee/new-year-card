@@ -27,8 +27,8 @@ export class EditorComponent {
   ) {
     this.form = this.fb.group({
       shape: 'rabbit01',
-      lettering: '',
-      background: 'bg01',
+      lettering: 'happyNewYear', // @TODO default 줄건지 ?
+      background: 'white',
       text: ['', Validators.required],
       musicId: ['', Validators.required],
       sender: ['', Validators.required],

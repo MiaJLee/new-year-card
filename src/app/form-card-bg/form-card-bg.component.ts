@@ -10,7 +10,7 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 })
 export class FormCardBgComponent {
   @Input() controlName: string = '';
-  ctrl = new FormControl('bg00');
+  ctrl = new FormControl('');
 
   constructor(private rootFormGroup: FormGroupDirective) {
     this.ctrl.setValue(this.rootFormGroup.control.value.background);
