@@ -1,8 +1,31 @@
-import { Step } from './app.models';
+import { Music } from './app.models';
+
+export enum Step {
+  Card = 'card',
+  Background = 'background',
+  Lettering = 'lettering',
+  Music = 'music',
+  Text = 'text',
+}
+
+type Title = {
+  [K in Step]: {
+    kr: string;
+    en: string;
+  };
+};
+
+export type Card =
+  | 'rabbit01'
+  | 'rabbit02'
+  | 'rabbit03'
+  | 'shape01'
+  | 'shape02'
+  | 'shape03';
 
 export type Popup = 'none' | 'alert' | 'confirm' | 'link';
 
-export const EDITOR_TITLE = {
+export const EDITOR_TITLE: Title = {
   [Step.Card]: { kr: '카드를 선택해주세요', en: 'Select the card' },
   [Step.Lettering]: {
     kr: '레터링 이미지를 선택해주세요',
@@ -21,7 +44,7 @@ export const EDITOR_TITLE = {
 
 export const MAX_LENGTH = 200;
 
-export const MUSICS = [
+export const MUSICS: Array<Music> = [
   {
     id: 0,
     name: 'Try Everything',

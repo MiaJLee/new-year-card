@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { BehaviorSubject } from 'rxjs';
-import { Step } from '../app.models';
+import { Step } from '../app.value';
 import { EDITOR_TITLE, MAX_LENGTH } from '../app.value';
 import { PopupService } from '../popup/popup.service';
 
@@ -27,7 +27,6 @@ export class EditorComponent {
   ) {
     this.form = this.fb.group({
       shape: 'rabbit01',
-      color: '',
       lettering: '',
       background: 'bg01',
       text: ['', Validators.required],
@@ -83,7 +82,7 @@ export class EditorComponent {
       case Step.Music:
         if (this.form.controls.musicId.invalid) {
           this.popupService.alert(
-            '받으시는 분이 감동할만한 음악을 선택해주세요.\n 음악을 클릭하면 미리 들어볼 수 있어요.'
+            '받는 이를 위한 음악을 선택해주세요.\n 이미지를 클릭하면 미리 들어볼 수 있어요.'
           );
           return;
         }
@@ -106,11 +105,16 @@ export class EditorComponent {
     }
   }
 
-  goMain(): void {
-    /**
-     *  @TODO 경고 얼럿 추가하기
-     */
-    this.router.navigate(['/']);
+  private goMain(): void {
+    this.popupService.confirm(
+      '작성중인 편지는 저장되지 않아요.\n 메인으로 돌아가시겠어요?',
+      {
+        confirm: {
+          text: '네, 돌아갈게요',
+          fn: () => this.router.navigate(['/']),
+        },
+      }
+    );
   }
 
   private validationAlertMessage(): string | undefined {

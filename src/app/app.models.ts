@@ -1,15 +1,20 @@
-export enum Step {
-  Card = 'card',
-  Background = 'background',
-  Lettering = 'lettering',
-  Music = 'music',
-  Text = 'text',
+export interface Music {
+  id: number;
+  name: string;
+  artist: string;
+  spotifyLink: string;
+  image: string;
+  lyrics: string;
+  youtubeLink: string;
 }
 
-export type Card =
-  | 'rabbit01'
-  | 'rabbit02'
-  | 'rabbit03'
-  | 'shape01'
-  | 'shape02'
-  | 'shape03';
+export interface PopupOption {
+  confirm?: {
+    text: string;
+    fn: () => {};
+  };
+  cancel?: {
+    text: string;
+    fn: () => {};
+  };
+}

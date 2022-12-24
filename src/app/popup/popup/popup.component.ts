@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PopupOption } from '../../app.models';
 import { Popup } from '../../app.value';
 import { PopupService } from '../popup.service';
 
@@ -9,7 +10,7 @@ import { PopupService } from '../popup.service';
 })
 export class PopupComponent {
   content: string = '';
-  option: any;
+  option?: PopupOption;
   type: Popup = 'none';
 
   constructor(private popupService: PopupService) {
