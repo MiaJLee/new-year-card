@@ -6,6 +6,7 @@ export enum Step {
   Lettering = 'lettering',
   Music = 'music',
   Text = 'text',
+  Preview = 'preview',
 }
 
 type Title = {
@@ -52,6 +53,10 @@ export const EDITOR_TITLE: Title = {
     en: 'Choose the new-year-song',
   },
   [Step.Text]: { kr: '편지를 작성해주세요', en: 'Write the letter' },
+  [Step.Preview]: {
+    kr: '멋진 카드가 완성되었어요!',
+    en: 'The Best Card Ever!',
+  },
 };
 
 export const MAX_LENGTH = 200;

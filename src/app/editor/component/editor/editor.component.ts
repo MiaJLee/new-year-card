@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
@@ -13,7 +13,7 @@ import { PopupService } from '../../../popup/popup.service';
   templateUrl: './editor.component.html',
   styleUrls: ['./editor.component.scss'],
 })
-export class EditorComponent {
+export class EditorComponent implements AfterViewInit {
   readonly step = Step;
   currentStep$ = new BehaviorSubject(Step.Card);
 
@@ -51,14 +51,12 @@ export class EditorComponent {
     this.form.controls.shape.valueChanges
       .pipe(untilDestroyed(this))
       .subscribe(() => {
-        const cardElemenet = document.querySelector('.flip-card');
-
-        cardElemenet?.classList.add('selected-motion');
-
-        setTimeout(() => {
-          cardElemenet?.classList.remove('selected-motion');
-        }, 400);
+        this.shakeCard();
       });
+  }
+
+  ngAfterViewInit(): void {
+    this.shakeCard();
   }
 
   onClickPrev(): void {
@@ -77,6 +75,9 @@ export class EditorComponent {
         break;
       case Step.Text:
         this.currentStep$.next(Step.Music);
+        break;
+      case Step.Preview:
+        this.currentStep$.next(Step.Text);
         break;
     }
   }
@@ -115,6 +116,18 @@ export class EditorComponent {
          */
 
         break;
+      case Step.Preview:
+        this.popupService.confirm(
+          '카드를 저장한 후에는 수정할 수 없어요.\n카드를 저장하시겠어요?',
+          {
+            confirm: {
+              text: '저장',
+              fn: () => {} /** 카드 POST API 호출 */,
+            },
+          }
+        );
+
+        return;
     }
   }
 
@@ -145,5 +158,15 @@ export class EditorComponent {
       return '보내는 이';
     }
     return undefined;
+  }
+
+  private shakeCard(): void {
+    const cardElemenet = document.querySelector('.flip-card');
+
+    cardElemenet?.classList.add('selected-motion');
+
+    setTimeout(() => {
+      cardElemenet?.classList.remove('selected-motion');
+    }, 400);
   }
 }

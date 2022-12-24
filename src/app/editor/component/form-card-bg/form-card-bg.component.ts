@@ -9,7 +9,7 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
   styleUrls: ['./form-card-bg.component.scss'],
 })
 export class FormCardBgComponent {
-  backgroundCtrl = new FormControl('');
+  backgroundCtrl = new FormControl();
   effectCtrl = new FormControl();
 
   constructor(private rootFormGroup: FormGroupDirective) {

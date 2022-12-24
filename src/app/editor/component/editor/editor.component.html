@@ -5,7 +5,10 @@
         <h3 class="font-h3">{{ title[currentStep].kr }}</h3>
         <h1 class="font-h1">{{ title[currentStep].en }}</h1>
       </div>
-      <div class="flip-card" [class.flipped]="currentStep === step.Text">
+      <div
+        class="flip-card selected-motion"
+        [class.flipped]="currentStep === step.Text"
+      >
         <div class="flip-card-inner">
           <div class="flip-card-front">
             <img

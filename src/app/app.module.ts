@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PopupModule } from './popup/popup.module';
 import { SharedModule } from './shared/shared.module';
 import { EditorModule } from './editor/editor.module';
+import { ViewerModule } from './viewer/viewer.module';
 
 @NgModule({
   declarations: [AppComponent, LandingComponent, PostcardComponent],
@@ -18,6 +19,7 @@ import { EditorModule } from './editor/editor.module';
     PopupModule,
     SharedModule,
     EditorModule,
+    ViewerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
