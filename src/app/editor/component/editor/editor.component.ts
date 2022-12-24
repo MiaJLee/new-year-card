@@ -20,6 +20,18 @@ export class EditorComponent {
   title = EDITOR_TITLE;
   form: FormGroup;
 
+  get bgColor() {
+    return this.form.controls.background.value;
+  }
+
+  get bgEffect() {
+    return this.form.controls.effect.value;
+  }
+
+  get cardShape() {
+    return this.form.controls.shape.value;
+  }
+
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -29,6 +41,7 @@ export class EditorComponent {
       shape: 'rabbit01',
       lettering: 'happyNewYear', // @TODO default 줄건지 ?
       background: 'white',
+      effect: 'none',
       text: ['', Validators.required],
       musicId: ['', Validators.required],
       sender: ['', Validators.required],

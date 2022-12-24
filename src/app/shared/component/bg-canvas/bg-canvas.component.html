@@ -1,0 +1,26 @@
+<ng-container *ngIf="color && effect">
+  <div class="bg" [ngClass]="color">
+    <ng-container [ngSwitch]="effect">
+      <ng-container *ngSwitchCase="'circles'">
+        <span class="circle-element" *ngFor="let circle of circleCount"></span>
+      </ng-container>
+      <ng-container *ngSwitchCase="'confetti'">
+        <ng-particles
+          [id]="id"
+          [options]="particlesOptions"
+          [particlesInit]="particlesInit"
+          (particlesLoaded)="particlesLoaded($event)"
+        ></ng-particles>
+      </ng-container>
+      <ng-container *ngSwitchCase="'snow'">
+        <div class="snow-element" *ngFor="let snow of snowCount"></div>
+      </ng-container>
+      <ng-container
+        *ngSwitchCase="'kirakira'"
+        class="bg-kirakira"
+      ></ng-container>
+      <ng-container *ngSwitchCase="'fireworks'" class="bg-fireworks">
+      </ng-container>
+    </ng-container>
+  </div>
+</ng-container>

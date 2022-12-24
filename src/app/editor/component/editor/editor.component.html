@@ -1,7 +1,7 @@
 <ng-container *ngIf="currentStep$ | async as currentStep">
   <form [formGroup]="form">
     <div class="editor-container">
-      <div class="title">
+      <div class="title" [class.white]="bgColor === 'black'">
         <h3 class="font-h3">{{ title[currentStep].kr }}</h3>
         <h1 class="font-h1">{{ title[currentStep].en }}</h1>
       </div>
@@ -9,9 +9,9 @@
         <div class="flip-card-inner">
           <div class="flip-card-front">
             <img
-              *ngIf="form.controls.shape.value"
+              *ngIf="cardShape"
               class="preview"
-              src="../../assets/card_{{ form.controls.shape.value }}.svg"
+              src="../../assets/card_{{ cardShape }}.svg"
             />
           </div>
           <div *ngIf="currentStep === step.Text" class="flip-card-back">
@@ -36,7 +36,7 @@
           <h1>* 레터링 선택 컴포넌트 추가 *</h1>
         </ng-container>
         <ng-container *ngSwitchCase="step.Background">
-          <form-card-bg controlName="background"></form-card-bg>
+          <form-card-bg></form-card-bg>
         </ng-container>
         <ng-container *ngSwitchCase="step.Music">
           <form-music-playlist controlName="musicId"></form-music-playlist>
@@ -55,3 +55,4 @@
     </div>
   </form>
 </ng-container>
+<bg-canvas [color]="bgColor" [effect]="bgEffect"></bg-canvas>

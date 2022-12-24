@@ -1,3 +1,9 @@
+@import "src/styles";
+
+.bg-container {
+  display: flex;
+}
+
 /* HIDE RADIO */
 [type="radio"] {
   position: absolute;
@@ -7,31 +13,65 @@
 }
 
 /* IMAGE STYLES */
-[type="radio"] + img {
+[type="radio"] + div {
   cursor: pointer;
+  text-align: center;
 }
 
 /* CHECKED STYLES */
-[type="radio"]:checked + img {
-  outline: 1px solid #000;
+[type="radio"]:checked + div {
+  outline: 2px solid $color-primary;
 }
 
 .card-bg-preview {
-  height: 80px;
-  width: 80px;
-  margin: 20px;
+  height: 40px;
+  width: 40px;
+  margin: 10px;
   background-size: contain;
   border-radius: 100%;
+  border: $color-black solid 1px;
+  background-color: $color-white;
 }
 
-.bg01 {
-  background: url("../../assets/bg01.jpeg");
+.card-bg-preview-white {
+  @extend .card-bg-preview;
+  background: $color-white;
 }
 
-.bg02 {
-  background: url("../../assets/bg02.jpeg");
+.card-bg-preview-orange {
+  @extend .card-bg-preview;
+  background: $color-primary;
 }
 
-.bg-container {
-  display: flex;
+.card-bg-preview-black {
+  @extend .card-bg-preview;
+  background: $color-black;
+  border-color: $color-white;
+}
+
+.card-bg-preview-gradient {
+  @extend .card-bg-preview;
+  background: $color-black;
+  border-color: $color-white;
+}
+
+// 여기부터는 이미지 캡쳐해서 넣기
+.card-bg-preview-snow {
+  @extend .card-bg-preview;
+  background: skyblue;
+}
+
+.card-bg-preview-circles {
+  @extend .card-bg-preview;
+  background: grey;
+}
+
+.card-bg-preview-confetti {
+  @extend .card-bg-preview;
+  background: greenyellow;
+}
+
+.card-bg-preview-kirakira {
+  @extend .card-bg-preview;
+  background: pink;
 }

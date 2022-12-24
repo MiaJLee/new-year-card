@@ -25,14 +25,15 @@ export type Card =
 
 export type Lettering = 'happyNewYear' | 'saeHaeBok';
 
-export type Background =
-  | 'white'
-  | 'orange'
-  | 'black'
+export type Background = 'white' | 'orange' | 'black' | 'gradient';
+
+export type Effect =
+  | 'none'
   | 'snow'
-  | 'gradient'
+  | 'circles'
   | 'confetti'
-  | 'kirakira';
+  | 'kirakira'
+  | 'fireworks';
 
 export type Popup = 'none' | 'alert' | 'confirm' | 'link';
 

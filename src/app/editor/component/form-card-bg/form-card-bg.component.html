@@ -1,10 +1,45 @@
 <div class="bg-container">
   <label>
-    <input type="radio" value="bg01" [formControl]="ctrl" checked />
-    <div class="card-bg-preview bg01"></div>
+    <input type="radio" value="white" [formControl]="backgroundCtrl" checked />
+    <div class="card-bg-preview-white"></div>
   </label>
   <label>
-    <input type="radio" value="bg02" [formControl]="ctrl" />
-    <div class="card-bg-preview bg02"></div>
+    <input type="radio" value="orange" [formControl]="backgroundCtrl" />
+    <div class="card-bg-preview-orange"></div>
+  </label>
+  <label>
+    <input type="radio" value="black" [formControl]="backgroundCtrl" />
+    <div class="card-bg-preview-black"></div>
+  </label>
+  <label>
+    <input type="radio" value="gradient" [formControl]="backgroundCtrl" />
+    <div class="card-bg-preview-gradient"></div>
+  </label>
+</div>
+
+<div class="bg-container">
+  <label>
+    <input type="radio" value="none" [formControl]="effectCtrl" />
+    <div class="card-bg-preview">없</div>
+  </label>
+  <label>
+    <input type="radio" value="snow" [formControl]="effectCtrl" />
+    <div class="card-bg-preview">눈</div>
+  </label>
+  <label>
+    <input type="radio" value="circles" [formControl]="effectCtrl" />
+    <div class="card-bg-preview">공</div>
+  </label>
+  <label>
+    <input type="radio" value="confetti" [formControl]="effectCtrl" />
+    <div class="card-bg-preview">콘페티</div>
+  </label>
+  <label>
+    <input type="radio" value="kirakira" [formControl]="effectCtrl" />
+    <div class="card-bg-preview">별</div>
+  </label>
+  <label>
+    <input type="radio" value="fireworks" [formControl]="effectCtrl" />
+    <div class="card-bg-preview">불꽃</div>
   </label>
 </div>
