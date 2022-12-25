@@ -1,4 +1,4 @@
-<div class="popup-container">
+<div *ngIf="type !== 'link'" class="popup-container">
   <p class="font-desc" [innerHtml]="content | newlineToBr"></p>
   <div class="button-wrapper">
     <button
@@ -10,6 +10,22 @@
     </button>
     <button class="confirm-button" (click)="onConfirm()">
       {{ option?.confirm?.text ?? "확인" }}
+    </button>
+  </div>
+</div>
+
+<div *ngIf="type === 'link'" class="popup-container link">
+  <p class="font-desc">
+    받는 분께 링크를 공유해주세요<br />1월 1일 자정(GMT+9)부터 열람이 가능해요
+  </p>
+  <div class="button-wrapper">
+    <button (click)="onCopyClipboard()" class="button-share">
+      <div class="button-icon clipboard"></div>
+      <span>{{ clipboardCopyed ? "복사 완료!" : "링크 복사" }}</span>
+    </button>
+    <button (click)="shareKakao()" class="button-share">
+      <div class="button-icon kakaotalk"></div>
+      <span>카카오톡 공유</span>
     </button>
   </div>
 </div>

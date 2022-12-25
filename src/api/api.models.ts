@@ -23,7 +23,7 @@ interface postCardReq {
   text: string;
   musicId: string;
   sender: string;
-  reciever: string;
+  receiver: string;
 }
 
 interface postCardRes {
@@ -43,7 +43,7 @@ interface getCardRes {
   text: string;
   musicId: string;
   sender: string;
-  reciever: string;
+  receiver: string;
   cardId: string;
 }
 

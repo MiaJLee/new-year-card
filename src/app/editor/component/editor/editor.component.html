@@ -20,7 +20,7 @@
           </div>
           <div *ngIf="currentStep === step.Text" class="flip-card-back">
             <span>to.</span
-            ><input type="text" formControlName="reciever" maxlength="25" />
+            ><input type="text" formControlName="receiver" maxlength="25" />
             <textarea
               type="textbox"
               formControlName="text"
@@ -33,7 +33,7 @@
           <!-- @TODO: 프리뷰 버전 편지 적용하기 (뒤집힌 카드에) -->
           <div *ngIf="currentStep === step.Preview" class="flip-card-back">
             <span>to.</span
-            ><input type="text" formControlName="reciever" maxlength="25" />
+            ><input type="text" formControlName="receiver" maxlength="25" />
             <textarea
               type="textbox"
               formControlName="text"
@@ -62,7 +62,7 @@
         <ng-container *ngSwitchCase="step.Preview"> </ng-container>
       </ng-container>
 
-      <div class="btn-container">
+      <div class="button-container">
         <button class="button-default" (click)="onClickPrev()">
           {{ currentStep === step.Card ? "첫 화면으로" : "이전 단계" }}
         </button>

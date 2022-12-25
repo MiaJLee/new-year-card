@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import * as Models from './api.models';
 
-const api = 'http://localhost:3000';
+const api = 'https://black-bunny-card.herokuapp.com';
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {

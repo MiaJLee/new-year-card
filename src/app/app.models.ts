@@ -10,11 +10,12 @@ export interface Music {
 
 export interface PopupOption {
   confirm?: {
-    text: string;
-    fn: () => any;
+    text?: string;
+    fn?: () => any;
   };
   cancel?: {
-    text: string;
-    fn: () => any;
+    text?: string;
+    fn?: () => any;
   };
+  data?: any;
 }

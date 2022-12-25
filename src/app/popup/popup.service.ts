@@ -25,8 +25,7 @@ export class PopupService {
     type: Popup;
   }> {
     return of({
-      content:
-        this._content ?? '저장 후에는 수정하실 수 없습니다.\n저장하시겠습니까?',
+      content: this._content ?? '테스트 메세지 입니다.',
       option: this._option,
       type: this._popupType,
     });
@@ -40,6 +39,11 @@ export class PopupService {
   confirm(content: string, option?: PopupOption): void {
     this._popupType = 'confirm';
     this._setPopup(content, option);
+  }
+
+  custom(type: Popup): void {
+    this._popupType = type;
+    this.openPopup.emit(this.isOpen());
   }
 
   close(): void {

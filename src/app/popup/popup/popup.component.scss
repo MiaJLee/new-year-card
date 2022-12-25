@@ -16,6 +16,14 @@
   align-items: center;
   flex-direction: column;
   border-radius: 16px;
+
+  &.link {
+    padding: 40px 30px 180px;
+
+    & .button-wrapper {
+      bottom: 40px;
+    }
+  }
 }
 
 .dimmed {
@@ -35,23 +43,58 @@
   justify-content: center;
 
   button {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .cancel-button,
+  .confirm-button {
     border: 1px solid $color-black;
     background-color: $color-white;
     min-width: 100px;
     padding: 0 20px;
     height: 40px;
-    font-family: "Noto Sans KR";
     font-weight: 500;
     font-size: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
     color: $color-black;
     border-radius: 16px;
   }
-}
 
-.cancel-button {
-  margin-right: 20px;
+  .cancel-button {
+    margin-right: 20px;
+  }
+
+  .button-share {
+    border: none;
+    width: 120px;
+    overflow: visible;
+    background-color: transparent;
+    flex-direction: column;
+
+    span {
+      font-weight: 500;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    div.button-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 100%;
+      background-color: $color-black;
+      background-position: center center;
+      background-size: 35px 35px;
+      background-repeat: no-repeat;
+
+      &.clipboard {
+        background-image: url("../../../assets/ico-link.png");
+      }
+
+      &.kakaotalk {
+        background-image: url("../../../assets/ico-kakao.png");
+      }
+    }
+  }
 }

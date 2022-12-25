@@ -46,7 +46,7 @@ export class EditorComponent implements AfterViewInit {
       text: ['', Validators.required],
       musicId: ['', Validators.required],
       sender: ['', Validators.required],
-      reciever: ['', Validators.required],
+      receiver: ['', Validators.required],
     });
 
     this.form.controls.shape.valueChanges
@@ -165,9 +165,9 @@ export class EditorComponent implements AfterViewInit {
   }
 
   private validationAlertMessage(): string | undefined {
-    const { sender, reciever, text } = this.form.controls;
+    const { sender, receiver, text } = this.form.controls;
 
-    if (reciever.invalid) {
+    if (receiver.invalid) {
       return '받는 이';
     }
 

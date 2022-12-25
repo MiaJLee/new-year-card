@@ -1,6 +1,21 @@
 <!-- @TODO: 뷰어 진입시 봉투를 보여준다. 오픈 눌러야 모션 + 카드노출 -->
 <!-- + 음악 자동재생 -->
-<ng-container *ngIf="card">
+<ng-container *ngIf="card && !isNewYear && isPreview">
+  <div class="card-container">
+    <h3 class="font-h3 font-white">
+      {{ card.sender }}님이 {{ card.receiver }}님에게 보내는 편지
+    </h3>
+    <object data="../../../../assets/folded-envelope.svg" width="400"></object>
+    <div class="button-container-right">
+      <button (click)="shareCard()" class="button-default">편지 보내기</button>
+      <button (click)="tryAgain()" class="button-default">
+        하나 더 만들기
+      </button>
+    </div>
+  </div>
+  <bg-canvas color="black" effect="none"></bg-canvas>
+</ng-container>
+<ng-container *ngIf="card && isNewYear">
   <div class="card-container">
     <div class="flip-card selected-motion flipped-hover">
       <div class="flip-card-inner">
@@ -13,7 +28,7 @@
         </div>
         <!-- @TODO: 프리뷰 버전 편지 적용하기 (뒤집힌 카드에) -->
         <div class="flip-card-back">
-          <span>to. {{ card.reciever }}</span>
+          <span>to. {{ card.receiver }}</span>
           <p>{{ card.text }}</p>
           <span>from. {{ card.sender }}</span>
         </div>
