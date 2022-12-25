@@ -43,6 +43,7 @@ export class FormMusicPlaylistComponent {
     this.ctrl.setValue(music.id);
 
     // [workaround] youtube-player를 DOM에서 삭제 후 새로 그리기 위함.
+    // @TODO: 모바일에서는 유튜브로 이동할지 묻는 팝업을 띄워야 한다.
     setTimeout(() => {
       this.videoId = getUrlParameter(music.youtubeLink, 'v');
     }, 10);

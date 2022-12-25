@@ -1,4 +1,4 @@
-<div class="playlist-container">
+<div class="playlist-container open-playlist-action">
   <div class="playlist-wrapper">
     <div class="whitespace"></div>
     <ng-container *ngFor="let music of musics">
@@ -22,6 +22,7 @@
               [innerHtml]="music.lyrics | newlineToBr"
             ></p>
           </div>
+          <div class="icon-checked"></div>
         </div>
       </label>
     </ng-container>

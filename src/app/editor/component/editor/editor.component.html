@@ -90,7 +90,11 @@
       </div>
     </div>
   </form>
-</ng-container>
 
-<!-- @TODO: 이전으로 돌아갈때 배경 안보여주는게 나을지 고민해보기 -->
-<bg-canvas [color]="bgColor" [effect]="bgEffect"></bg-canvas>
+  <!-- @TODO: 이전으로 돌아갈때 배경 안보여주는게 나을지 고민해보기 -->
+  <bg-canvas
+    *ngIf="currentStep === step.Background"
+    [color]="bgColor"
+    [effect]="bgEffect"
+  ></bg-canvas>
+</ng-container>

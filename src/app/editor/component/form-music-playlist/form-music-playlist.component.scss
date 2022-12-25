@@ -1,5 +1,29 @@
 @import "src/styles";
 
+.open-playlist-action {
+  -webkit-animation-name: openAnimation;
+  -webkit-animation-duration: 0.8s;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease-in-out;
+  -webkit-animation-fill-mode: forwards;
+  animation-name: openAnimation;
+  animation-duration: 0.8s;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes openAnimation {
+  from {
+    top: 55%;
+    opacity: 0;
+  }
+  to {
+    top: 50%;
+    opacity: 1;
+  }
+}
+
 .playlist-container {
   position: fixed;
   top: 50%;
@@ -29,9 +53,6 @@
   overflow: hidden;
   margin: 15px;
   cursor: pointer;
-  border: 5px solid $color-white;
-  --shadow-color: rgba(0, 0, 0, 0.4);
-  filter: drop-shadow(1px 1px 8px var(--shadow-color));
 }
 
 .album-image {
@@ -102,12 +123,29 @@
   height: 0;
 }
 
+.icon-checked {
+  background: url("/assets/ui/check.svg") no-repeat center center;
+  width: 50px;
+  height: 50px;
+  display: none;
+  background-size: 100%;
+}
+
 /* CHECKED STYLES */
 [type="radio"]:checked + div {
-  outline: 2px solid $color-primary;
+  box-shadow: 0 0 0 3px $color-primary;
 
   .album-image {
     filter: grayscale(100%);
+  }
+
+  /* CHECKED STYLES */
+  .icon-checked {
+    display: block;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    z-index: 10;
   }
 }
 
@@ -148,5 +186,90 @@
   }
   to {
     -webkit-transform: rotate(360deg) scale(1) skew(0deg);
+  }
+}
+
+@include mobile {
+  .playlist-container {
+    position: fixed;
+    margin-top: 50px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: $color-white;
+    border: 1px solid $color-black;
+  }
+
+  .playlist-wrapper {
+    width: 95vw;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+
+    .whitespace {
+      height: 40px;
+      flex: 0 0 100%;
+    }
+  }
+
+  .music-item {
+    border-radius: 25px;
+    margin: 10px;
+    border: none;
+  }
+
+  .album-image {
+    width: 40vw;
+    height: 40vw;
+    background-size: 105% 105%;
+    background-position: center;
+    filter: blur(4px);
+    -webkit-filter: blur(4px);
+  }
+
+  .icon-checked {
+    background: url("/assets/ui/check.svg") no-repeat center center;
+    width: 40px;
+    height: 40px;
+    display: none;
+    background-size: 100%;
+  }
+
+  /* CHECKED STYLES */
+  [type="radio"]:checked + div {
+    /* CHECKED STYLES */
+    .icon-checked {
+      z-index: 10;
+      bottom: 8px;
+      right: 4px;
+    }
+  }
+}
+
+@include tablet {
+  .music-item {
+    position: relative;
+    border-radius: 25px;
+    overflow: hidden;
+    margin: 15px;
+    cursor: pointer;
+    border: 5px solid $color-white;
+    --shadow-color: rgba(0, 0, 0, 0.4);
+    filter: drop-shadow(1px 1px 8px var(--shadow-color));
+  }
+}
+
+@include desktop {
+  .music-item {
+    position: relative;
+    border-radius: 25px;
+    overflow: hidden;
+    margin: 15px;
+    cursor: pointer;
+    border: 5px solid $color-white;
+    --shadow-color: rgba(0, 0, 0, 0.4);
+    filter: drop-shadow(1px 1px 8px var(--shadow-color));
   }
 }
