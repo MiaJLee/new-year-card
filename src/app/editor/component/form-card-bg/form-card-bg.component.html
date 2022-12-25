@@ -1,4 +1,7 @@
 <div class="bg-container">
+  <h2 [class.font-white]="backgroundCtrl.value === 'black'" class="font-h2">
+    Color
+  </h2>
   <label>
     <input type="radio" value="white" [formControl]="backgroundCtrl" checked />
     <div class="card-bg-preview-white"></div>
@@ -18,28 +21,28 @@
 </div>
 
 <div class="bg-container">
+  <h2 [class.font-white]="backgroundCtrl.value === 'black'" class="font-h2">
+    Effect
+  </h2>
   <label>
     <input type="radio" value="none" [formControl]="effectCtrl" />
-    <div class="card-bg-preview">없</div>
+    <div class="card-bg-preview">1</div>
   </label>
   <label>
     <input type="radio" value="snow" [formControl]="effectCtrl" />
-    <div class="card-bg-preview">눈</div>
+    <div class="card-bg-preview">2</div>
   </label>
   <label>
     <input type="radio" value="circles" [formControl]="effectCtrl" />
-    <div class="card-bg-preview">공</div>
+    <div class="card-bg-preview">3</div>
   </label>
   <label>
     <input type="radio" value="confetti" [formControl]="effectCtrl" />
-    <div class="card-bg-preview">콘페티</div>
+    <div class="card-bg-preview">4</div>
   </label>
+  <!-- @TODO: 효과 하나 더 추가하기 -->
   <label>
     <input type="radio" value="kirakira" [formControl]="effectCtrl" />
-    <div class="card-bg-preview">별</div>
-  </label>
-  <label>
-    <input type="radio" value="fireworks" [formControl]="effectCtrl" />
-    <div class="card-bg-preview">불꽃</div>
+    <div class="card-bg-preview">5</div>
   </label>
 </div>

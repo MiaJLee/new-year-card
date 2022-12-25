@@ -22,6 +22,14 @@ button {
   margin: 0;
 }
 
+.font-h2 {
+  font-family: guyot-headline, sans-serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: 30px;
+  margin: 0;
+}
+
 .font-h3 {
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 300;
@@ -125,6 +133,10 @@ button {
 
   .font-h1 {
     font-size: 30px;
+  }
+
+  .font-h2 {
+    font-size: 20px;
   }
 
   .font-h3 {

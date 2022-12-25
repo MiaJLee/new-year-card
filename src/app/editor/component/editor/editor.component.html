@@ -1,7 +1,7 @@
 <ng-container *ngIf="currentStep$ | async as currentStep">
   <form [formGroup]="form">
     <div class="editor-container">
-      <div class="title" [class.white]="bgColor === 'black'">
+      <div class="title" [class.font-white]="bgColor === 'black'">
         <h3 class="font-h3">{{ title[currentStep].kr }}</h3>
         <h1 class="font-h1">{{ title[currentStep].en }}</h1>
       </div>

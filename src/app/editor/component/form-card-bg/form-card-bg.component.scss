@@ -2,6 +2,10 @@
 
 .bg-container {
   display: flex;
+
+  &:nth-child(2) {
+    margin-top: 5px;
+  }
 }
 
 /* HIDE RADIO */
@@ -20,17 +24,20 @@
 
 /* CHECKED STYLES */
 [type="radio"]:checked + div {
-  outline: 2px solid $color-primary;
+  border-radius: 100%;
+  box-shadow: 0 0 0 3px $color-primary;
 }
 
 .card-bg-preview {
   height: 40px;
   width: 40px;
   margin: 10px;
-  background-size: contain;
   border-radius: 100%;
   border: $color-black solid 1px;
   background-color: $color-white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .card-bg-preview-white {
@@ -74,4 +81,10 @@
 .card-bg-preview-kirakira {
   @extend .card-bg-preview;
   background: pink;
+}
+
+@include mobile {
+  .card-bg-preview {
+    margin: 5px;
+  }
 }
