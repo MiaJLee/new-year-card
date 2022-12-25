@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
-import { PopupOption } from '../../app.models';
-import { Popup } from '../../app.value';
+import { PopupOption, Popup } from '../../app.models';
 import { PopupService } from '../popup.service';
 import { Clipboard } from '@angular/cdk/clipboard';
-import { environment } from '../../../environments/environment';
 
 const KAKAO_SHARE_OPTION = {
   requestUrl: 'http://localhost:4200/', // 페이지 url

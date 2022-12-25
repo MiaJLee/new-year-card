@@ -1,7 +1,6 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { PopupOption } from '../app.models';
-import { Popup } from '../app.value';
+import { PopupOption, Popup } from '../app.models';
 
 @Injectable({
   providedIn: 'root',

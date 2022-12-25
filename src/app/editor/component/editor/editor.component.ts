@@ -2,9 +2,11 @@ import { AfterViewInit, Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { find } from 'lodash-es';
 import { BehaviorSubject, catchError, EMPTY, switchMap } from 'rxjs';
 import { ApiService } from '../../../../api/api.service';
-import { Step, EDITOR_TITLE } from '../../../app.value';
+import { CardDesignConfig, Step } from '../../../app.models';
+import { EDITOR_TITLE, CARD_LIST } from '../../../app.value';
 import { PopupService } from '../../../popup/popup.service';
 
 @UntilDestroy()
@@ -15,9 +17,10 @@ import { PopupService } from '../../../popup/popup.service';
 })
 export class EditorComponent implements AfterViewInit {
   readonly step = Step;
+  readonly title = EDITOR_TITLE;
+  readonly cardList = CARD_LIST;
   currentStep$ = new BehaviorSubject(Step.Card);
 
-  title = EDITOR_TITLE;
   form: FormGroup;
 
   get bgColor() {
@@ -28,8 +31,11 @@ export class EditorComponent implements AfterViewInit {
     return this.form.controls.effect.value;
   }
 
-  get cardShape() {
-    return this.form.controls.shape.value;
+  get cardShape(): { type: string; lettering: string } {
+    const type = this.form.controls.shape.value;
+    const lettering = this.form.controls.lettering.value;
+
+    return { type, lettering };
   }
 
   constructor(
@@ -39,8 +45,8 @@ export class EditorComponent implements AfterViewInit {
     private apiService: ApiService
   ) {
     this.form = this.fb.group({
-      shape: 'rabbit01',
-      lettering: 'happyNewYear', // @TODO default 줄건지 ?
+      shape: 'bunnya',
+      lettering: ['', Validators.required],
       background: 'white',
       effect: 'none',
       text: ['', Validators.required],
@@ -50,6 +56,12 @@ export class EditorComponent implements AfterViewInit {
     });
 
     this.form.controls.shape.valueChanges
+      .pipe(untilDestroyed(this))
+      .subscribe(() => {
+        this.shakeCard();
+      });
+
+    this.form.controls.lettering.valueChanges
       .pipe(untilDestroyed(this))
       .subscribe(() => {
         this.shakeCard();
@@ -89,6 +101,10 @@ export class EditorComponent implements AfterViewInit {
         this.currentStep$.next(Step.Lettering);
         break;
       case Step.Lettering:
+        if (this.form.controls.lettering.invalid) {
+          this.popupService.alert('레터링을 선택해주세요.');
+          return;
+        }
         this.currentStep$.next(Step.Background);
         break;
       case Step.Background:

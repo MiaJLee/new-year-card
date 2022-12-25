@@ -1,47 +1,73 @@
-import { Music } from './app.models';
+import { CardDesignConfig, Music, Step, Title } from './app.models';
 
-export enum Step {
-  Card = 'card',
-  Background = 'background',
-  Lettering = 'lettering',
-  Music = 'music',
-  Text = 'text',
-  Preview = 'preview',
-}
-
-type Title = {
-  [K in Step]: {
-    kr: string;
-    en: string;
-  };
-};
-
-export type Card =
-  | 'rabbit01'
-  | 'rabbit02'
-  | 'rabbit03'
-  | 'shape01'
-  | 'shape02'
-  | 'shape03';
-
-export type Lettering = 'happyNewYear' | 'saeHaeBok';
-
-export type Background = 'white' | 'orange' | 'black' | 'gradient';
-
-export type Effect =
-  | 'none'
-  | 'snow'
-  | 'circles'
-  | 'confetti'
-  | 'kirakira'
-  | 'fireworks';
-
-export type Popup = 'none' | 'alert' | 'confirm' | 'link';
+// @TODO: 현진이 피드백 - 약간씩 위치 어긋남
+export const CARD_LIST: Array<CardDesignConfig> = [
+  {
+    type: 'bunnya',
+    width: 70,
+    positionX: {
+      default: -1,
+      saeHaeBok: -67,
+      happyNewYear: -134,
+      flipped: -204,
+    },
+  },
+  {
+    type: 'cloud',
+    width: 80,
+    positionX: {
+      default: -3,
+      saeHaeBok: -80,
+      happyNewYear: -156,
+      flipped: -230,
+    },
+  },
+  {
+    type: 'bunnyb',
+    width: 70,
+    positionX: {
+      default: 0,
+      saeHaeBok: -68,
+      happyNewYear: -135,
+      flipped: -200,
+    },
+  },
+  {
+    type: 'heart',
+    width: 80,
+    positionX: {
+      default: -3,
+      saeHaeBok: -80,
+      happyNewYear: -156,
+      flipped: -230,
+    },
+  },
+  {
+    type: 'bunnyc',
+    width: 116,
+    positionX: {
+      default: 0,
+      saeHaeBok: -116,
+      happyNewYear: -230,
+      flipped: -349,
+    },
+  },
+  {
+    type: 'oval',
+    width: 80,
+    positionX: {
+      default: -3,
+      saeHaeBok: -80,
+      happyNewYear: -156,
+      flipped: -230,
+    },
+  },
+];
 
 export const EDITOR_TITLE: Title = {
   [Step.Card]: { kr: '카드를 선택해주세요', en: 'Select the card' },
   [Step.Lettering]: {
-    kr: '레터링 이미지를 선택해주세요',
+    kr: '레터링을 선택해주세요',
     en: 'Select the lettering',
   },
   [Step.Background]: {

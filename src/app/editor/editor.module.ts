@@ -7,6 +7,7 @@ import { FormMusicPlaylistComponent } from './component/form-music-playlist/form
 import { SharedModule } from '../shared/shared.module';
 import { PopupModule } from '../popup/popup.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormLetteringComponent } from './component/form-lettering/form-lettering.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormCardShapeComponent,
     FormCardBgComponent,
     FormMusicPlaylistComponent,
+    FormLetteringComponent,
   ],
   exports: [
     EditorComponent,

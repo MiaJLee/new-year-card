@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Background, Effect } from '../../../app.value';
+import { Background, Effect } from '../../../app.models';
 import {
   MoveDirection,
   ClickMode,

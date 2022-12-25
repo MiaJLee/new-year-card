@@ -16,6 +16,11 @@
 h1 {
   text-align: center;
   color: $color-white;
+
+  strong {
+    color: $color-black;
+    font-family: guyot-headline, sans-serif;
+  }
 }
 
 h3 {
@@ -37,4 +42,33 @@ h3 {
 .instagram-link,
 .instagram-link a {
   color: $color-white;
+}
+
+@include mobile {
+  h3 {
+    margin-top: 10px;
+  }
+
+  .button-editor {
+    margin-top: 40px;
+    margin-bottom: 60px;
+  }
+
+  .instagram-link {
+    font-size: 11px;
+  }
+}
+
+@include tablet {
+  .media-query {
+    width: 200px;
+    background-color: green;
+  }
+}
+
+@include desktop {
+  .media-query {
+    width: 300px;
+    background-color: blue;
+  }
 }

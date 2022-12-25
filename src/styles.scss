@@ -1,15 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+@import "../mixins";
+@import "../variables";
+
 * {
-  font-family: "Noto Sans KR" sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
 }
 
-$color-primary: #ff5a28;
-$color-black: #000000;
-$color-white: #ffffff;
+button {
+  font-family: "Noto Sans KR", sans-serif;
+}
 
 .font-h1 {
   font-family: guyot-headline, sans-serif;
@@ -20,7 +23,7 @@ $color-white: #ffffff;
 }
 
 .font-h3 {
-  font-family: "Noto Sans KR";
+  font-family: "Noto Sans KR", sans-serif;
   font-weight: 300;
   font-size: 26px;
   line-height: 1.5;
@@ -42,6 +45,10 @@ $color-white: #ffffff;
 
 .font-white {
   color: $color-white;
+}
+
+.font-black {
+  color: $color-black;
 }
 
 .button {
@@ -87,6 +94,11 @@ $color-white: #ffffff;
   position: fixed;
   bottom: 7vh;
   width: 90vw;
+  pointer-events: none;
+
+  button {
+    pointer-events: all;
+  }
 }
 
 .button-container-right {
@@ -97,4 +109,67 @@ $color-white: #ffffff;
 
 .button-container-right > button:nth-child(2) {
   margin-top: 10px;
+}
+
+.media-query {
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+
+@include mobile {
+  .media-query {
+    width: 100px;
+    background-color: red;
+  }
+
+  .font-h1 {
+    font-size: 30px;
+  }
+
+  .font-h3 {
+    font-size: 16px;
+  }
+
+  .button {
+    flex: 1;
+    height: 50px;
+    font-size: 15px;
+    border-radius: 0;
+  }
+
+  .button-container {
+    bottom: 0;
+    width: 100vw;
+  }
+
+  .button-container-right {
+    @extend .button-container;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .button-container-right > button:nth-child(2) {
+    margin-top: 0;
+  }
+
+  .button-highlight {
+    &:hover {
+      border-top: 1px solid $color-black;
+    }
+  }
+}
+
+@include tablet {
+  .media-query {
+    width: 200px;
+    background-color: green;
+  }
+}
+
+@include desktop {
+  .media-query {
+    width: 300px;
+    background-color: blue;
+  }
 }

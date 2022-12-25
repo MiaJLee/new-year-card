@@ -5,62 +5,70 @@
         <h3 class="font-h3">{{ title[currentStep].kr }}</h3>
         <h1 class="font-h1">{{ title[currentStep].en }}</h1>
       </div>
-      <div
-        class="flip-card selected-motion"
-        [class.flipped]="currentStep === step.Text"
-        [class.flipped-hover]="currentStep === step.Preview"
-      >
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <img
-              *ngIf="cardShape"
-              class="preview"
-              src="../../assets/card_{{ cardShape }}.svg"
-            />
-          </div>
-          <div *ngIf="currentStep === step.Text" class="flip-card-back">
-            <span>to.</span
-            ><input type="text" formControlName="receiver" maxlength="25" />
-            <textarea
-              type="textbox"
-              formControlName="text"
-              maxlength="200"
-            ></textarea>
-            <span>from.</span
-            ><input type="text" formControlName="sender" maxlength="25" />
-          </div>
+      <div *ngIf="cardShape" class="preview-container">
+        <div
+          class="flip-card selected-motion"
+          [class.flipped]="currentStep === step.Text"
+          [class.flipped-hover]="currentStep === step.Preview"
+          [ngClass]="cardShape.type"
+        >
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <div
+                class="preview"
+                [ngClass]="cardShape.lettering"
+                [ngStyle]="{
+                  'background-image':
+                    'url(./assets/cards/' + cardShape.type + '.svg)'
+                }"
+              ></div>
+            </div>
+            <div *ngIf="currentStep === step.Text" class="flip-card-back">
+              <span>to.</span
+              ><input type="text" formControlName="receiver" maxlength="25" />
+              <textarea
+                type="textbox"
+                formControlName="text"
+                maxlength="200"
+              ></textarea>
+              <span>from.</span
+              ><input type="text" formControlName="sender" maxlength="25" />
+            </div>
 
-          <!-- @TODO: 프리뷰 버전 편지 적용하기 (뒤집힌 카드에) -->
-          <div *ngIf="currentStep === step.Preview" class="flip-card-back">
-            <span>to.</span
-            ><input type="text" formControlName="receiver" maxlength="25" />
-            <textarea
-              type="textbox"
-              formControlName="text"
-              maxlength="200"
-            ></textarea>
-            <span>from.</span
-            ><input type="text" formControlName="sender" maxlength="25" />
+            <!-- @TODO: 프리뷰 버전 편지 적용하기 (뒤집힌 카드에) -->
+            <div *ngIf="currentStep === step.Preview" class="flip-card-back">
+              <span>to.</span
+              ><input type="text" formControlName="receiver" maxlength="25" />
+              <textarea
+                type="textbox"
+                formControlName="text"
+                maxlength="200"
+              ></textarea>
+              <span>from.</span
+              ><input type="text" formControlName="sender" maxlength="25" />
+            </div>
           </div>
         </div>
       </div>
 
-      <ng-container [ngSwitch]="currentStep">
-        <ng-container *ngSwitchCase="step.Card">
-          <form-card-shape controlName="shape"></form-card-shape>
+      <div class="editor-controls">
+        <ng-container [ngSwitch]="currentStep">
+          <ng-container *ngSwitchCase="step.Card">
+            <form-card-shape controlName="shape"></form-card-shape>
+          </ng-container>
+          <ng-container *ngSwitchCase="step.Lettering">
+            <form-lettering controlName="lettering"></form-lettering>
+          </ng-container>
+          <ng-container *ngSwitchCase="step.Background">
+            <form-card-bg></form-card-bg>
+          </ng-container>
+          <ng-container *ngSwitchCase="step.Music">
+            <form-music-playlist controlName="musicId"></form-music-playlist>
+          </ng-container>
+          <ng-container *ngSwitchCase="step.Text"> </ng-container>
+          <ng-container *ngSwitchCase="step.Preview"> </ng-container>
         </ng-container>
-        <ng-container *ngSwitchCase="step.Lettering">
-          <h1>* 레터링 선택 컴포넌트 추가 *</h1>
-        </ng-container>
-        <ng-container *ngSwitchCase="step.Background">
-          <form-card-bg></form-card-bg>
-        </ng-container>
-        <ng-container *ngSwitchCase="step.Music">
-          <form-music-playlist controlName="musicId"></form-music-playlist>
-        </ng-container>
-        <ng-container *ngSwitchCase="step.Text"> </ng-container>
-        <ng-container *ngSwitchCase="step.Preview"> </ng-container>
-      </ng-container>
+      </div>
 
       <div class="button-container">
         <button class="button-default" (click)="onClickPrev()">
@@ -83,4 +91,6 @@
     </div>
   </form>
 </ng-container>
+
+<!-- @TODO: 이전으로 돌아갈때 배경 안보여주는게 나을지 고민해보기 -->
 <bg-canvas [color]="bgColor" [effect]="bgEffect"></bg-canvas>

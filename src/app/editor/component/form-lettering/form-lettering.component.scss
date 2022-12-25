@@ -1,0 +1,58 @@
+@import "src/styles";
+
+.lettering-container {
+  display: flex;
+  padding-bottom: 60px;
+}
+
+/* HIDE RADIO */
+[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.icon-checked {
+  background: url("/assets/ui/check.svg") no-repeat center center;
+  width: 40px;
+  height: 40px;
+  display: none;
+  background-size: 100%;
+}
+
+/* CHECKED STYLES */
+[type="radio"]:checked + div > .icon-checked {
+  display: block;
+  position: absolute;
+  top: -7px;
+  right: -7px;
+}
+
+.lettering-preview {
+  height: 80px;
+  width: 80px;
+  margin: 10px;
+  background-size: contain;
+  border-radius: 100%;
+  border: $color-black solid 1px;
+  background-color: $color-white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  position: relative;
+}
+
+@include mobile {
+  /* CHECKED STYLES */
+  [type="radio"]:checked + div > .icon-checked {
+    top: -7px;
+    right: -7px;
+  }
+
+  .lettering-container {
+    display: flex;
+    padding-bottom: 0px;
+  }
+}

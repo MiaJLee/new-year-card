@@ -1,50 +1,19 @@
-<div>
-  <label>
-    <input type="radio" value="rabbit01" [formControl]="ctrl" checked />
-    <img
-      class="card-shape-preview"
-      alt="card-shape-option-rabbit-01"
-      src="../../assets/card_rabbit01.svg"
+<div class="card-shape-options">
+  <label *ngFor="let card of cardList; index as i">
+    <input
+      type="radio"
+      [value]="card.type"
+      [formControl]="ctrl"
+      [checked]="i === 0"
     />
-  </label>
-  <label>
-    <input type="radio" value="rabbit02" [formControl]="ctrl" />
-    <img
+    <div
       class="card-shape-preview"
-      alt="card-shape-option-rabbit-02"
-      src="../../assets/card_rabbit02.svg"
-    />
-  </label>
-  <label>
-    <input type="radio" value="rabbit03" [formControl]="ctrl" />
-    <img
-      class="card-shape-preview"
-      alt="card-shape-option-rabbit-03"
-      src="../../assets/card_rabbit03.svg"
-    />
-  </label>
-  <label>
-    <input type="radio" value="shape01" [formControl]="ctrl" />
-    <img
-      class="card-shape-preview"
-      alt="card-shape-option-shape-01"
-      src="../../assets/card_shape01.svg"
-    />
-  </label>
-  <label>
-    <input type="radio" value="shape02" [formControl]="ctrl" />
-    <img
-      class="card-shape-preview"
-      alt="card-shape-option-shape-02"
-      src="../../assets/card_shape02.svg"
-    />
-  </label>
-  <label>
-    <input type="radio" value="shape03" [formControl]="ctrl" />
-    <img
-      class="card-shape-preview"
-      alt="card-shape-option-shape-03"
-      src="../../assets/card_shape03.svg"
-    />
+      [ngClass]="card.type"
+      [ngStyle]="{
+        'background-image': 'url(./assets/cards/' + card.type + '.svg)'
+      }"
+    >
+      <div class="icon-checked"></div>
+    </div>
   </label>
 </div>

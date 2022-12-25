@@ -1,0 +1,57 @@
+@use "sass:map";
+
+// Breakpoints
+$breakpoint-mobile: 335px;
+$breakpoint-tablet: 758px;
+$breakpoint-desktop: 1024px;
+
+// Colors
+$color-primary: #ff5a28;
+$color-black: #000000;
+$color-white: #ffffff;
+
+// height: 150px 기준
+$card-config-width: (
+  "bunnya": 70px,
+  "cloud": 80px,
+  "bunnyb": 70px,
+  "heart": 80px,
+  "bunnyc": 116px,
+  "oval": 80px,
+);
+
+$card-position-x-default: (
+  "bunnya": -1px,
+  "cloud": -3px,
+  "bunnyb": 0px,
+  "heart": -3px,
+  "bunnyc": 0px,
+  "oval": -3px,
+);
+
+$card-position-x-saehaebok: (
+  "bunnya": -67px,
+  "cloud": -80px,
+  "bunnyb": 68px,
+  "heart": -80px,
+  "bunnyc": -116px,
+  "oval": -80px,
+);
+
+$card-position-x-happynewyear: (
+  "bunnya": -134px,
+  "cloud": -156px,
+  "bunnyb": -135px,
+  "heart": -156px,
+  "bunnyc": -230px,
+  "oval": -156px,
+);
+
+$card-position-x-flipped: (
+  "bunnya": -204px,
+  "cloud": -230px,
+  "bunnyb": -200px,
+  "heart": -230px,
+  "bunnyc": -349px,
+  "oval": -230px,
+);
