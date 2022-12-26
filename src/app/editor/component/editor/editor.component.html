@@ -4,12 +4,14 @@
       <div
         class="title"
         [class.font-white]="
-          currentStep === step.Background && bgColor !== 'white'
+          (currentStep === step.Background || currentStep === step.Preview) &&
+          bgColor !== 'white'
         "
       >
         <h1 class="font-h1-kr">{{ title[currentStep].kr }}</h1>
         <h1 class="font-h1">{{ title[currentStep].en }}</h1>
       </div>
+
       <div *ngIf="cardShape" class="preview-container">
         <div
           class="flip-card selected-motion"
@@ -26,47 +28,48 @@
                 ></card-object>
               </div>
             </div>
-            <div
-              *ngIf="currentStep === step.Text"
-              class="flip-card-back"
-              [ngStyle]="{
-                'background-image':
-                  'url(./assets/cards/' + cardShape.type + '.svg)'
-              }"
-            >
-              <div class="text-editor">
-                <div class="flexbox">
-                  <span class="font-sub">to.</span
-                  ><input
-                    type="text"
-                    formControlName="receiver"
-                    maxlength="25"
-                  />
-                </div>
+            <div class="flip-card-back">
+              <div class="preview">
+                <card-object
+                  [cardType]="cardShape.type"
+                  [lettering]="'flipped'"
+                ></card-object>
+                <div *ngIf="currentStep === step.Text" class="text-editor">
+                  <div class="flexbox input-to">
+                    <span class="font-sub">to.</span
+                    ><input
+                      type="text"
+                      formControlName="receiver"
+                      maxlength="25"
+                    />
+                  </div>
 
-                <textarea
-                  type="textbox"
-                  formControlName="text"
-                  maxlength="200"
-                ></textarea>
-                <div class="flexbox">
+                  <textarea
+                    type="textbox"
+                    formControlName="text"
+                    maxlength="200"
+                  ></textarea>
+                  <div class="flexbox input-from">
+                    <span class="font-sub">from.</span
+                    ><input
+                      type="text"
+                      formControlName="sender"
+                      maxlength="25"
+                    />
+                  </div>
+                </div>
+                <!-- @TODO: 프리뷰 버전 편지 적용하기 (뒤집힌 카드에) -->
+                <div
+                  *ngIf="currentStep === step.Preview"
+                  class="flip-card-back card-preview"
+                >
+                  <span class="font-sub">to.</span
+                  ><span class="font-card">{{ cardContent.receiver }}</span>
+                  <p class="font-card">{{ cardContent.text }}</p>
                   <span class="font-sub">from.</span
-                  ><input type="text" formControlName="sender" maxlength="25" />
+                  ><span class="font-card">{{ cardContent.sender }}</span>
                 </div>
               </div>
-            </div>
-
-            <!-- @TODO: 프리뷰 버전 편지 적용하기 (뒤집힌 카드에) -->
-            <div *ngIf="currentStep === step.Preview" class="flip-card-back">
-              <span>to.</span
-              ><input type="text" formControlName="receiver" maxlength="25" />
-              <textarea
-                type="textbox"
-                formControlName="text"
-                maxlength="200"
-              ></textarea>
-              <span>from.</span
-              ><input type="text" formControlName="sender" maxlength="25" />
             </div>
           </div>
         </div>
@@ -104,8 +107,8 @@
         </button>
 
         <ng-template #preview>
-          <button #preview class="button-highlight" (click)="onSave()">
-            {{ "저장하고 친구에게 보내기" }}
+          <button class="button-highlight" (click)="onSave()">
+            {{ "친구에게 보내기" }}
           </button>
         </ng-template>
       </div>
@@ -114,7 +117,7 @@
 
   <!-- @TODO: 이전으로 돌아갈때 배경 안보여주는게 나을지 고민해보기 -->
   <bg-canvas
-    *ngIf="currentStep === step.Background"
+    *ngIf="currentStep === step.Background || currentStep === step.Preview"
     [color]="bgColor"
     [effect]="bgEffect"
   ></bg-canvas>

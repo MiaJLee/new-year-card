@@ -34,6 +34,8 @@
   height: 600px;
   background-repeat: no-repeat;
   background-size: auto 100%;
+  position: relative;
+  pointer-events: none;
 }
 
 .selected-motion {
@@ -74,17 +76,18 @@
   width: 100%;
   height: 100%;
   text-align: center;
-  transition: transform 0.8s;
+  transition: transform 1s;
+  transition-delay: 0.5s;
   transform-style: preserve-3d;
 }
 
 /* Do an horizontal flip when you move the mouse over the flip box container */
 .flip-card.flipped .flip-card-inner {
-  transform: rotateY(180deg) scale(1.5);
+  transform: rotateY(180deg) scale(1);
 }
 
 .flipped-hover:hover .flip-card-inner {
-  transform: rotateY(180deg) scale(1.5);
+  transform: rotateY(180deg) scale(1);
 }
 
 /* Position the front and back side */
@@ -114,6 +117,9 @@
 }
 
 .text-editor {
+  position: absolute;
+  top: 90px;
+  left: calc(50% - 150px);
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -122,22 +128,37 @@
     margin-bottom: 10px;
   }
 
-  input,
-  textarea {
+  textarea,
+  input {
     background-color: transparent;
     border: none;
+    border-radius: 16px;
     outline: none;
+    pointer-events: all;
+    resize: none;
   }
 
   input {
     border-bottom: 1px solid $color-black;
-    width: 100px;
+    border-radius: 0;
+    width: 150px;
+    padding-left: 8px;
   }
 
-  textarea {
-    height: 200px;
-    resize: none;
+  .input-to {
+    align-self: flex-start;
+  }
+
+  .input-from {
+    align-self: flex-end;
+  }
+
+  & > textarea {
+    width: 300px;
+    height: 300px;
     border: 1px solid $color-black;
+    background: rgba($color-white, 0.8);
+    padding: 10px;
   }
 }
 
@@ -184,6 +205,64 @@
 
   .editor-controls {
     bottom: 60px;
+  }
+
+  // .editor-container {
+  //   width: 100vw;
+  //   height: 100vh;
+  //   display: flex;
+  //   justify-content: center;
+  //   align-items: center;
+  //   flex-direction: column;
+  //   padding-top: 50px;
+  // }
+
+  // .preview-container {
+  //   padding-bottom: 120px;
+  //   min-width: 1000px;
+  //   display: flex;
+  //   justify-content: center;
+  //   flex-direction: column;
+  // }
+
+  // .title {
+  //   display: flex;
+  //   flex-direction: column;
+  //   align-items: center;
+  //   position: fixed;
+  //   top: 50px;
+
+  //   .font-h1-kr {
+  //     margin: 0 0 -17px 0;
+  //   }
+  // }
+
+  // .preview {
+  //   height: 600px;
+  //   background-repeat: no-repeat;
+  //   background-size: auto 100%;
+  //   position: relative;
+  //   pointer-events: none;
+  // }
+
+  /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+  .flip-card {
+    background-color: transparent;
+    height: 400px;
+    perspective: 1000px; /* Remove this if you don't want the 3D effect */
+  }
+
+  /* Style the back side */
+  .flip-card-back {
+    height: 400px;
+  }
+
+  .text-editor {
+    top: 50px;
+
+    & > textarea {
+      height: 250px;
+    }
   }
 }
 

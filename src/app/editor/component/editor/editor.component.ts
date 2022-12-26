@@ -25,7 +25,7 @@ import { PopupService } from '../../../popup/popup.service';
 export class EditorComponent implements AfterViewInit {
   readonly step = Step;
   readonly title = EDITOR_TITLE;
-  currentStep$ = new BehaviorSubject(Step.Music);
+  currentStep$ = new BehaviorSubject(Step.Card);
 
   form: FormGroup;
 
@@ -42,6 +42,14 @@ export class EditorComponent implements AfterViewInit {
     const lettering = this.form.controls.lettering.value;
 
     return { type, lettering };
+  }
+
+  get cardContent(): { sender: string; receiver: string; text: string } {
+    const sender = this.form.controls.sender.value;
+    const receiver = this.form.controls.receiver.value;
+    const text = this.form.controls.text.value;
+
+    return { sender, receiver, text };
   }
 
   constructor(
@@ -128,8 +136,16 @@ export class EditorComponent implements AfterViewInit {
 
       case Step.Text:
         if (this.form.invalid) {
+          if (this.validationAlertMessage()) {
+            this.popupService.alert(
+              `앗, ${this.validationAlertMessage()}를 깜빡하신 것 같아요!`
+            );
+
+            return;
+          }
+
           this.popupService.alert(
-            `앗, ${this.validationAlertMessage()}를 깜빡하신 것 같아요!`
+            '문제가 발생했습니다. \n처음부터 다시 시도해주세요.'
           );
 
           return;
@@ -187,7 +203,7 @@ export class EditorComponent implements AfterViewInit {
   }
 
   private validationAlertMessage(): string | undefined {
-    const { sender, receiver, text } = this.form.controls;
+    const { sender, receiver, text, musicId, lettering } = this.form.controls;
 
     if (receiver.invalid) {
       return '받는 이';
@@ -199,6 +215,14 @@ export class EditorComponent implements AfterViewInit {
 
     if (sender.invalid) {
       return '보내는 이';
+    }
+
+    if (musicId.invalid) {
+      return '음악 고르는 거';
+    }
+
+    if (lettering) {
+      return '레터링 고르는거';
     }
     return undefined;
   }

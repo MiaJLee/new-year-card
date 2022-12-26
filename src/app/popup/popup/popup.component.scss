@@ -17,6 +17,10 @@
   flex-direction: column;
   border-radius: 16px;
 
+  .font-desc {
+    font-weight: 400;
+  }
+
   &.link {
     padding: 40px 30px 180px;
 
@@ -38,32 +42,31 @@
 
 .button-wrapper {
   position: absolute;
-  bottom: 30px;
+  left: 0px;
+  bottom: 0px;
+  width: 100%;
   display: flex;
-  justify-content: center;
 
   button {
     cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    flex: 1;
   }
 
   .cancel-button,
   .confirm-button {
-    border: 1px solid $color-black;
-    background-color: $color-white;
-    min-width: 100px;
+    border: none;
+    border-top: 1px solid $color-black;
+    background-color: transparent;
     padding: 0 20px;
-    height: 40px;
+    height: 55px;
     font-weight: 500;
     font-size: 15px;
     color: $color-black;
-    border-radius: 16px;
+    border-radius: 0;
   }
 
   .cancel-button {
-    margin-right: 20px;
+    border-right: 1px solid $color-black;
   }
 
   .button-share {
@@ -110,33 +113,12 @@
 
       & .button-wrapper {
         bottom: 40px;
+        .cancel-button,
+        .confirm-button {
+          height: 55px;
+          font-size: 14px;
+        }
       }
-    }
-  }
-
-  .button-wrapper {
-    left: 0px;
-    bottom: 0px;
-    width: 100%;
-
-    button {
-      flex: 1;
-    }
-
-    .cancel-button,
-    .confirm-button {
-      border: none;
-      border-top: 1px solid $color-black;
-      height: 55px;
-      font-size: 14px;
-      border-radius: 0;
-      background-color: transparent;
-    }
-
-    .cancel-button {
-      margin-right: 0;
-      border-right: 1px solid $color-black;
-      border-radius: 0;
     }
 
     // @TODO: 미리보기 작업시 쉐어버튼 모바일뷰 스타일 수정하기
