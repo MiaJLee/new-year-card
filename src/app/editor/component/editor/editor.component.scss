@@ -1,4 +1,3 @@
-@use "sass:map";
 @import "src/styles";
 
 .editor-container {
@@ -66,125 +65,6 @@
   background-color: transparent;
   height: 600px;
   perspective: 1000px; /* Remove this if you don't want the 3D effect */
-
-  &.bunnya,
-  &.bunnya .preview {
-    width: calc(map.get($card-config-width, "bunnya") * 4);
-
-    &.preview {
-      background-position-x: calc(
-        map.get($card-position-x-default, "bunnya") * 4
-      );
-      &.saeHaeBok {
-        background-position-x: calc(
-          map.get($card-position-x-saehaebok, "bunnya") * 4
-        );
-      }
-      &.happyNewYear {
-        background-position-x: calc(
-          map.get($card-position-x-happynewyear, "bunnya") * 4
-        );
-      }
-    }
-  }
-  &.bunnyb,
-  &.bunnyb .preview {
-    width: calc(map.get($card-config-width, "bunnyb") * 4);
-    &.preview {
-      background-position-x: calc(
-        map.get($card-position-x-default, "bunnyb") * 4
-      );
-      &.saeHaeBok {
-        background-position-x: calc(
-          map.get($card-position-x-saehaebok, "bunnyb") * 4
-        );
-      }
-      &.happyNewYear {
-        background-position-x: calc(
-          map.get($card-position-x-happynewyear, "bunnyb") * 4
-        );
-      }
-    }
-  }
-  &.bunnyc,
-  &.bunnyc .preview {
-    width: calc(map.get($card-config-width, "bunnyc") * 4);
-
-    &.preview {
-      background-position-x: calc(
-        map.get($card-position-x-default, "bunnyc") * 4
-      );
-      &.saeHaeBok {
-        background-position-x: calc(
-          map.get($card-position-x-saehaebok, "bunnyc") * 4
-        );
-      }
-      &.happyNewYear {
-        background-position-x: calc(
-          map.get($card-position-x-happynewyear, "bunnyc") * 4
-        );
-      }
-    }
-  }
-  &.cloud,
-  &.cloud .preview {
-    width: calc(map.get($card-config-width, "cloud") * 4);
-
-    &.preview {
-      background-position-x: calc(
-        map.get($card-position-x-default, "cloud") * 4
-      );
-      &.saeHaeBok {
-        background-position-x: calc(
-          map.get($card-position-x-saehaebok, "cloud") * 4
-        );
-      }
-      &.happyNewYear {
-        background-position-x: calc(
-          map.get($card-position-x-happynewyear, "cloud") * 4
-        );
-      }
-    }
-  }
-  &.heart,
-  &.heart .preview {
-    width: calc(map.get($card-config-width, "heart") * 4);
-
-    &.preview {
-      background-position-x: calc(
-        map.get($card-position-x-default, "heart") * 4
-      );
-      &.saeHaeBok {
-        background-position-x: calc(
-          map.get($card-position-x-saehaebok, "heart") * 4
-        );
-      }
-      &.happyNewYear {
-        background-position-x: calc(
-          map.get($card-position-x-happynewyear, "heart") * 4
-        );
-      }
-    }
-  }
-  &.oval,
-  &.oval .preview {
-    width: calc(map.get($card-config-width, "oval") * 4);
-    &.preview {
-      background-position-x: calc(
-        map.get($card-position-x-default, "oval") * 4
-      );
-      &.saeHaeBok {
-        background-position-x: calc(
-          map.get($card-position-x-saehaebok, "oval") * 4
-        );
-      }
-      &.happyNewYear {
-        background-position-x: calc(
-          map.get($card-position-x-happynewyear, "oval") * 4
-        );
-      }
-    }
-  }
 }
 
 /* This container is needed to position the front and back side */
@@ -199,11 +79,11 @@
 
 /* Do an horizontal flip when you move the mouse over the flip box container */
 .flip-card.flipped .flip-card-inner {
-  transform: rotateY(180deg);
+  transform: rotateY(180deg) scale(1.5);
 }
 
 .flipped-hover:hover .flip-card-inner {
-  transform: rotateY(180deg);
+  transform: rotateY(180deg) scale(1.5);
 }
 
 /* Position the front and back side */
@@ -223,19 +103,41 @@
 
 /* Style the back side */
 .flip-card-back {
-  background-color: white;
   color: black;
-  padding: 20px;
-  box-sizing: border-box;
-  border-radius: 30px;
-  border: 1px solid $color-black;
-  // --shadow-color: $color-primary;
-  // filter: drop-shadow(1px 2px 8px var(--shadow-color));
+  height: 600px;
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  --shadow-color: $color-primary;
+  filter: drop-shadow(1px 2px 8px var(--shadow-color));
   transform: rotateY(180deg);
 }
 
-textarea {
-  height: 200px;
+.text-editor {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  & > * {
+    margin-bottom: 10px;
+  }
+
+  input,
+  textarea {
+    background-color: transparent;
+    border: none;
+    outline: none;
+  }
+
+  input {
+    border-bottom: 1px solid $color-black;
+    width: 100px;
+  }
+
+  textarea {
+    height: 200px;
+    resize: none;
+    border: 1px solid $color-black;
+  }
 }
 
 .flip-card-back {
@@ -277,125 +179,6 @@ textarea {
     background-color: transparent;
     height: 400px;
     perspective: 100vw; /* Remove this if you don't want the 3D effect */
-
-    &.bunnya,
-    &.bunnya .preview {
-      width: calc(map.get($card-config-width, "bunnya") * 8 / 3);
-
-      &.preview {
-        background-position-x: calc(
-          map.get($card-position-x-default, "bunnya") * 8 / 3
-        );
-        &.saeHaeBok {
-          background-position-x: calc(
-            map.get($card-position-x-saehaebok, "bunnya") * 8 / 3
-          );
-        }
-        &.happyNewYear {
-          background-position-x: calc(
-            map.get($card-position-x-happynewyear, "bunnya") * 8 / 3
-          );
-        }
-      }
-    }
-    &.bunnyb,
-    &.bunnyb .preview {
-      width: calc(map.get($card-config-width, "bunnyb") * 8 / 3);
-      &.preview {
-        background-position-x: calc(
-          map.get($card-position-x-default, "bunnyb") * 8 / 3
-        );
-        &.saeHaeBok {
-          background-position-x: calc(
-            map.get($card-position-x-saehaebok, "bunnyb") * 8 / 3
-          );
-        }
-        &.happyNewYear {
-          background-position-x: calc(
-            map.get($card-position-x-happynewyear, "bunnyb") * 8 / 3
-          );
-        }
-      }
-    }
-    &.bunnyc,
-    &.bunnyc .preview {
-      width: calc(map.get($card-config-width, "bunnyc") * 8 / 3);
-
-      &.preview {
-        background-position-x: calc(
-          map.get($card-position-x-default, "bunnyc") * 8 / 3
-        );
-        &.saeHaeBok {
-          background-position-x: calc(
-            map.get($card-position-x-saehaebok, "bunnyc") * 8 / 3
-          );
-        }
-        &.happyNewYear {
-          background-position-x: calc(
-            map.get($card-position-x-happynewyear, "bunnyc") * 8 / 3
-          );
-        }
-      }
-    }
-    &.cloud,
-    &.cloud .preview {
-      width: calc(map.get($card-config-width, "cloud") * 8 / 3);
-
-      &.preview {
-        background-position-x: calc(
-          map.get($card-position-x-default, "cloud") * 8 / 3
-        );
-        &.saeHaeBok {
-          background-position-x: calc(
-            map.get($card-position-x-saehaebok, "cloud") * 8 / 3
-          );
-        }
-        &.happyNewYear {
-          background-position-x: calc(
-            map.get($card-position-x-happynewyear, "cloud") * 8 / 3
-          );
-        }
-      }
-    }
-    &.heart,
-    &.heart .preview {
-      width: calc(map.get($card-config-width, "heart") * 8 / 3);
-
-      &.preview {
-        background-position-x: calc(
-          map.get($card-position-x-default, "heart") * 8 / 3
-        );
-        &.saeHaeBok {
-          background-position-x: calc(
-            map.get($card-position-x-saehaebok, "heart") * 8 / 3
-          );
-        }
-        &.happyNewYear {
-          background-position-x: calc(
-            map.get($card-position-x-happynewyear, "heart") * 8 / 3
-          );
-        }
-      }
-    }
-    &.oval,
-    &.oval .preview {
-      width: calc(map.get($card-config-width, "oval") * 8 / 3);
-      &.preview {
-        background-position-x: calc(
-          map.get($card-position-x-default, "oval") * 8 / 3
-        );
-        &.saeHaeBok {
-          background-position-x: calc(
-            map.get($card-position-x-saehaebok, "oval") * 8 / 3
-          );
-        }
-        &.happyNewYear {
-          background-position-x: calc(
-            map.get($card-position-x-happynewyear, "oval") * 8 / 3
-          );
-        }
-      }
-    }
   }
 
   .editor-controls {

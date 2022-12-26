@@ -1,0 +1,43 @@
+.svg-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  svg {
+    height: 100%;
+
+    // width: 100%;
+
+    // g {
+    //   visibility: hidden;
+    // }
+  }
+
+  &.default g#default,
+  &.default g#default * {
+    visibility: visible;
+  }
+
+  &.saeHaeBok g#saeHaeBok,
+  &.saeHaeBok g#saeHaeBok * {
+    visibility: visible;
+  }
+
+  &.happyNewYear g#happyNewYear,
+  &.happyNewYear g#happyNewYear * {
+    visibility: visible;
+  }
+
+  &.flipped g#flipped,
+  &.flipped g#flipped * {
+    visibility: visible;
+  }
+}
+
+.saeHaeBok {
+  #frame {
+    display: none;
+  }
+}

@@ -1,4 +1,3 @@
-@use "sass:map";
 @import "src/styles";
 
 /* HIDE RADIO */
@@ -32,78 +31,18 @@
 
 .card-shape-preview {
   height: 150px;
-  background-repeat: no-repeat;
-  overflow: hidden;
-  background-size: auto 100%;
+  width: 100px;
+  // background-repeat: no-repeat;
+  // overflow: hidden;
+  // background-size: auto 100%;
   display: inline-block;
   position: relative;
-
-  &.bunnya {
-    width: map.get($card-config-width, "bunnya");
-    background-position-x: map.get($card-position-x-default, "bunnya");
-  }
-  &.bunnyb {
-    width: map.get($card-config-width, "bunnyb");
-    background-position-x: map.get($card-position-x-default, "bunnyb");
-  }
-  &.bunnyc {
-    width: map.get($card-config-width, "bunnyc");
-    background-position-x: map.get($card-position-x-default, "bunnyc");
-  }
-  &.cloud {
-    width: map.get($card-config-width, "cloud");
-    background-position-x: map.get($card-position-x-default, "cloud");
-  }
-  &.heart {
-    width: map.get($card-config-width, "heart");
-    background-position-x: map.get($card-position-x-default, "heart");
-  }
-  &.oval {
-    width: map.get($card-config-width, "oval");
-    background-position-x: map.get($card-position-x-default, "oval");
-  }
 }
 
 @include mobile {
   .card-shape-preview {
     height: 100px;
-
-    &.bunnya {
-      width: calc(map.get($card-config-width, "bunnya") * 2 / 3);
-      background-position-x: calc(
-        map.get($card-position-x-default, "bunnya") * 2 / 3
-      );
-    }
-    &.bunnyb {
-      width: calc(map.get($card-config-width, "bunnyb") * 2 / 3);
-      background-position-x: calc(
-        map.get($card-position-x-default, "bunnyb") * 2 / 3
-      );
-    }
-    &.bunnyc {
-      width: calc(map.get($card-config-width, "bunnyc") * 2 / 3);
-      background-position-x: calc(
-        map.get($card-position-x-default, "bunnyc") * 2 / 3
-      );
-    }
-    &.cloud {
-      width: calc(map.get($card-config-width, "cloud") * 2 / 3);
-      background-position-x: calc(
-        map.get($card-position-x-default, "cloud") * 2 / 3
-      );
-    }
-    &.heart {
-      width: calc(map.get($card-config-width, "heart") * 2 / 3);
-      background-position-x: calc(
-        map.get($card-position-x-default, "heart") * 2 / 3
-      );
-    }
-    &.oval {
-      width: calc(map.get($card-config-width, "oval") * 2 / 3);
-      background-position-x: calc(
-        map.get($card-position-x-default, "oval") * 2 / 3
-      );
-    }
+    width: 100px;
   }
 
   /* CHECKED STYLES */

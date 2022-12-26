@@ -14,6 +14,10 @@
         >
           <div class="flip-card-inner">
             <div class="flip-card-front">
+              <card-object
+                [cardType]="cardShape.type"
+                [lettering]="cardShape.lettering"
+              ></card-object>
               <div
                 class="preview"
                 [ngClass]="cardShape.lettering"
@@ -23,16 +27,34 @@
                 }"
               ></div>
             </div>
-            <div *ngIf="currentStep === step.Text" class="flip-card-back">
-              <span>to.</span
-              ><input type="text" formControlName="receiver" maxlength="25" />
-              <textarea
-                type="textbox"
-                formControlName="text"
-                maxlength="200"
-              ></textarea>
-              <span>from.</span
-              ><input type="text" formControlName="sender" maxlength="25" />
+            <div
+              *ngIf="currentStep === step.Text"
+              class="flip-card-back"
+              [ngStyle]="{
+                'background-image':
+                  'url(./assets/cards/' + cardShape.type + '.svg)'
+              }"
+            >
+              <div class="text-editor">
+                <div class="flexbox">
+                  <span class="font-h2">to.</span
+                  ><input
+                    type="text"
+                    formControlName="receiver"
+                    maxlength="25"
+                  />
+                </div>
+
+                <textarea
+                  type="textbox"
+                  formControlName="text"
+                  maxlength="200"
+                ></textarea>
+                <div class="flexbox">
+                  <span class="font-h2">from.</span
+                  ><input type="text" formControlName="sender" maxlength="25" />
+                </div>
+              </div>
             </div>
 
             <!-- @TODO: 프리뷰 버전 편지 적용하기 (뒤집힌 카드에) -->

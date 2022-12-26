@@ -6,13 +6,8 @@
       [formControl]="ctrl"
       [checked]="i === 0"
     />
-    <div
-      class="card-shape-preview"
-      [ngClass]="card.type"
-      [ngStyle]="{
-        'background-image': 'url(./assets/cards/' + card.type + '.svg)'
-      }"
-    >
+    <div class="card-shape-preview" [ngClass]="card.type">
+      <card-object [cardType]="card.type" [lettering]="'default'"></card-object>
       <div class="icon-checked"></div>
     </div>
   </label>

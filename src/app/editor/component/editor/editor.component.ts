@@ -19,7 +19,7 @@ export class EditorComponent implements AfterViewInit {
   readonly step = Step;
   readonly title = EDITOR_TITLE;
   readonly cardList = CARD_LIST;
-  currentStep$ = new BehaviorSubject(Step.Music);
+  currentStep$ = new BehaviorSubject(Step.Card);
 
   form: FormGroup;
 

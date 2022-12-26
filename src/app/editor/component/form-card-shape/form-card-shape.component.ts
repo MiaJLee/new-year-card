@@ -16,6 +16,7 @@ export class FormCardShapeComponent {
   readonly cardList = CARD_LIST;
 
   constructor(private rootFormGroup: FormGroupDirective) {
+    console.log(this.cardList);
     this.ctrl.setValue(this.rootFormGroup.control.value.shape);
 
     this.ctrl.valueChanges.pipe(untilDestroyed(this)).subscribe((v) => {
