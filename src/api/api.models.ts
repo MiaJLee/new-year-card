@@ -6,7 +6,7 @@ type Card =
   | 'shape02'
   | 'shape03';
 type Lettering = 'happyNewYear' | 'saeHaeBok';
-type Background = 'white' | 'orange' | 'black' | 'gradient';
+type Background = 'white' | 'orange' | 'black' | 'gradient' | 'checker';
 type Effect = 'none' | 'snow' | 'circles' | 'confetti' | 'kirakira';
 
 interface postCardReq {

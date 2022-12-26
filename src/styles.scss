@@ -22,7 +22,14 @@ button {
   margin: 0;
 }
 
-.font-h2 {
+.font-h1-kr {
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 300;
+  font-size: 35px;
+  line-height: 1.5;
+}
+
+.font-sub {
   font-family: guyot-headline, sans-serif;
   font-weight: 300;
   font-style: italic;
@@ -33,7 +40,7 @@ button {
 .font-h3 {
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 300;
-  font-size: 26px;
+  font-size: 25px;
   line-height: 1.5;
 }
 
@@ -61,7 +68,7 @@ button {
 
 .button {
   border: none;
-  width: 200px;
+  min-width: 200px;
   height: 60px;
   font-weight: 500;
   font-size: 18px;
@@ -77,22 +84,12 @@ button {
   border: $color-black solid 1px;
   background-color: $color-white;
   color: $color-black;
-
-  &:hover {
-    border: none;
-    background-color: $color-black;
-    color: $color-white;
-  }
 }
 
 .button-highlight {
   @extend .button;
   background-color: $color-black;
   color: $color-white;
-
-  &:hover {
-    background-color: $color-primary;
-  }
 }
 
 .button-container {
@@ -123,33 +120,29 @@ button {
   display: flex;
 }
 
-.media-query {
-  position: fixed;
-  top: 0;
-  right: 0;
-}
-
 @include mobile {
-  .media-query {
-    width: 100px;
-    background-color: red;
-  }
-
   .font-h1 {
     font-size: 30px;
   }
 
-  .font-h2 {
+  .font-h3 {
+    font-size: 15px;
+    font-weight: 400;
+  }
+
+  .font-sub {
     font-size: 20px;
   }
 
-  .font-h3 {
-    font-size: 16px;
+  .font-h1-kr {
+    font-size: 25px;
+    font-weight: 400;
   }
 
   .button {
     flex: 1;
     height: 50px;
+    min-width: 170px;
     font-size: 15px;
     border-radius: 0;
   }
@@ -177,15 +170,20 @@ button {
 }
 
 @include tablet {
-  .media-query {
-    width: 200px;
-    background-color: green;
-  }
 }
 
 @include desktop {
-  .media-query {
-    width: 300px;
-    background-color: blue;
+  .button-default {
+    &:hover {
+      border: none;
+      background-color: $color-black;
+      color: $color-white;
+    }
+  }
+
+  .button-highlight {
+    &:hover {
+      background-color: $color-primary;
+    }
   }
 }

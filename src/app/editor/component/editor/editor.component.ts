@@ -25,8 +25,7 @@ import { PopupService } from '../../../popup/popup.service';
 export class EditorComponent implements AfterViewInit {
   readonly step = Step;
   readonly title = EDITOR_TITLE;
-  readonly cardList = CARD_LIST;
-  currentStep$ = new BehaviorSubject(Step.Card);
+  currentStep$ = new BehaviorSubject(Step.Music);
 
   form: FormGroup;
 

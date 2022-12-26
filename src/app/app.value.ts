@@ -2,66 +2,12 @@ import { CardDesignConfig, Music, Step, Title } from './app.models';
 
 // @TODO: 현진이 피드백 - 약간씩 위치 어긋남
 export const CARD_LIST: Array<CardDesignConfig> = [
-  {
-    type: 'bunnya',
-    width: 70,
-    positionX: {
-      default: -1,
-      saeHaeBok: -67,
-      happyNewYear: -134,
-      flipped: -204,
-    },
-  },
-  {
-    type: 'cloud',
-    width: 80,
-    positionX: {
-      default: -3,
-      saeHaeBok: -80,
-      happyNewYear: -156,
-      flipped: -230,
-    },
-  },
-  {
-    type: 'bunnyb',
-    width: 70,
-    positionX: {
-      default: 0,
-      saeHaeBok: -68,
-      happyNewYear: -135,
-      flipped: -200,
-    },
-  },
-  {
-    type: 'heart',
-    width: 80,
-    positionX: {
-      default: -3,
-      saeHaeBok: -80,
-      happyNewYear: -156,
-      flipped: -230,
-    },
-  },
-  {
-    type: 'bunnyc',
-    width: 116,
-    positionX: {
-      default: 0,
-      saeHaeBok: -116,
-      happyNewYear: -230,
-      flipped: -349,
-    },
-  },
-  {
-    type: 'oval',
-    width: 80,
-    positionX: {
-      default: -3,
-      saeHaeBok: -80,
-      happyNewYear: -156,
-      flipped: -230,
-    },
-  },
+  { type: 'bunnya' },
+  { type: 'cloud' },
+  { type: 'bunnyb' },
+  { type: 'heart' },
+  { type: 'bunnyc' },
+  { type: 'oval' },
 ];
 
 export const EDITOR_TITLE: Title = {
@@ -75,7 +21,7 @@ export const EDITOR_TITLE: Title = {
     en: 'Select the background',
   },
   [Step.Music]: {
-    kr: '희망찬 새해를 위한 첫 음악을 선물해주세요',
+    kr: '음악을 선물해주세요',
     en: 'Choose the new-year-song',
   },
   [Step.Text]: { kr: '편지를 작성해주세요', en: 'Write the letter' },

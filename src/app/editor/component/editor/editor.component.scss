@@ -25,8 +25,8 @@
   position: fixed;
   top: 50px;
 
-  h3 {
-    margin: 0 0 -10px 0;
+  .font-h1-kr {
+    margin: 0 0 -17px 0;
   }
 }
 
@@ -158,10 +158,10 @@
 
 @include mobile {
   .title {
-    top: 40px;
+    top: 20px;
 
-    h3 {
-      margin: 0 0 -5px 0;
+    .font-h1-kr {
+      margin: 0 0 -10px 0;
     }
   }
 

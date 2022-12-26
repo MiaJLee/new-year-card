@@ -1,8 +1,13 @@
 <ng-container *ngIf="currentStep$ | async as currentStep">
   <form [formGroup]="form">
     <div class="editor-container">
-      <div class="title" [class.font-white]="bgColor === 'black'">
-        <h3 class="font-h3">{{ title[currentStep].kr }}</h3>
+      <div
+        class="title"
+        [class.font-white]="
+          currentStep === step.Background && bgColor !== 'white'
+        "
+      >
+        <h1 class="font-h1-kr">{{ title[currentStep].kr }}</h1>
         <h1 class="font-h1">{{ title[currentStep].en }}</h1>
       </div>
       <div *ngIf="cardShape" class="preview-container">
@@ -31,7 +36,7 @@
             >
               <div class="text-editor">
                 <div class="flexbox">
-                  <span class="font-h2">to.</span
+                  <span class="font-sub">to.</span
                   ><input
                     type="text"
                     formControlName="receiver"
@@ -45,7 +50,7 @@
                   maxlength="200"
                 ></textarea>
                 <div class="flexbox">
-                  <span class="font-h2">from.</span
+                  <span class="font-sub">from.</span
                   ><input type="text" formControlName="sender" maxlength="25" />
                 </div>
               </div>

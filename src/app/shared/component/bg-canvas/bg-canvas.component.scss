@@ -27,16 +27,21 @@
   }
 
   &.orange {
-    background: $color-primary;
+    background: $color-sub;
   }
 
   // @TODO: 추후 색상 조정
   &.gradient {
-    background: linear-gradient(
-      0deg,
-      rgba(20, 20, 20, 1) 0%,
-      rgba(100, 100, 100, 1) 100%
-    );
+    background: linear-gradient(0deg, #1b1b1b 0%, rgba(100, 100, 100, 1) 100%);
+  }
+
+  &.checker {
+    background: $color-primary;
+    background-image: url("/assets/card/checkerboard.svg");
+    background-repeat: repeat;
+    background-size: 200% 200%;
+    background-position: center center;
+    border-color: $color-white;
   }
 }
 
@@ -288,5 +293,11 @@ div.snow-element {
       transform-origin: 9vw 17vh;
       box-shadow: 100vmin 0 13.153949720959556vmin currentColor;
     }
+  }
+}
+
+@include mobile {
+  .bg.checker {
+    background-size: 400% 400%;
   }
 }

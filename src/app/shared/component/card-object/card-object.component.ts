@@ -49,8 +49,7 @@ export class CardObjectComponent implements OnInit, OnChanges {
   }
 
   objectLoaded(e: any) {
-    const objectElement = get(e, ['path', 0]);
-    const svgElement = objectElement?.contentDocument?.querySelector(
+    const svgElement = e.target?.contentDocument?.querySelector(
       'svg'
     ) as SVGGraphicsElement;
 

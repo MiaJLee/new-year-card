@@ -25,7 +25,8 @@
 /* CHECKED STYLES */
 [type="radio"]:checked + div {
   border-radius: 100%;
-  box-shadow: 0 0 0 3px $color-primary;
+  box-shadow: 0 0 0 3px $color-white;
+  border-color: $color-black;
 }
 
 .card-bg-preview {
@@ -58,29 +59,17 @@
 
 .card-bg-preview-gradient {
   @extend .card-bg-preview;
-  background: $color-black;
+  background: linear-gradient(0deg, #1b1b1b 0%, rgba(100, 100, 100, 1) 100%);
   border-color: $color-white;
 }
 
-// 여기부터는 이미지 캡쳐해서 넣기
-.card-bg-preview-snow {
+.card-bg-preview-checker {
   @extend .card-bg-preview;
-  background: skyblue;
-}
-
-.card-bg-preview-circles {
-  @extend .card-bg-preview;
-  background: grey;
-}
-
-.card-bg-preview-confetti {
-  @extend .card-bg-preview;
-  background: greenyellow;
-}
-
-.card-bg-preview-kirakira {
-  @extend .card-bg-preview;
-  background: pink;
+  background-image: url("/assets/card/checkerboard.svg");
+  background-repeat: no-repeat;
+  background-size: 400% 400%;
+  background-position: center center;
+  border-color: $color-white;
 }
 
 @include mobile {

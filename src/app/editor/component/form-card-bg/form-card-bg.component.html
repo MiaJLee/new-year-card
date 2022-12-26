@@ -1,48 +1,103 @@
 <div class="bg-container">
-  <h2 [class.font-white]="backgroundCtrl.value === 'black'" class="font-h2">
+  <h2 [class.font-white]="backgroundCtrl.value !== 'white'" class="font-sub">
     Color
   </h2>
   <label>
-    <input type="radio" value="white" [formControl]="backgroundCtrl" checked />
+    <input
+      type="radio"
+      name="bg-color"
+      value="white"
+      [formControl]="backgroundCtrl"
+      checked
+    />
     <div class="card-bg-preview-white"></div>
   </label>
   <label>
-    <input type="radio" value="orange" [formControl]="backgroundCtrl" />
+    <input
+      type="radio"
+      name="bg-color"
+      value="orange"
+      [formControl]="backgroundCtrl"
+    />
     <div class="card-bg-preview-orange"></div>
   </label>
   <label>
-    <input type="radio" value="black" [formControl]="backgroundCtrl" />
+    <input
+      type="radio"
+      name="bg-color"
+      value="black"
+      [formControl]="backgroundCtrl"
+    />
     <div class="card-bg-preview-black"></div>
   </label>
   <label>
-    <input type="radio" value="gradient" [formControl]="backgroundCtrl" />
+    <input
+      type="radio"
+      name="bg-color"
+      value="gradient"
+      [formControl]="backgroundCtrl"
+    />
     <div class="card-bg-preview-gradient"></div>
+  </label>
+  <label>
+    <input
+      type="radio"
+      name="bg-color"
+      value="checker"
+      [formControl]="backgroundCtrl"
+    />
+    <div class="card-bg-preview-checker"></div>
   </label>
 </div>
 
 <div class="bg-container">
-  <h2 [class.font-white]="backgroundCtrl.value === 'black'" class="font-h2">
+  <h2 [class.font-white]="backgroundCtrl.value !== 'white'" class="font-sub">
     Effect
   </h2>
   <label>
-    <input type="radio" value="none" [formControl]="effectCtrl" />
+    <input
+      type="radio"
+      name="bg-effect"
+      value="none"
+      [formControl]="effectCtrl"
+    />
     <div class="card-bg-preview">1</div>
   </label>
   <label>
-    <input type="radio" value="snow" [formControl]="effectCtrl" />
+    <input
+      type="radio"
+      name="bg-effect"
+      value="snow"
+      [formControl]="effectCtrl"
+    />
     <div class="card-bg-preview">2</div>
   </label>
   <label>
-    <input type="radio" value="circles" [formControl]="effectCtrl" />
+    <input
+      type="radio"
+      name="bg-effect"
+      value="circles"
+      [formControl]="effectCtrl"
+    />
     <div class="card-bg-preview">3</div>
   </label>
   <label>
-    <input type="radio" value="confetti" [formControl]="effectCtrl" />
+    <input
+      type="radio"
+      name="bg-effect"
+      value="confetti"
+      [formControl]="effectCtrl"
+    />
     <div class="card-bg-preview">4</div>
   </label>
   <!-- @TODO: 효과 하나 더 추가하기 -->
   <label>
-    <input type="radio" value="kirakira" [formControl]="effectCtrl" />
+    <input
+      type="radio"
+      name="bg-effect"
+      value="kirakira"
+      [formControl]="effectCtrl"
+    />
     <div class="card-bg-preview">5</div>
   </label>
 </div>

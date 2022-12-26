@@ -18,7 +18,7 @@ export type Card = 'bunnya' | 'bunnyb' | 'bunnyc' | 'cloud' | 'heart' | 'oval';
 
 export type Lettering = 'happyNewYear' | 'saeHaeBok';
 
-export type Background = 'white' | 'orange' | 'black' | 'gradient';
+export type Background = 'white' | 'orange' | 'black' | 'gradient' | 'checker';
 
 export type Effect = 'none' | 'snow' | 'circles' | 'confetti' | 'kirakira';
 
@@ -48,11 +48,4 @@ export interface PopupOption {
 
 export interface CardDesignConfig {
   type: Card;
-  width: number;
-  positionX: {
-    default: number;
-    happyNewYear: number;
-    saeHaeBok: number;
-    flipped: number;
-  };
 }
