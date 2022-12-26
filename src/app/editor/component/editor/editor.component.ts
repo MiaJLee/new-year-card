@@ -157,6 +157,10 @@ export class EditorComponent implements AfterViewInit {
   }
 
   onSave(): void {
+    this.popupService.alert('아직 개발중이랍니다.');
+
+    return;
+
     this.popupService.confirm(
       '카드를 저장한 후에는 수정할 수 없어요.\n카드를 저장하시겠어요?',
       {
