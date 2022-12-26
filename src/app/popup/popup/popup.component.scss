@@ -98,3 +98,79 @@
     }
   }
 }
+
+@include mobile {
+  .popup-container {
+    min-width: 80vw;
+    min-height: 45vw;
+    padding: 20px 10px 75px 20px;
+
+    &.link {
+      padding: 40px 30px 180px;
+
+      & .button-wrapper {
+        bottom: 40px;
+      }
+    }
+  }
+
+  .button-wrapper {
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+
+    button {
+      flex: 1;
+    }
+
+    .cancel-button,
+    .confirm-button {
+      border: none;
+      border-top: 1px solid $color-black;
+      height: 55px;
+      font-size: 14px;
+      border-radius: 0;
+      background-color: transparent;
+    }
+
+    .cancel-button {
+      margin-right: 0;
+      border-right: 1px solid $color-black;
+      border-radius: 0;
+    }
+
+    // @TODO: 미리보기 작업시 쉐어버튼 모바일뷰 스타일 수정하기
+
+    .button-share {
+      border: none;
+      width: 120px;
+      overflow: visible;
+      background-color: transparent;
+      flex-direction: column;
+
+      span {
+        font-weight: 500;
+        margin-top: 10px;
+        text-align: center;
+      }
+
+      div.button-icon {
+        width: 80px;
+        height: 80px;
+        border-radius: 100%;
+        background-color: $color-black;
+        background-position: center center;
+        background-size: 35px 35px;
+        background-repeat: no-repeat;
+
+        &.clipboard {
+          background-image: url("../../../assets/ico-link.png");
+        }
+
+        &.kakaotalk {
+          background-image: url("../../../assets/ico-kakao.png");
+        }
+      }
+    }
+  }
+}
