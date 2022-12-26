@@ -15,10 +15,8 @@
 
 h1 {
   text-align: center;
-  color: $color-white;
 
   strong {
-    color: $color-black;
     font-family: guyot-headline, sans-serif;
   }
 }
@@ -26,11 +24,11 @@ h1 {
 h3 {
   margin-top: 20px;
   text-align: center;
-  color: $color-white;
 }
 
 .button-editor {
   margin-top: 60px;
+  background-color: transparent;
 }
 
 .instagram-link {
@@ -52,6 +50,7 @@ h3 {
   .button-editor {
     margin-top: 40px;
     margin-bottom: 60px;
+    border-radius: 16px;
   }
 
   .instagram-link {

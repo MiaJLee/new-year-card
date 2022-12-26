@@ -11,10 +11,11 @@
 }
 
 .preview-container {
-  padding-bottom: 180px;
+  padding-bottom: 120px;
   min-width: 1000px;
   display: flex;
   justify-content: center;
+  flex-direction: column;
 }
 
 .title {
@@ -168,7 +169,7 @@
     padding-bottom: 180px;
     min-width: 100vw;
     position: fixed;
-    top: 70px;
+    top: 100px;
   }
 
   .preview {

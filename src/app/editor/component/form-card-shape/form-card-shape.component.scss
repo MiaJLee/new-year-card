@@ -8,6 +8,7 @@
   height: 0;
 }
 
+// @TODO: 아이콘 간격 세부 조정하기
 /* IMAGE STYLES */
 [type="radio"] + div {
   cursor: pointer;
@@ -25,30 +26,27 @@
 [type="radio"]:checked + div > .icon-checked {
   display: block;
   position: absolute;
-  top: 60px;
-  right: 18px;
+  top: 35px;
+  right: 30px;
 }
 
 .card-shape-preview {
-  height: 150px;
+  height: 110px;
   width: 100px;
-  // background-repeat: no-repeat;
-  // overflow: hidden;
-  // background-size: auto 100%;
   display: inline-block;
   position: relative;
 }
 
 @include mobile {
   .card-shape-preview {
-    height: 100px;
-    width: 100px;
+    height: 70px;
+    width: 60px;
   }
 
   /* CHECKED STYLES */
   [type="radio"]:checked + div > .icon-checked {
-    top: 40px;
-    right: -6px;
+    top: 20px;
+    right: -2px;
   }
 }
 

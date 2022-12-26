@@ -14,18 +14,12 @@
         >
           <div class="flip-card-inner">
             <div class="flip-card-front">
-              <card-object
-                [cardType]="cardShape.type"
-                [lettering]="cardShape.lettering"
-              ></card-object>
-              <div
-                class="preview"
-                [ngClass]="cardShape.lettering"
-                [ngStyle]="{
-                  'background-image':
-                    'url(./assets/cards/' + cardShape.type + '.svg)'
-                }"
-              ></div>
+              <div class="preview">
+                <card-object
+                  [cardType]="cardShape.type"
+                  [lettering]="cardShape.lettering"
+                ></card-object>
+              </div>
             </div>
             <div
               *ngIf="currentStep === step.Text"

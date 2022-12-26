@@ -1,5 +1,12 @@
 import { AfterViewInit, Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  ValidationErrors,
+  ValidatorFn,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { find } from 'lodash-es';
@@ -46,7 +53,7 @@ export class EditorComponent implements AfterViewInit {
   ) {
     this.form = this.fb.group({
       shape: 'bunnya',
-      lettering: ['', Validators.required],
+      lettering: ['default', [this.noDefaultValueValidator()]],
       background: 'white',
       effect: 'none',
       text: ['', Validators.required],
@@ -205,5 +212,21 @@ export class EditorComponent implements AfterViewInit {
     setTimeout(() => {
       cardElemenet?.classList.remove('selected-motion');
     }, 400);
+  }
+
+  private noDefaultValueValidator(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const value = control.value;
+
+      if (!value) {
+        return null;
+      }
+
+      if (value === 'default') {
+        return { noDefaultValue: true };
+      }
+
+      return null;
+    };
   }
 }
