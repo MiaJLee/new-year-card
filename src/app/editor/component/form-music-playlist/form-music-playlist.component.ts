@@ -58,7 +58,7 @@ export class FormMusicPlaylistComponent {
       }
 
       this.popupService.confirm(
-        '모바일에서는 유튜브로 이동하여 미리듣기가 재생됩니다.\n이동하시겠습니까?',
+        '모바일에서는 유튜브에서 미리듣기가 가능해요.\n 이동하시겠어요?',
         {
           confirm: {
             fn: () => {
