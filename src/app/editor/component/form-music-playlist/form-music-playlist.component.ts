@@ -2,8 +2,9 @@ import { Component, Input } from '@angular/core';
 import { FormControl, FormGroupDirective } from '@angular/forms';
 import { MUSICS } from '../../../app.value';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { getUrlParameter } from '../../../app.utils';
+import { getUrlParameter, isMobile } from '../../../app.utils';
 import { isNil, isEmpty } from 'lodash-es';
+import { PopupService } from '../../../popup/popup.service';
 
 @UntilDestroy()
 @Component({
@@ -13,7 +14,7 @@ import { isNil, isEmpty } from 'lodash-es';
 })
 export class FormMusicPlaylistComponent {
   @Input() controlName: string = '';
-  readonly musics = MUSICS;
+  readonly musics = MUSICS.sort((a, b) => a.name.localeCompare(b.name));
 
   get selectedId(): number | undefined {
     const selectedId = this.ctrl.value;
@@ -27,11 +28,16 @@ export class FormMusicPlaylistComponent {
 
   videoId?: string;
   ctrl = new FormControl('');
+  showAlert = false;
 
-  constructor(private rootFormGroup: FormGroupDirective) {
-    // @TODO 다시 돌아왔을때 부모 컴포넌트의 값을 받아올 수 있도록 해야함. 이외 모든 단계 마찬가지 (카드, 배경 선택)
-    // this.ctrl.setValue(this.rootFormGroup.control.get(this.controlName)?.value);
+  get isMobileView(): boolean {
+    return isMobile();
+  }
 
+  constructor(
+    private rootFormGroup: FormGroupDirective,
+    private popupService: PopupService
+  ) {
     this.ctrl.setValue(this.rootFormGroup.control.value.musicId);
     this.ctrl.valueChanges.pipe(untilDestroyed(this)).subscribe((v) => {
       this.rootFormGroup.control.get(this.controlName)?.setValue(v);
@@ -39,17 +45,63 @@ export class FormMusicPlaylistComponent {
   }
 
   selectMusic(music: any): void {
-    this.videoId = undefined;
     this.ctrl.setValue(music.id);
+  }
 
-    // [workaround] youtube-player를 DOM에서 삭제 후 새로 그리기 위함.
-    // @TODO: 모바일에서는 유튜브로 이동할지 묻는 팝업을 띄워야 한다.
-    setTimeout(() => {
-      this.videoId = getUrlParameter(music.youtubeLink, 'v');
-    }, 10);
+  playMusic(music: any): void {
+    // @TODO: 배포하고 리얼 환경에서 모바일 테스트 해보기
+    if (isMobile()) {
+      if (this.showAlert) {
+        this.openYoutube(music.youtubeLink);
+
+        return;
+      }
+
+      this.popupService.confirm(
+        '모바일에서는 유튜브로 이동하여 미리듣기가 재생됩니다.\n이동하시겠습니까?',
+        {
+          confirm: {
+            fn: () => {
+              this.showAlert = true;
+              this.openYoutube(music.youtubeLink);
+            },
+          },
+        }
+      );
+
+      return;
+    }
+
+    if (!this.showAlert) {
+      this.popupService.confirm('이 음악을 들어보시겠어요?', {
+        confirm: {
+          fn: () => {
+            this.showAlert = true;
+            this.initYoutubePlayer(music.youtubeLink);
+          },
+        },
+      });
+
+      return;
+    }
+
+    this.initYoutubePlayer(music.youtubeLink);
   }
 
   onClose() {
     this.videoId = undefined;
+  }
+
+  private initYoutubePlayer(link: string): void {
+    this.videoId = undefined;
+
+    // [workaround] youtube-player를 DOM에서 삭제 후 새로 그리기 위함.
+    setTimeout(() => {
+      this.videoId = getUrlParameter(link, 'v');
+    }, 10);
+  }
+
+  private openYoutube(link: string): void {
+    window.open(link, 'youtube');
   }
 }

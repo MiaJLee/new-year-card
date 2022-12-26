@@ -21,7 +21,7 @@ export const EDITOR_TITLE: Title = {
     en: 'Select the background',
   },
   [Step.Music]: {
-    kr: '음악을 선물해주세요',
+    kr: '음악을 선택해주세요',
     en: 'Choose the new-year-song',
   },
   [Step.Text]: { kr: '편지를 작성해주세요', en: 'Write the letter' },
@@ -409,7 +409,7 @@ export const MUSICS: Array<Music> = [
     spotifyLink: 'https://open.spotify.com/track/26vOBLHS116a4WNUVlvAUW',
     image: 'https://i.scdn.co/image/ab67616d0000b273182f42112113f08871e71c53',
     lyrics:
-      '좀 더 멀리 날아 보려고 해\n서툰 날 빛나게 해 준 날의\n기억들로 날 아름답게 해\n이번 트랙을 끝내 자 다음 스테이지',
+      '좀 더 멀리 날아 보려고 해\n서툰 날 빛나게 해 준 날의\n기억들로 날 아름답게 해',
     youtubeLink:
       'https://www.youtube.com/watch?v=Av5mL5V5HZw&list=PLMOnBPx_op0Um_NXofYyx26WGAG6ApwZI&index=37&ab_channel=NCTDREAM-Topic',
   },

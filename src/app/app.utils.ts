@@ -7,3 +7,7 @@ export function getUrlParameter(
 
   return params.get(target) ?? undefined;
 }
+
+export function isMobile(): boolean {
+  return /Android|iPhone/i.test(navigator.userAgent);
+}

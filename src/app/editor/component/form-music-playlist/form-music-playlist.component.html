@@ -9,7 +9,7 @@
           [formControl]="ctrl"
           [checked]="music.id === selectedId"
         />
-        <div (click)="selectMusic(music)" class="music-item">
+        <div (mouseup)="selectMusic(music)" class="music-item">
           <div
             class="album-image"
             [ngStyle]="{ 'background-image': 'url(' + music.image + ')' }"
@@ -18,11 +18,19 @@
             <p class="music-name">{{ music.name }}</p>
             <p class="music-artist">{{ music.artist }}</p>
             <p
+              *ngIf="isMobileView"
               class="music-lyrics"
-              [innerHtml]="music.lyrics | newlineToBr"
+              [innerHtml]="music.lyrics"
             ></p>
           </div>
+          <!-- @TODO: 모바일에서 가사 css 수정 -->
+          <div
+            *ngIf="!isMobileView"
+            class="music-lyrics"
+            [innerHtml]="music.lyrics | newlineToBr"
+          ></div>
           <div class="icon-checked"></div>
+          <div (click)="playMusic(music)" class="icon-play"></div>
         </div>
       </label>
     </ng-container>
@@ -31,7 +39,7 @@
 </div>
 
 <div *ngIf="videoId" class="player-ui">
-  <div (click)="onClose()">x</div>
+  <div (click)="onClose()"></div>
 </div>
 <div id="player" class="playing-motion">
   <app-youtube-player *ngIf="videoId" [videoId]="videoId"></app-youtube-player>
