@@ -3,9 +3,10 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "config": "ts-node ./src/assets/scripts/setEnv.ts",
+    "start": "npm run config -- --environment=dev && ng serve",
     "start-host": "ng serve --host 172.30.1.42",
-    "build": "ng build",
+    "build": "npm run config -- --environment=prod && ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -48,6 +49,8 @@
     "karma-jasmine": "~4.0.2",
     "karma-jasmine-html-reporter": "^1.7.0",
     "process": "^0.11.10",
-    "typescript": "4.8.2"
+    "ts-node": "^10.9.1",
+    "typescript": "4.8.2",
+    "yargs": "^17.6.2"
   }
 }

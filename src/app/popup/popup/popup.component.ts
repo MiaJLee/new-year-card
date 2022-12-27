@@ -5,6 +5,7 @@ import { Clipboard } from '@angular/cdk/clipboard';
 import { ActivatedRoute } from '@angular/router';
 import { get } from 'lodash-es';
 import { KAKAO_TEMPLATE_ID } from '../../app.value';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-popup',
@@ -67,7 +68,7 @@ export class PopupComponent {
     const { Kakao } = window;
 
     if (!Kakao.isInitialized()) {
-      const apiKey = process.env.KAKAO_API_KEY;
+      const apiKey = environment.KAKAO_APP_KEY;
       Kakao.init(apiKey);
 
       Kakao.Link.sendScrap(this.kakaoShareOption);
