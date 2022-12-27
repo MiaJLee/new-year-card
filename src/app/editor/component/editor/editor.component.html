@@ -12,11 +12,11 @@
         <h1 class="font-h1">{{ title[currentStep].en }}</h1>
       </div>
 
-      <div *ngIf="cardShape" class="preview-container">
+      <div *ngIf="cardShape" class="preview-container" (click)="onToggleFlip()">
         <div
           class="flip-card selected-motion"
           [class.flipped]="currentStep === step.Text"
-          [class.flipped-hover]="currentStep === step.Preview"
+          [class.active-preview]="isActiveFlip"
           [ngClass]="cardShape.type"
         >
           <div class="flip-card-inner">
@@ -59,15 +59,17 @@
                   </div>
                 </div>
                 <!-- @TODO: 프리뷰 버전 편지 적용하기 (뒤집힌 카드에) -->
-                <div
-                  *ngIf="currentStep === step.Preview"
-                  class="flip-card-back card-preview"
-                >
-                  <span class="font-sub">to.</span
-                  ><span class="font-card">{{ cardContent.receiver }}</span>
+                <div *ngIf="currentStep === step.Preview" class="text-preview">
+                  <div class="input-to">
+                    <span class="font-sub">to.</span
+                    ><span class="font-card">{{ cardContent.receiver }}</span>
+                  </div>
+
                   <p class="font-card">{{ cardContent.text }}</p>
-                  <span class="font-sub">from.</span
-                  ><span class="font-card">{{ cardContent.sender }}</span>
+                  <div class="input-from">
+                    <span class="font-sub">from.</span
+                    ><span class="font-card">{{ cardContent.sender }}</span>
+                  </div>
                 </div>
               </div>
             </div>

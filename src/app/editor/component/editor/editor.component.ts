@@ -27,6 +27,7 @@ export class EditorComponent implements AfterViewInit {
   readonly title = EDITOR_TITLE;
   currentStep$ = new BehaviorSubject(Step.Card);
 
+  isActiveFlip = false;
   form: FormGroup;
 
   get bgColor() {
@@ -80,6 +81,12 @@ export class EditorComponent implements AfterViewInit {
       .subscribe(() => {
         this.shakeCard();
       });
+
+    this.currentStep$.pipe(untilDestroyed(this)).subscribe((s) => {
+      if (s !== Step.Preview) {
+        this.isActiveFlip = false;
+      }
+    });
   }
 
   ngAfterViewInit(): void {
@@ -157,10 +164,7 @@ export class EditorComponent implements AfterViewInit {
   }
 
   onSave(): void {
-    this.popupService.alert('아직 개발중이랍니다.');
-
-    return;
-
+    // @TODO: 에러핸들링
     this.popupService.confirm(
       '카드를 저장한 후에는 수정할 수 없어요.\n카드를 저장하시겠어요?',
       {
@@ -183,7 +187,9 @@ export class EditorComponent implements AfterViewInit {
                   return EMPTY;
                 }),
                 catchError((e) => {
-                  this.popupService.alert(e.message);
+                  this.popupService.alert(
+                    e.errorMessage ?? '문제가 발생했습니다.'
+                  );
 
                   return EMPTY;
                 })
@@ -192,6 +198,12 @@ export class EditorComponent implements AfterViewInit {
         },
       }
     );
+  }
+
+  onToggleFlip(): void {
+    if (this.currentStep$.getValue() === this.step.Preview) {
+      this.isActiveFlip = !this.isActiveFlip;
+    }
   }
 
   private goMain(): void {

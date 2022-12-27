@@ -36,6 +36,7 @@
   background-size: auto 100%;
   position: relative;
   pointer-events: none;
+  transition: height 0.5s 1s ease-in-out;
 }
 
 .selected-motion {
@@ -77,7 +78,7 @@
   height: 100%;
   text-align: center;
   transition: transform 1s;
-  transition-delay: 0.5s;
+  transition-delay: 0.3s;
   transform-style: preserve-3d;
 }
 
@@ -86,8 +87,13 @@
   transform: rotateY(180deg) scale(1);
 }
 
-.flipped-hover:hover .flip-card-inner {
+// [workaround] 프리뷰 모드일때 토글하기
+.flip-card.active-preview .flip-card-inner {
   transform: rotateY(180deg) scale(1);
+
+  .preview {
+    height: 800px;
+  }
 }
 
 /* Position the front and back side */
@@ -98,6 +104,9 @@
   height: 100%;
   -webkit-backface-visibility: hidden; /* Safari */
   backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Style the front side (fallback if image is missing) */
@@ -111,8 +120,6 @@
   height: 600px;
   background-repeat: no-repeat;
   background-size: auto 100%;
-  --shadow-color: $color-primary;
-  filter: drop-shadow(1px 2px 8px var(--shadow-color));
   transform: rotateY(180deg);
 }
 
@@ -162,10 +169,30 @@
   }
 }
 
-.flip-card-back {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+.text-preview {
+  @extend .text-editor;
+  top: calc(50% - 200px);
+
+  p {
+    width: 300px;
+    max-height: 300px;
+    display: inline-block;
+  }
+
+  .font-sub {
+    font-size: 25px;
+  }
+
+  .font-card {
+    font-size: 30px;
+  }
+
+  opacity: 0;
+  transition: opacity 0.5s 1s ease-in-out;
+}
+
+.active-preview .text-preview {
+  opacity: 1;
 }
 
 .editor-controls {
@@ -207,15 +234,18 @@
     bottom: 60px;
   }
 
-  // .editor-container {
-  //   width: 100vw;
-  //   height: 100vh;
-  //   display: flex;
-  //   justify-content: center;
-  //   align-items: center;
-  //   flex-direction: column;
-  //   padding-top: 50px;
-  // }
+  // [workaround] 프리뷰 모드일때 토글하기
+  .flip-card.active-preview .flip-card-inner {
+    transform: rotateY(180deg) scale(1);
+
+    .preview {
+      height: 500px;
+    }
+  }
+
+  .editor-container {
+    padding-top: 40px;
+  }
 
   // .preview-container {
   //   padding-bottom: 120px;
@@ -261,7 +291,28 @@
     top: 50px;
 
     & > textarea {
-      height: 250px;
+      height: 200px;
+    }
+  }
+
+  .text-preview {
+    @extend .text-editor;
+    top: calc(50% - 150px);
+    left: calc(50% - 125px);
+
+    p {
+      width: 250px;
+      max-height: 200px;
+      display: inline-block;
+      overflow-y: scroll;
+    }
+
+    .font-sub {
+      font-size: 25px;
+    }
+
+    .font-card {
+      font-size: 30px;
     }
   }
 }

@@ -1,6 +1,5 @@
 import { CardDesignConfig, Music, Step, Title } from './app.models';
 
-// @TODO: 현진이 피드백 - 약간씩 위치 어긋남
 export const CARD_LIST: Array<CardDesignConfig> = [
   { type: 'bunnya' },
   { type: 'cloud' },
@@ -27,7 +26,7 @@ export const EDITOR_TITLE: Title = {
   [Step.Text]: { kr: '편지를 작성해주세요', en: 'Write the letter' },
   [Step.Preview]: {
     kr: '멋진 카드가 완성되었어요!',
-    en: 'The Best Card Ever!',
+    en: 'The card is ready to be sent!',
   },
 };
 
