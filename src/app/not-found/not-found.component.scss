@@ -1,0 +1,40 @@
+@import "src/styles";
+
+div.not-found-container {
+  position: fixed;
+  height: 100vh;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: $color-primary;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .font-404 {
+    @extend .font-h1;
+    font-size: 80px;
+  }
+
+  .font-desc {
+    margin-top: 10px;
+  }
+
+  a {
+    margin-top: 40px;
+  }
+}
+
+@include mobile {
+  div.not-found-container .font-404 {
+    font-size: 50px;
+  }
+
+  a .button-default {
+    margin-top: 20px;
+    border-radius: 16px;
+    margin-bottom: 60px;
+  }
+}

@@ -4,6 +4,7 @@ import { ApiService } from '../../../../api/api.service';
 import { get } from 'lodash-es';
 import * as Models from '../../../../api/api.models';
 import { PopupService } from '../../../popup/popup.service';
+import { catchError, EMPTY } from 'rxjs';
 
 const MOCK_CARD = {
   background: 'white',
@@ -38,10 +39,18 @@ export class CardViewerComponent {
     this.cardId = get(this.route.snapshot.params, 'id', '');
 
     if (this.cardId) {
-      this.apiService.getCard(this.cardId).subscribe((res) => {
-        // @TODO: 값 없는 경우 404 페이지로 리디렉션
-        this.card = res.result;
-      });
+      this.apiService
+        .getCard(this.cardId)
+        .pipe(
+          catchError(() => {
+            this.router.navigate(['/404'], { replaceUrl: true });
+
+            return EMPTY;
+          })
+        )
+        .subscribe((res) => {
+          this.card = res.result;
+        });
     }
 
     if (location.href.includes('preview')) {

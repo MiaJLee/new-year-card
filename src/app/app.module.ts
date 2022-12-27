@@ -9,9 +9,10 @@ import { PopupModule } from './popup/popup.module';
 import { SharedModule } from './shared/shared.module';
 import { EditorModule } from './editor/editor.module';
 import { ViewerModule } from './viewer/viewer.module';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
-  declarations: [AppComponent, LandingComponent],
+  declarations: [AppComponent, LandingComponent, NotFoundComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
