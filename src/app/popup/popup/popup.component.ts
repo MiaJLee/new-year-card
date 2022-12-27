@@ -2,16 +2,10 @@ import { Component } from '@angular/core';
 import { PopupOption, Popup } from '../../app.models';
 import { PopupService } from '../popup.service';
 import { Clipboard } from '@angular/cdk/clipboard';
+import { ActivatedRoute } from '@angular/router';
+import { get } from 'lodash-es';
+import { KAKAO_TEMPLATE_ID } from '../../app.value';
 
-const KAKAO_SHARE_OPTION = {
-  requestUrl: 'http://localhost:4200/', // 페이지 url
-  templateId: 87695, // 메시지템플릿 번호
-  templateArgs: {
-    sender: '',
-    cardId: '',
-    receiver: '',
-  },
-};
 @Component({
   selector: 'app-popup',
   templateUrl: './popup.component.html',
@@ -22,16 +16,31 @@ export class PopupComponent {
   option?: PopupOption;
   type: Popup = 'none';
   clipboardCopyed = false;
+  cardId: number;
+  kakaoShareOption: unknown;
 
   constructor(
     private popupService: PopupService,
-    private clipboard: Clipboard
+    private clipboard: Clipboard,
+    private route: ActivatedRoute
   ) {
+    this.cardId = get(this.route.snapshot.params, 'id', '');
+
     this.popupService.getPopup().subscribe(({ content, option, type }) => {
       this.content = content;
       this.option = option;
       this.type = type;
     });
+
+    this.kakaoShareOption = {
+      requestUrl: 'http://localhost:4200/', // 페이지 url
+      templateId: KAKAO_TEMPLATE_ID, // 메시지템플릿 번호
+      templateArgs: {
+        SENDER: this.option?.data?.sender,
+        CARD_ID: this.option?.data?.cardId,
+        RECEIVER: this.option?.data?.receiver,
+      },
+    };
   }
 
   onConfirm(): void {
@@ -49,7 +58,7 @@ export class PopupComponent {
   }
 
   onCopyClipboard(): void {
-    const link = this.option?.data?.link ?? '복사';
+    const link = `${location.origin}/card/${this.option?.data?.cardId}` ?? '';
     this.clipboard.copy(link);
     this.clipboardCopyed = true;
   }
@@ -57,11 +66,11 @@ export class PopupComponent {
   shareKakao(): void {
     const { Kakao } = window;
 
-    // if (!Kakao.isInitialized()) {
-    //   const apiKey = process.env.KAKAO_API_KEY;
-    //   Kakao.init(apiKey);
+    if (!Kakao.isInitialized()) {
+      const apiKey = process.env.KAKAO_API_KEY;
+      Kakao.init(apiKey);
 
-    //   Kakao.Link.sendScrap(KAKAO_SHARE_OPTION);
-    // }
+      Kakao.Link.sendScrap(this.kakaoShareOption);
+    }
   }
 }

@@ -1,5 +1,12 @@
 import { CardDesignConfig, Music, Step, Title } from './app.models';
 
+export const KAKAO_TEMPLATE_ID = 87695;
+export const URLS = {
+  local: 'http://localhost:4200/',
+  development: 'http://172.30.1.42:4200',
+  production: 'https://dj-blackbunny.netlify.app',
+};
+
 export const CARD_LIST: Array<CardDesignConfig> = [
   { type: 'bunnya' },
   { type: 'cloud' },

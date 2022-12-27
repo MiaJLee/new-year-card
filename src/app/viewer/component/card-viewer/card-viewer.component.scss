@@ -1,5 +1,14 @@
 @import "src/styles";
 
+.title {
+  padding: 0 20px 0 15px;
+  line-height: 1;
+}
+
+.font-h1-kr {
+  margin: 0 0 -10px 0;
+}
+
 .card-container {
   width: 100vw;
   height: 100vh;
@@ -39,92 +48,76 @@
   }
 }
 
-.selected-motion {
-  -webkit-animation-name: cssAnimation;
+.envelop {
+  width: 400px;
+  height: 400px;
+  background: url("/assets/envelop/envelop-close.svg") no-repeat center center;
+  background-size: auto 100%;
+  margin-bottom: 100px;
+  position: relative;
+
+  p {
+    display: none;
+    font-weight: 400;
+    position: absolute;
+    bottom: -40px;
+    left: calc(50% - 155px);
+  }
+}
+
+.envelop:hover {
+  -webkit-animation-name: shakeAnimation;
   -webkit-animation-duration: 0.4s;
   -webkit-animation-iteration-count: 1;
   -webkit-animation-timing-function: ease-in-out;
   -webkit-animation-fill-mode: forwards;
-  animation-name: cssAnimation;
+  animation-name: shakeAnimation;
   animation-duration: 0.4s;
   animation-iteration-count: 1;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
+  cursor: pointer;
+
+  p {
+    display: block;
+  }
 }
 
-@keyframes cssAnimation {
+@keyframes shakeAnimation {
   0% {
     -webkit-transform: rotate(0deg) scale(1) skew(0deg);
   }
+  25% {
+    -webkit-transform: rotate(3deg) scale(1.02) skew(0deg);
+  }
   50% {
-    -webkit-transform: rotate(5deg) scale(1) skew(0deg);
+    -webkit-transform: rotate(0deg) scale(1.04) skew(0deg);
+  }
+  75% {
+    -webkit-transform: rotate(3deg) scale(1.06) skew(0deg);
   }
   100% {
-    -webkit-transform: rotate(0deg) scale(1) skew(0deg);
+    -webkit-transform: rotate(0deg) scale(1.08) skew(0deg);
   }
 }
 
-/* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
-.flip-card {
-  background-color: transparent;
-  width: 300px;
-  height: 600px;
-  perspective: 1000px; /* Remove this if you don't want the 3D effect */
-}
+@include mobile {
+  .font-h1-kr {
+    margin: 0 0 -4px 0;
+  }
 
-/* This container is needed to position the front and back side */
-.flip-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
-}
+  .envelop {
+    width: 100%;
+    position: fixed;
+    top: 10vh;
+  }
 
-/* Do an horizontal flip when you move the mouse over the flip box container */
-.flip-card.flipped .flip-card-inner {
-  transform: rotateY(180deg);
-}
+  .envelop:hover {
+    animation-name: none;
+    -webkit-animation-name: none;
 
-.flipped-hover:hover .flip-card-inner {
-  transform: rotateY(180deg);
-}
-
-/* Position the front and back side */
-.flip-card-front,
-.flip-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  -webkit-backface-visibility: hidden; /* Safari */
-  backface-visibility: hidden;
-}
-
-/* Style the front side (fallback if image is missing) */
-.flip-card-front {
-  color: black;
-}
-
-/* Style the back side */
-.flip-card-back {
-  background-color: white;
-  color: black;
-  padding: 20px;
-  box-sizing: border-box;
-  border-radius: 30px;
-  border: 1px solid $color-black;
-  // --shadow-color: $color-primary;
-  // filter: drop-shadow(1px 2px 8px var(--shadow-color));
-  transform: rotateY(180deg);
-}
-
-textarea {
-  height: 200px;
-}
-
-.flip-card-back {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+    p {
+      display: none;
+    }
+  }
 }

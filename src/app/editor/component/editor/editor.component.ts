@@ -179,7 +179,12 @@ export class EditorComponent implements AfterViewInit {
                     this.popupService.alert('카드가 성공적으로 저장되었어요!', {
                       confirm: {
                         text: '보러갈래요',
-                        fn: () => this.router.navigate(['/card', res.cardId]),
+                        fn: () =>
+                          this.router.navigate([
+                            '/card',
+                            res.cardId,
+                            'preview',
+                          ]),
                       },
                     });
                   }

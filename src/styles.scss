@@ -24,6 +24,7 @@ button {
   font-style: italic;
   font-size: 50px;
   margin: 0;
+  text-align: center;
 }
 
 .font-h1-kr {
@@ -31,6 +32,7 @@ button {
   font-weight: 300;
   font-size: 35px;
   line-height: 1.5;
+  text-align: center;
 }
 
 .font-sub {
@@ -165,6 +167,14 @@ button {
     @extend .button-container;
     flex-direction: row;
     justify-content: space-between;
+
+    button {
+      border: none;
+
+      &:nth-child(1) {
+        border-right: 1px solid $color-black;
+      }
+    }
   }
 
   .button-container-right > button:nth-child(2) {

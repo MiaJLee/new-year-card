@@ -1,39 +1,51 @@
 <!-- @TODO: 뷰어 진입시 봉투를 보여준다. 오픈 눌러야 모션 + 카드노출 -->
 <!-- + 음악 자동재생 -->
-<ng-container *ngIf="card && !isNewYear && isPreview">
-  <div class="card-container">
-    <h3 class="font-h1-kr font-white">
-      {{ card.sender }}님이 {{ card.receiver }}님에게 보내는 편지
-    </h3>
-    <object data="../../../../assets/folded-envelope.svg" width="400"></object>
-    <div class="button-container-right">
-      <button (click)="shareCard()" class="button-default">편지 보내기</button>
-      <button (click)="tryAgain()" class="button-default">
-        하나 더 만들기
-      </button>
+<ng-container *ngIf="card">
+  <!-- @TODO: 아직 2022년인 경우 -->
+  <ng-container *ngIf="!isNewYear; else year2022">
+    <div class="card-container">
+      <div class="title font-white">
+        <h1 class="font-h1-kr">{{ card.sender }}님이 보낸 새해 편지</h1>
+        <h1 class="font-h1">
+          New year's music & letter <br />from {{ card.sender }}
+        </h1>
+      </div>
+      <div class="envelop" (click)="openCard()">
+        <p class="font-desc font-white">
+          2023년 1월 1일 자정에 확인할 수 있어요!
+        </p>
+      </div>
+      <div class="button-container-right">
+        <button *ngIf="isPreview" (click)="shareCard()" class="button-default">
+          편지 보내기
+        </button>
+        <button (click)="tryAgain()" class="button-default">
+          {{ isPreview ? "하나 더 만들기" : "나도 만들기" }}
+        </button>
+      </div>
     </div>
-  </div>
-  <bg-canvas color="black" effect="none"></bg-canvas>
-</ng-container>
-<ng-container *ngIf="card && isNewYear">
-  <div class="card-container">
-    <div class="flip-card selected-motion flipped-hover">
-      <div class="flip-card-inner">
-        <div class="flip-card-front">
-          <img
-            *ngIf="card.shape"
-            class="preview"
-            src="../../assets/card_{{ card.shape }}.svg"
-          />
-        </div>
-        <!-- @TODO: 프리뷰 버전 편지 적용하기 (뒤집힌 카드에) -->
-        <div class="flip-card-back">
-          <span>to. {{ card.receiver }}</span>
-          <p>{{ card.text }}</p>
-          <span>from. {{ card.sender }}</span>
+    <bg-canvas color="black" effect="none"></bg-canvas>
+  </ng-container>
+  <ng-template #year2022>
+    <div class="card-container">
+      <div class="flip-card selected-motion flipped-hover">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img
+              *ngIf="card.shape"
+              class="preview"
+              src="../../assets/card_{{ card.shape }}.svg"
+            />
+          </div>
+          <!-- @TODO: 프리뷰 버전 편지 적용하기 (뒤집힌 카드에) -->
+          <div class="flip-card-back">
+            <span>to. {{ card.receiver }}</span>
+            <p>{{ card.text }}</p>
+            <span>from. {{ card.sender }}</span>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <bg-canvas [color]="card.background" [effect]="card.effect"></bg-canvas>
+    <bg-canvas [color]="card.background" [effect]="card.effect"></bg-canvas>
+  </ng-template>
 </ng-container>

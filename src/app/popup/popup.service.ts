@@ -40,9 +40,9 @@ export class PopupService {
     this._setPopup(content, option);
   }
 
-  custom(type: Popup): void {
+  custom(type: Popup, option?: PopupOption): void {
     this._popupType = type;
-    this.openPopup.emit(this.isOpen());
+    this._setPopup(undefined, option);
   }
 
   close(): void {

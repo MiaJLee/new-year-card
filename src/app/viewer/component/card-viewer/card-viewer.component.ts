@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../../../../api/api.service';
 import { get } from 'lodash-es';
 import * as Models from '../../../../api/api.models';
@@ -39,10 +39,9 @@ export class CardViewerComponent {
 
     if (this.cardId) {
       this.apiService.getCard(this.cardId).subscribe((res) => {
+        // @TODO: 값 없는 경우 404 페이지로 리디렉션
         this.card = res.result;
       });
-
-      // this.card = MOCK_CARD;
     }
 
     if (location.href.includes('preview')) {
@@ -51,17 +50,33 @@ export class CardViewerComponent {
   }
 
   shareCard(): void {
-    this.popupService.custom('link');
+    this.popupService.custom('link', {
+      data: {
+        cardId: this.cardId,
+        sender: this.card?.sender,
+        receiver: this.card?.receiver,
+      },
+    });
   }
 
   tryAgain(): void {
     this.popupService.confirm(
-      '이 페이지를 벗어나면 다시 돌아올 수 없어요.\n새로운 편지를 작성하시겠어요?',
+      '이 페이지를 벗어나면 다시 돌아올 수 없어요. \n새로운 편지를 작성하시겠어요?',
       {
         confirm: {
-          fn: () => this.router.navigate(['editor']),
+          fn: () => this.router.navigate(['/']),
         },
       }
     );
+  }
+
+  openCard(): void {
+    if (!this.isNewYear) {
+      this.popupService.alert(
+        '2023년 1월 1일 자정에 열어볼 수 있어요. \n새해 첫 날 만나요!'
+      );
+
+      return;
+    }
   }
 }
