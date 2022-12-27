@@ -50,27 +50,27 @@ export class FormMusicPlaylistComponent {
 
   playMusic(music: any): void {
     // @TODO: 배포하고 리얼 환경에서 모바일 테스트 해보기
-    if (isMobile()) {
-      if (this.showAlert) {
-        this.openYoutube(music.youtubeLink);
+    // if (isMobile()) {
+    //   if (this.showAlert) {
+    //     this.openYoutube(music.youtubeLink);
 
-        return;
-      }
+    //     return;
+    //   }
 
-      this.popupService.confirm(
-        '모바일에서는 유튜브에서 미리듣기가 가능해요.\n 이동하시겠어요?',
-        {
-          confirm: {
-            fn: () => {
-              this.showAlert = true;
-              this.openYoutube(music.youtubeLink);
-            },
-          },
-        }
-      );
+    //   this.popupService.confirm(
+    //     '모바일에서는 유튜브에서 미리듣기가 가능해요.\n 이동하시겠어요?',
+    //     {
+    //       confirm: {
+    //         fn: () => {
+    //           this.showAlert = true;
+    //           this.openYoutube(music.youtubeLink);
+    //         },
+    //       },
+    //     }
+    //   );
 
-      return;
-    }
+    //   return;
+    // }
 
     if (!this.showAlert) {
       this.popupService.confirm('이 음악을 들어보시겠어요?', {
