@@ -127,7 +127,7 @@ export class EditorComponent implements AfterViewInit {
       case Step.Music:
         if (this.form.controls.musicId.invalid) {
           this.popupService.alert(
-            '받는 이를 위한 음악을 선택해주세요.\n 이미지를 클릭하면 미리 들어볼 수 있어요.'
+            '받는 이를 위한 음악을 선택해주세요. \n재생 아이콘을 클릭하면 미리 들어볼 수 있어요.'
           );
           return;
         }

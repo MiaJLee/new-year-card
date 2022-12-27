@@ -58,7 +58,7 @@ export class PopupComponent {
     const { Kakao } = window;
 
     // if (!Kakao.isInitialized()) {
-    //   const apiKey = process.env.kakaoKey;
+    //   const apiKey = process.env.KAKAO_API_KEY;
     //   Kakao.init(apiKey);
 
     //   Kakao.Link.sendScrap(KAKAO_SHARE_OPTION);
