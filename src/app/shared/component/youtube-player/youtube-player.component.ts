@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { isMobile as _isMobile } from '../../../app.utils';
 
 @Component({
   selector: 'app-youtube-player',
@@ -7,6 +8,10 @@ import { Component, Input, OnInit } from '@angular/core';
 export class YoutubePlayerComponent implements OnInit {
   @Input() videoId?: string;
   private apiLoaded = false;
+
+  get isMobile(): boolean {
+    return _isMobile();
+  }
 
   ngOnInit() {
     if (!this.apiLoaded) {

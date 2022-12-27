@@ -236,6 +236,35 @@
 }
 
 @include mobile {
+  #player {
+    position: fixed;
+    width: 150px;
+    height: 150px;
+    top: 20px;
+    right: 20px;
+    border-radius: 100%;
+    overflow: hidden;
+  }
+
+  .player-ui {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-size: 25px;
+    cursor: pointer;
+    border-radius: 100%;
+    overflow: hidden;
+    z-index: 10;
+
+    div {
+      width: 45px;
+      height: 45px;
+      background: url("/assets/ui/close.svg") center center no-repeat;
+      background-size: 95% 95%;
+      background-color: $color-white;
+    }
+  }
+
   .playlist-container {
     position: fixed;
     margin-top: 10px;
@@ -244,7 +273,6 @@
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: $color-white;
-    border: 1px solid $color-black;
   }
 
   .playlist-wrapper {

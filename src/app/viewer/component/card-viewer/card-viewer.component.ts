@@ -61,7 +61,7 @@ export class CardViewerComponent {
 
   tryAgain(): void {
     this.popupService.confirm(
-      '이 페이지를 벗어나면 다시 돌아올 수 없어요. \n새로운 편지를 작성하시겠어요?',
+      '이 페이지를 벗어나면 다시 돌아올 수 없으니 링크를 기억해주세요.\n새로운 편지를 작성하시겠어요?',
       {
         confirm: {
           fn: () => this.router.navigate(['/']),
@@ -73,7 +73,7 @@ export class CardViewerComponent {
   openCard(): void {
     if (!this.isNewYear) {
       this.popupService.alert(
-        '2023년 1월 1일 자정에 열어볼 수 있어요. \n새해 첫 날 만나요!'
+        '2023년 1월 1일 자정에 열어볼 수 있어요. \n새해 첫날 다시 만나요!'
       );
 
       return;

@@ -9,10 +9,9 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { find } from 'lodash-es';
 import { BehaviorSubject, catchError, EMPTY, switchMap } from 'rxjs';
 import { ApiService } from '../../../../api/api.service';
-import { CardDesignConfig, Step } from '../../../app.models';
+import { Step } from '../../../app.models';
 import { EDITOR_TITLE, CARD_LIST } from '../../../app.value';
 import { PopupService } from '../../../popup/popup.service';
 
