@@ -1,0 +1,121 @@
+@import "src/styles";
+
+.loading-screen-wrapper {
+  z-index: 100000;
+  position: absolute;
+  background-color: $color-black;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+//custom mixins
+@mixin transform($transform) {
+  -webkit-transform: $transform;
+  -moz-transform: $transform;
+  transform: $transform;
+}
+@mixin animation($animation) {
+  -webkit-animation: $animation;
+  -moz-animation: $animation;
+  animation: $animation;
+}
+@mixin keyframes($name, $name1) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  }
+}
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+@mixin box-shadow($shadow) {
+  -webkit-box-shadow: $shadow;
+  -moz-box-shadow: $shadow;
+  box-shadow: $shadow;
+}
+
+//loader options
+$loader-size: 150px;
+$speed: 1.3s;
+
+//animation
+@include keyframes(leftAnim, leftAnim animation) {
+  0% {
+    @include transform(translateX(($loader-size/2)+22));
+  }
+  100% {
+    @include transform(translateX(0));
+  }
+}
+@include keyframes(rightAnim, rightAnim animation) {
+  0% {
+    @include transform(translateX(0));
+  }
+  100% {
+    @include transform(translateX(-($loader-size/2)-18));
+  }
+}
+
+.loader {
+  width: $loader-size * 2;
+  height: $loader-size;
+  margin: 0 auto;
+  position: relative;
+  &::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    left: 50%;
+    margin-left: -1px;
+    width: 2px;
+    z-index: 1;
+    height: $loader-size;
+    border-left: 2px dotted $color-primary;
+  }
+  &__box {
+    position: absolute;
+    top: 0;
+    width: $loader-size;
+    height: $loader-size;
+    overflow: hidden;
+    z-index: 2;
+  }
+  &--left {
+    left: 0;
+    .loader__circle {
+      background-color: #fff;
+      right: 10px;
+      @include animation(leftAnim $speed ease-in-out alternate infinite);
+    }
+  }
+  &--right {
+    right: 0;
+    .loader__circle {
+      left: 10px;
+      @include animation(rightAnim $speed ease-in-out alternate infinite);
+    }
+  }
+  &__circle {
+    width: $loader-size/2;
+    height: $loader-size/2;
+    border: solid 2px $color-primary;
+    display: block;
+    background-color: $color-primary;
+    @include border-radius(50%);
+    position: absolute;
+    top: 50%;
+    margin-top: -($loader-size/2)/2;
+  }
+}

@@ -1,10 +1,4 @@
-type Card =
-  | 'rabbit01'
-  | 'rabbit02'
-  | 'rabbit03'
-  | 'shape01'
-  | 'shape02'
-  | 'shape03';
+type Card = 'bunnya' | 'bunnyb' | 'bunnyc' | 'cloud' | 'heart' | 'oval';
 type Lettering = 'happyNewYear' | 'saeHaeBok';
 type Background = 'white' | 'orange' | 'black' | 'gradient' | 'checker';
 type Effect = 'none' | 'snow' | 'circles' | 'confetti' | 'kirakira';

@@ -5,6 +5,7 @@ import { get } from 'lodash-es';
 import * as Models from '../../../../api/api.models';
 import { PopupService } from '../../../popup/popup.service';
 import { catchError, EMPTY } from 'rxjs';
+import { isMobile } from '../../../app.utils';
 
 const MOCK_CARD = {
   background: 'white',
@@ -14,7 +15,7 @@ const MOCK_CARD = {
   musicId: '4',
   receiver: '지형',
   sender: 'ㅁㅣ아',
-  shape: 'rabbit03',
+  shape: 'bunnya',
   text: '지형아 새해복 많이 받아 ! 우리 못 본지 오래됐다 ㅠ 항상 건강하길 기도해 아자아자 화이팅 아자아자앚아자아자아',
   cardId: '63a6c9ec24495869cabce893',
 } as Models.getCardRes;
@@ -49,6 +50,10 @@ export class CardViewerComponent {
           })
         )
         .subscribe((res) => {
+          if (res.message === 'notyet') {
+            console.log(res.message);
+            this.isNewYear === false;
+          }
           this.card = res.result;
         });
     }
@@ -70,7 +75,9 @@ export class CardViewerComponent {
 
   tryAgain(): void {
     this.popupService.confirm(
-      '이 페이지를 벗어나면 다시 돌아올 수 없으니 링크를 기억해주세요.\n새로운 편지를 작성하시겠어요?',
+      `이 페이지를 벗어나면 다시 돌아올 수 없으니 ${
+        isMobile() ? '' : `\n`
+      }링크를 기억해주세요.\n새로운 편지를 작성하시겠어요?`,
       {
         confirm: {
           fn: () => this.router.navigate(['/']),
