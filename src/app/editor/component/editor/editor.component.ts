@@ -73,7 +73,6 @@ export class EditorComponent implements AfterViewInit {
       receiver: ['', Validators.required],
     });
 
-    this.form.patchValue(MOCK_CARD);
     this.form.controls.shape.valueChanges
       .pipe(untilDestroyed(this))
       .subscribe(() => {
