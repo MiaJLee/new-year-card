@@ -347,7 +347,6 @@
   }
 
   .text-preview {
-    @extend .text-editor;
     top: calc(50% - 150px);
     left: calc(50% - 145px);
 
