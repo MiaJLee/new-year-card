@@ -1,8 +1,6 @@
-<!-- @TODO: 뷰어 진입시 봉투를 보여준다. 오픈 눌러야 모션 + 카드노출 -->
-<!-- + 음악 자동재생 -->
 <ng-container *ngIf="card">
-  <!-- @TODO: 아직 2022년인 경우 -->
-  <ng-container *ngIf="!isNewYear; else year2022">
+  <!-- [workaround] 아직 2022년인 경우 -->
+  <ng-container *ngIf="!isNewYear; else year2023">
     <div class="card-container">
       <div class="title font-white">
         <h1 class="font-h1-kr">{{ card.sender }}님이 보낸 새해 편지</h1>
@@ -26,7 +24,7 @@
     </div>
     <bg-canvas color="black" effect="none"></bg-canvas>
   </ng-container>
-  <ng-template #year2022>
+  <ng-template #year2023>
     <div class="card-container">
       <div class="flip-card selected-motion flipped-hover">
         <div class="flip-card-inner">

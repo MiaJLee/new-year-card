@@ -1,13 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Background, Effect } from '../../../app.models';
-import {
-  MoveDirection,
-  ClickMode,
-  HoverMode,
-  OutMode,
-} from 'tsparticles-engine';
 import { loadFull } from 'tsparticles';
-import { loadFireworksPreset } from 'tsparticles-preset-fireworks';
 import { loadConfettiPreset } from 'tsparticles-preset-confetti';
 
 @Component({
@@ -24,8 +17,6 @@ export class BgCanvasComponent {
 
   id = 'tsparticles';
 
-  // @TODO: 콘페티, 키라키라, 불꽃놀이 세부 옵션 설정하기
-  /* or the classic JavaScript object */
   particlesOptions = {
     emitters: [
       {
@@ -70,12 +61,10 @@ export class BgCanvasComponent {
       .map((_, i) => i);
   }
 
-  particlesLoaded(container: any): void {
-    console.log(container);
+  particlesLoaded(_container: any): void {
   }
 
   async particlesInit(engine: any): Promise<void> {
-    console.log(engine);
 
     // Starting from 1.19.0 you can add custom presets or shape here, using the current tsParticles instance (main)
     // this loads the tsparticles package bundle, it's the easiest method for getting everything ready

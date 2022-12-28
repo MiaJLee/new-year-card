@@ -192,7 +192,7 @@ export class EditorComponent implements AfterViewInit {
                 }),
                 catchError((e) => {
                   this.popupService.alert(
-                    e.errorMessage ?? '문제가 발생했습니다.'
+                    e.errorMessage ?? '문제가 발생했습니다. \n나중에 다시 시도해주세요.'
                   );
 
                   return EMPTY;
