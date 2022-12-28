@@ -38,6 +38,7 @@
     background: url("/assets/icon-info.png") no-repeat;
     background-size: 100% 100%;
     background-position: center center;
+    cursor: pointer;
   }
 }
 
@@ -184,10 +185,11 @@
   @extend .text-editor;
   left: calc(50% - 170px);
   top: calc(50% - 200px);
-  background: rgba($color-white, 0.7);
   padding: 20px;
-  border-radius: 16px;
-  border: 1px solid $color-black;
+  background: rgba(255, 255, 255, 0.375);
+  box-shadow: 0 0.75rem 2rem 0 rgba(0, 0, 0, 0.1);
+  border-radius: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.125);
 
   p {
     width: 300px;

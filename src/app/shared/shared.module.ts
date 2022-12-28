@@ -6,7 +6,7 @@ import { YouTubePlayerModule } from '@angular/youtube-player';
 import { BgCanvasComponent } from './component/bg-canvas/bg-canvas.component';
 import { NgParticlesModule } from 'ng-particles';
 import { CardObjectComponent } from './component/card-object/card-object.component';
-import { LoadingScreenComponent } from './component/bg-canvas/loading-screen/loading-screen.component';
+import { LoadingScreenComponent } from './component/loading-screen/loading-screen.component';
 
 @NgModule({
   declarations: [

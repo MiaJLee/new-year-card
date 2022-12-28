@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { debounceTime } from 'rxjs';
-import { LoadingScreenService } from '../../../services/loading-screen.service';
+import { LoadingScreenService } from '../../services/loading-screen.service';
 
 @UntilDestroy()
 @Component({

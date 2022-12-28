@@ -17,7 +17,6 @@ export class FormLetteringComponent {
 
     this.ctrl.valueChanges.pipe(untilDestroyed(this)).subscribe((v) => {
       this.rootFormGroup.control.get(this.controlName)?.setValue(v);
-      console.log(v);
     });
   }
 }

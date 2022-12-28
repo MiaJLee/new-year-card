@@ -51,7 +51,6 @@ export class CardViewerComponent {
         )
         .subscribe((res) => {
           if (res.message === 'notyet') {
-            console.log(res.message);
             this.isNewYear === false;
           }
           this.card = res.result;

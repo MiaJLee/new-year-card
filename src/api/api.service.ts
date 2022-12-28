@@ -12,7 +12,6 @@ export class ApiService {
   constructor(protected http: HttpClient) {}
 
   postCard(body: Models.postCardReq): Observable<Models.postCardRes> {
-    console.log('post');
     return this.http.request<Models.postCardRes>('post', `${api}/card`, {
       body,
     });

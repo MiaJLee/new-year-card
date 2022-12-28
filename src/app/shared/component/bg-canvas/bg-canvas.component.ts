@@ -61,8 +61,7 @@ export class BgCanvasComponent {
       .map((_, i) => i);
   }
 
-  particlesLoaded(_container: any): void {
-  }
+  particlesLoaded(_container: any): void {}
 
   async particlesInit(engine: any): Promise<void> {
 

@@ -24,8 +24,6 @@ export class CardObjectComponent implements OnInit, OnChanges {
   constructor() {}
 
   ngOnInit(): void {
-    console.log(this.cardType);
-
     this.typeClassName = this.cardType;
     this.letteringClassName = isEmpty(this.lettering)
       ? 'default'
@@ -57,8 +55,6 @@ export class CardObjectComponent implements OnInit, OnChanges {
 
     // 실제 엘리먼트가 존재하는 컨테이너를 확인
     // const { x, y, width, height } = svgElement?.getBBox();
-
-    // console.log(this.cardType, x, y, width, height);
 
     // svgElement.setAttribute('viewBox', `${x} ${y} ${width} ${height}`);
     svgElement.classList.add(this.letteringClassName);
