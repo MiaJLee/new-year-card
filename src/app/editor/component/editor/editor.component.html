@@ -48,12 +48,12 @@
                       maxlength="25"
                     />
                   </div>
-
-                  <textarea
-                    type="textbox"
-                    formControlName="text"
-                    maxlength="400"
-                  ></textarea>
+                  <div class="letter-textbox">
+                    <textarea type="textbox" formControlName="text"> </textarea>
+                    <div class="text-length-inform">
+                      {{ currentLetterLength }} / {{ letterMaxLength }}
+                    </div>
+                  </div>
                   <div class="flexbox input-from">
                     <span class="font-sub">from.</span
                     ><input
@@ -70,10 +70,17 @@
                     ><span class="font-card">{{ cardContent.receiver }}</span>
                   </div>
 
-                  <p class="font-card">{{ cardContent.text }}</p>
+                  <p
+                    [innerHtml]="cardContent.text | newlineToBr"
+                    class="font-card"
+                  ></p>
                   <div class="input-from">
                     <span class="font-sub">from. </span
                     ><span class="font-card">{{ cardContent.sender }}</span>
+                  </div>
+
+                  <div class="inform-music" *ngIf="selectedMusic">
+                    {{ selectedMusic.name }} - {{ selectedMusic.artist }}
                   </div>
                 </div>
               </div>
@@ -129,9 +136,9 @@
   ></bg-canvas>
 
   <ng-container *ngIf="currentStep === step.Preview && isActiveFlip">
-    <!-- <div *ngIf="musicId" class="player-ui">
-      <div (click)="onClose()"></div>
-    </div> -->
+    <div *ngIf="musicId" class="player-ui">
+      <div (click)="onToggleFlip()"></div>
+    </div>
     <div id="player" class="playing-motion">
       <app-youtube-player
         *ngIf="musicId"

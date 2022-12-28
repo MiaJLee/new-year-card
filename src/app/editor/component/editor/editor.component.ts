@@ -9,11 +9,18 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { BehaviorSubject, catchError, EMPTY, switchMap } from 'rxjs';
+import { BehaviorSubject, catchError, EMPTY, filter, switchMap } from 'rxjs';
 import { ApiService } from '../../../../api/api.service';
-import { Step } from '../../../app.models';
-import { EDITOR_TITLE, MOCK_CARD } from '../../../app.value';
+import { Music, Step } from '../../../app.models';
+import {
+  EDITOR_TITLE,
+  MAX_LENGTH,
+  MOCK_CARD,
+  MUSICS,
+} from '../../../app.value';
 import { PopupService } from '../../../popup/popup.service';
+import { length, limit } from 'stringz';
+import { find } from 'lodash-es';
 
 @UntilDestroy()
 @Component({
@@ -24,10 +31,11 @@ import { PopupService } from '../../../popup/popup.service';
 export class EditorComponent implements AfterViewInit {
   readonly step = Step;
   readonly title = EDITOR_TITLE;
-  currentStep$ = new BehaviorSubject(Step.Card);
+  currentStep$ = new BehaviorSubject(Step.Preview);
 
   isActiveFlip = false;
   form: FormGroup;
+  letterMaxLength = MAX_LENGTH;
 
   get bgColor() {
     return this.form.controls.background.value;
@@ -56,6 +64,17 @@ export class EditorComponent implements AfterViewInit {
     return parseInt(this.form.controls.musicId.value, 10);
   }
 
+  get currentLetterLength(): number {
+    return length(this.form.controls.text.value);
+  }
+
+  get selectedMusic(): Music | undefined {
+    return find(
+      MUSICS,
+      ({ id }) => id === parseInt(this.form.controls.musicId.value)
+    );
+  }
+
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -73,6 +92,8 @@ export class EditorComponent implements AfterViewInit {
       receiver: ['', Validators.required],
     });
 
+    this.form.patchValue(MOCK_CARD);
+
     this.form.controls.shape.valueChanges
       .pipe(untilDestroyed(this))
       .subscribe(() => {
@@ -83,6 +104,15 @@ export class EditorComponent implements AfterViewInit {
       .pipe(untilDestroyed(this))
       .subscribe(() => {
         this.shakeCard();
+      });
+
+    this.form.controls.text.valueChanges
+      .pipe(
+        filter((v) => length(v) > this.letterMaxLength),
+        untilDestroyed(this)
+      )
+      .subscribe((v) => {
+        this.form.controls.text.patchValue(limit(v, MAX_LENGTH));
       });
 
     this.currentStep$.pipe(untilDestroyed(this)).subscribe((s) => {
@@ -160,6 +190,8 @@ export class EditorComponent implements AfterViewInit {
 
           return;
         }
+
+        console.log(this.form.controls.text.value);
         this.currentStep$.next(Step.Preview);
 
         break;

@@ -172,12 +172,24 @@
     align-self: flex-end;
   }
 
-  & > textarea {
+  .letter-textbox {
+    position: relative;
+
+    .text-length-inform {
+      @extend .font-sub;
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      font-size: 18px;
+    }
+  }
+
+  .letter-textbox > textarea {
     width: 300px;
     height: 300px;
     border: 1px solid $color-black;
     background: rgba($color-white, 0.8);
-    padding: 10px;
+    padding: 10px 10px 30px;
   }
 }
 
@@ -185,7 +197,7 @@
   @extend .text-editor;
   left: calc(50% - 170px);
   top: calc(50% - 200px);
-  padding: 20px;
+  padding: 20px 20px 30px;
   background: rgba(255, 255, 255, 0.375);
   box-shadow: 0 0.75rem 2rem 0 rgba(0, 0, 0, 0.1);
   border-radius: 2rem;
@@ -196,6 +208,28 @@
     height: 350px;
     display: inline-block;
     overflow-y: scroll;
+    pointer-events: all;
+    text-align: start;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .inform-music {
+    position: absolute;
+    bottom: 7px;
+    right: 20px;
+    font-size: 13px;
+
+    &:before {
+      content: "";
+      background-image: url("/assets/icon-note.png");
+      background-size: 15px 15px;
+      width: 15px;
+      height: 15px;
+      display: inline-block;
+    }
   }
 
   .font-sub {
