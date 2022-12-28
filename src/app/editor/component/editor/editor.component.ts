@@ -31,7 +31,7 @@ import { find } from 'lodash-es';
 export class EditorComponent implements AfterViewInit {
   readonly step = Step;
   readonly title = EDITOR_TITLE;
-  currentStep$ = new BehaviorSubject(Step.Preview);
+  currentStep$ = new BehaviorSubject(Step.Card);
 
   isActiveFlip = false;
   form: FormGroup;
@@ -92,7 +92,7 @@ export class EditorComponent implements AfterViewInit {
       receiver: ['', Validators.required],
     });
 
-    this.form.patchValue(MOCK_CARD);
+    // this.form.patchValue(MOCK_CARD);
 
     this.form.controls.shape.valueChanges
       .pipe(untilDestroyed(this))
