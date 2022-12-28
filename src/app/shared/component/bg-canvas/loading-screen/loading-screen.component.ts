@@ -10,7 +10,7 @@ import { LoadingScreenService } from '../../../services/loading-screen.service';
   styleUrls: ['./loading-screen.component.scss'],
 })
 export class LoadingScreenComponent {
-  isLoading: boolean = true;
+  isLoading: boolean = false;
 
   constructor(private loadingScreenService: LoadingScreenService) {}
 
