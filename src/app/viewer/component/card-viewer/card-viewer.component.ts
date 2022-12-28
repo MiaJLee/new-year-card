@@ -88,7 +88,7 @@ export class CardViewerComponent {
   openCard(): void {
     if (!this.isNewYear) {
       this.popupService.alert(
-        '2023년 1월 1일 자정에 열어볼 수 있어요. \n새해 첫날 다시 만나요!'
+        '2023년 1월 1일에 열어볼 수 있어요. \n새해 첫날 다시 만나요!'
       );
 
       return;
