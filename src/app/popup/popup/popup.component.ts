@@ -70,8 +70,7 @@ export class PopupComponent {
     if (!Kakao.isInitialized()) {
       const apiKey = environment.KAKAO_APP_KEY;
       Kakao.init(apiKey);
-
-      Kakao.Link.sendScrap(this.kakaoShareOption);
     }
+    Kakao.Link.sendScrap(this.kakaoShareOption);
   }
 }

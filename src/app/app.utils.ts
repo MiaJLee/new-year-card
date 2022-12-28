@@ -11,3 +11,15 @@ export function getUrlParameter(
 export function isMobile(): boolean {
   return /Android|iPhone/i.test(navigator.userAgent);
 }
+
+// [workaround] android input focusing 스크롤 안되는 이슈
+export function focusOnWriting() {
+  if (
+    document.activeElement?.tagName == 'INPUT' ||
+    document.activeElement?.tagName == 'TEXTAREA'
+  ) {
+    window.setTimeout(function () {
+      document.activeElement?.scrollIntoView();
+    }, 0);
+  }
+}

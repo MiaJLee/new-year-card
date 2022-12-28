@@ -1,4 +1,4 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -21,6 +21,7 @@ import {
 import { PopupService } from '../../../popup/popup.service';
 import { length, limit } from 'stringz';
 import { find } from 'lodash-es';
+import { focusOnWriting } from '../../../app.utils';
 
 @UntilDestroy()
 @Component({
@@ -28,7 +29,7 @@ import { find } from 'lodash-es';
   templateUrl: './editor.component.html',
   styleUrls: ['./editor.component.scss'],
 })
-export class EditorComponent implements AfterViewInit {
+export class EditorComponent implements AfterViewInit, OnDestroy {
   readonly step = Step;
   readonly title = EDITOR_TITLE;
   currentStep$ = new BehaviorSubject(Step.Card);
@@ -92,6 +93,10 @@ export class EditorComponent implements AfterViewInit {
       receiver: ['', Validators.required],
     });
 
+    if (/Android/.test(navigator.appVersion)) {
+      window.addEventListener('resize', focusOnWriting);
+    }
+
     // this.form.patchValue(MOCK_CARD);
 
     this.form.controls.shape.valueChanges
@@ -124,6 +129,12 @@ export class EditorComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.shakeCard();
+  }
+
+  ngOnDestroy(): void {
+    if (/Android/.test(navigator.appVersion)) {
+      window.removeEventListener('resize', focusOnWriting);
+    }
   }
 
   onClickPrev(): void {
