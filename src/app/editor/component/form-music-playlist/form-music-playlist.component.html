@@ -37,9 +37,12 @@
   </div>
 </div>
 
-<div *ngIf="videoId" class="player-ui">
+<div *ngIf="playingMusic" class="player-ui">
   <div (click)="onClose()"></div>
 </div>
 <div id="player" class="playing-motion">
-  <app-youtube-player *ngIf="videoId" [videoId]="videoId"></app-youtube-player>
+  <app-youtube-player
+    *ngIf="playingMusic"
+    [musicId]="playingMusic"
+  ></app-youtube-player>
 </div>

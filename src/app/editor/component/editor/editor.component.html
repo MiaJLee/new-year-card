@@ -66,13 +66,13 @@
                 <!-- @TODO: 프리뷰 버전 편지 적용하기 (뒤집힌 카드에) -->
                 <div *ngIf="currentStep === step.Preview" class="text-preview">
                   <div class="input-to">
-                    <span class="font-sub">to.</span
+                    <span class="font-sub">to. </span
                     ><span class="font-card">{{ cardContent.receiver }}</span>
                   </div>
 
                   <p class="font-card">{{ cardContent.text }}</p>
                   <div class="input-from">
-                    <span class="font-sub">from.</span
+                    <span class="font-sub">from. </span
                     ><span class="font-card">{{ cardContent.sender }}</span>
                   </div>
                 </div>
@@ -127,4 +127,16 @@
     [color]="bgColor"
     [effect]="bgEffect"
   ></bg-canvas>
+
+  <ng-container *ngIf="currentStep === step.Preview && isActiveFlip">
+    <!-- <div *ngIf="musicId" class="player-ui">
+      <div (click)="onClose()"></div>
+    </div> -->
+    <div id="player" class="playing-motion">
+      <app-youtube-player
+        *ngIf="musicId"
+        [musicId]="musicId"
+      ></app-youtube-player>
+    </div>
+  </ng-container>
 </ng-container>

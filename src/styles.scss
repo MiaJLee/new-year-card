@@ -127,6 +127,57 @@ button {
   display: flex;
 }
 
+#player {
+  position: fixed;
+  width: 200px;
+  height: 200px;
+  top: 20px;
+  right: 20px;
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+.player-ui {
+  position: fixed;
+  top: 170px;
+  right: 20px;
+  font-size: 25px;
+  cursor: pointer;
+  border-radius: 100%;
+  overflow: hidden;
+  z-index: 10;
+
+  div {
+    width: 50px;
+    height: 50px;
+    background: url("/assets/ui/close.svg") center center no-repeat;
+    background-size: 90% 90%;
+    background-color: $color-white;
+  }
+}
+
+.playing-motion {
+  -webkit-animation-name: playingMotionAnimation;
+  -webkit-animation-duration: 20s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-fill-mode: forwards;
+  animation-name: playingMotionAnimation;
+  animation-duration: 20s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes playingMotionAnimation {
+  from {
+    -webkit-transform: rotate(0deg) scale(1) skew(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg) scale(1) skew(0deg);
+  }
+}
+
 @include mobile {
   .font-h1 {
     font-size: 30px;
@@ -184,6 +235,35 @@ button {
   .button-highlight {
     &:hover {
       border-top: 1px solid $color-black;
+    }
+  }
+
+  #player {
+    position: fixed;
+    width: 150px;
+    height: 150px;
+    top: 20px;
+    right: 20px;
+    border-radius: 100%;
+    overflow: hidden;
+  }
+
+  .player-ui {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-size: 25px;
+    cursor: pointer;
+    border-radius: 100%;
+    overflow: hidden;
+    z-index: 10;
+
+    div {
+      width: 45px;
+      height: 45px;
+      background: url("/assets/ui/close.svg") center center no-repeat;
+      background-size: 95% 95%;
+      background-color: $color-white;
     }
   }
 }

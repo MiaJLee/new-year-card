@@ -1,13 +1,17 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { isMobile as _isMobile } from '../../../app.utils';
+import { Music } from '../../../app.models';
+import { getUrlParameter, isMobile as _isMobile } from '../../../app.utils';
+import { MUSICS } from '../../../app.value';
 
 @Component({
   selector: 'app-youtube-player',
   templateUrl: './youtube-player.component.html',
 })
 export class YoutubePlayerComponent implements OnInit {
-  @Input() videoId?: string;
+  @Input() musicId?: number;
   private apiLoaded = false;
+  videoId?: string;
+  musics = MUSICS;
 
   get isMobile(): boolean {
     return _isMobile();
@@ -22,5 +26,11 @@ export class YoutubePlayerComponent implements OnInit {
       document.body.appendChild(tag);
       this.apiLoaded = true;
     }
+
+    if (!this.musicId) return;
+    const playMusic = this.musics.find(({ id }) => id === this.musicId);
+
+    if (!playMusic) return;
+    this.videoId = getUrlParameter(playMusic?.youtubeLink, 'v');
   }
 }

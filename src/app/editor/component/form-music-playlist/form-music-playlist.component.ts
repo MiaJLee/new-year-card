@@ -2,9 +2,10 @@ import { Component, Input } from '@angular/core';
 import { FormControl, FormGroupDirective } from '@angular/forms';
 import { MUSICS } from '../../../app.value';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { getUrlParameter, isMobile } from '../../../app.utils';
+import { isMobile } from '../../../app.utils';
 import { isNil, isEmpty } from 'lodash-es';
 import { PopupService } from '../../../popup/popup.service';
+import { Music } from '../../../app.models';
 
 @UntilDestroy()
 @Component({
@@ -14,7 +15,9 @@ import { PopupService } from '../../../popup/popup.service';
 })
 export class FormMusicPlaylistComponent {
   @Input() controlName: string = '';
-  readonly musics = MUSICS.sort((a, b) => a.name.localeCompare(b.name));
+  readonly musics: Music[] = MUSICS.sort((a, b) =>
+    a.name.localeCompare(b.name)
+  );
 
   get selectedId(): number | undefined {
     const selectedId = this.ctrl.value;
@@ -26,7 +29,7 @@ export class FormMusicPlaylistComponent {
     return;
   }
 
-  videoId?: string;
+  playingMusic?: number;
   ctrl = new FormControl('');
   showAlert = false;
 
@@ -54,7 +57,7 @@ export class FormMusicPlaylistComponent {
         confirm: {
           fn: () => {
             this.showAlert = true;
-            this.initYoutubePlayer(music.youtubeLink);
+            this.initYoutubePlayer(music.id);
           },
         },
       });
@@ -62,23 +65,19 @@ export class FormMusicPlaylistComponent {
       return;
     }
 
-    this.initYoutubePlayer(music.youtubeLink);
+    this.initYoutubePlayer(music.id);
   }
 
   onClose() {
-    this.videoId = undefined;
+    this.playingMusic = undefined;
   }
 
-  private initYoutubePlayer(link: string): void {
-    this.videoId = undefined;
+  private initYoutubePlayer(musicId: number): void {
+    this.playingMusic = undefined;
 
     // [workaround] youtube-player를 DOM에서 삭제 후 새로 그리기 위함.
     setTimeout(() => {
-      this.videoId = getUrlParameter(link, 'v');
+      this.playingMusic = musicId;
     }, 10);
-  }
-
-  private openYoutube(link: string): void {
-    window.open(link, 'youtube');
   }
 }

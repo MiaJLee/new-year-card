@@ -1,5 +1,18 @@
 import { CardDesignConfig, Music, Step, Title } from './app.models';
 
+export const MOCK_CARD = {
+  background: 'black',
+  created_at: '20221224184412',
+  effect: 'confetti',
+  lettering: 'happyNewYear',
+  musicId: '4',
+  receiver: '지형',
+  sender: '엄마',
+  shape: 'bunnya',
+  text: '지형아 새해복 많이 받아 ! 우리 못 본지 오래됐다 ㅠ 항상 건강하길 기도해 아자아자 화이팅 아자아자앚아자아자아',
+  cardId: '63a6c9ec24495869cabce893',
+};
+
 export const KAKAO_TEMPLATE_ID = 87695;
 export const URLS = {
   local: 'http://localhost:4200/',

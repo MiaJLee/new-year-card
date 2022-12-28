@@ -182,12 +182,18 @@
 
 .text-preview {
   @extend .text-editor;
+  left: calc(50% - 170px);
   top: calc(50% - 200px);
+  background: rgba($color-white, 0.7);
+  padding: 20px;
+  border-radius: 16px;
+  border: 1px solid $color-black;
 
   p {
     width: 300px;
-    max-height: 300px;
+    height: 350px;
     display: inline-block;
+    overflow-y: scroll;
   }
 
   .font-sub {
@@ -195,7 +201,9 @@
   }
 
   .font-card {
-    font-size: 30px;
+    font-size: 18px;
+    line-height: 1.3;
+    font-family: "Noto Sans KR";
   }
 
   opacity: 0;
@@ -305,11 +313,11 @@
   .text-preview {
     @extend .text-editor;
     top: calc(50% - 150px);
-    left: calc(50% - 125px);
+    left: calc(50% - 145px);
 
     p {
       width: 250px;
-      max-height: 200px;
+      height: 200px;
       display: inline-block;
       overflow-y: scroll;
     }
@@ -319,7 +327,7 @@
     }
 
     .font-card {
-      font-size: 30px;
+      font-size: 15px;
     }
   }
 }

@@ -12,7 +12,7 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { BehaviorSubject, catchError, EMPTY, switchMap } from 'rxjs';
 import { ApiService } from '../../../../api/api.service';
 import { Step } from '../../../app.models';
-import { EDITOR_TITLE, CARD_LIST } from '../../../app.value';
+import { EDITOR_TITLE, MOCK_CARD } from '../../../app.value';
 import { PopupService } from '../../../popup/popup.service';
 
 @UntilDestroy()
@@ -24,7 +24,7 @@ import { PopupService } from '../../../popup/popup.service';
 export class EditorComponent implements AfterViewInit {
   readonly step = Step;
   readonly title = EDITOR_TITLE;
-  currentStep$ = new BehaviorSubject(Step.Music);
+  currentStep$ = new BehaviorSubject(Step.Card);
 
   isActiveFlip = false;
   form: FormGroup;
@@ -52,6 +52,10 @@ export class EditorComponent implements AfterViewInit {
     return { sender, receiver, text };
   }
 
+  get musicId(): number {
+    return parseInt(this.form.controls.musicId.value, 10);
+  }
+
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -69,6 +73,7 @@ export class EditorComponent implements AfterViewInit {
       receiver: ['', Validators.required],
     });
 
+    this.form.patchValue(MOCK_CARD);
     this.form.controls.shape.valueChanges
       .pipe(untilDestroyed(this))
       .subscribe(() => {
