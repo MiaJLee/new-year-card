@@ -28,6 +28,17 @@
   .font-h1-kr {
     margin: 0 0 -17px 0;
   }
+
+  .info-icon {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 65px;
+    top: 7px;
+    background: url("/assets/icon-info.png") no-repeat;
+    background-size: 100% 100%;
+    background-position: center center;
+  }
 }
 
 .preview {
@@ -255,17 +266,13 @@
   //   flex-direction: column;
   // }
 
-  // .title {
-  //   display: flex;
-  //   flex-direction: column;
-  //   align-items: center;
-  //   position: fixed;
-  //   top: 50px;
-
-  //   .font-h1-kr {
-  //     margin: 0 0 -17px 0;
-  //   }
-  // }
+  .title {
+    .info-icon {
+      left: 15px;
+      width: 18px;
+      height: 18px;
+    }
+  }
 
   // .preview {
   //   height: 600px;

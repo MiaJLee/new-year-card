@@ -31,15 +31,23 @@ h3 {
   background-color: transparent;
 }
 
+.button-recommend {
+  border: none;
+  background-color: transparent;
+  font-size: 15px;
+  margin-top: 10px;
+}
+
 .instagram-link {
   font-size: 13px;
   position: fixed;
   bottom: 20px;
+  color: $color-white;
 }
 
-.instagram-link,
 .instagram-link a {
   color: $color-white;
+  text-decoration: underline;
 }
 
 @include mobile {

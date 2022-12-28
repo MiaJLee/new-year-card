@@ -24,7 +24,7 @@ import { PopupService } from '../../../popup/popup.service';
 export class EditorComponent implements AfterViewInit {
   readonly step = Step;
   readonly title = EDITOR_TITLE;
-  currentStep$ = new BehaviorSubject(Step.Card);
+  currentStep$ = new BehaviorSubject(Step.Music);
 
   isActiveFlip = false;
   form: FormGroup;
@@ -192,7 +192,8 @@ export class EditorComponent implements AfterViewInit {
                 }),
                 catchError((e) => {
                   this.popupService.alert(
-                    e.errorMessage ?? '문제가 발생했습니다. \n나중에 다시 시도해주세요.'
+                    e.errorMessage ??
+                      '문제가 발생했습니다. \n나중에 다시 시도해주세요.'
                   );
 
                   return EMPTY;
@@ -271,5 +272,11 @@ export class EditorComponent implements AfterViewInit {
 
       return null;
     };
+  }
+
+  recommendMusic(): void {
+    this.popupService.alert(
+      '혹시 맘에 드는 음악이 없으세요? \n카드 완성한 후 메인 페이지에서 \n띵곡을 추천해주세요!'
+    );
   }
 }

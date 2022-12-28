@@ -8,6 +8,11 @@
           bgColor !== 'white'
         "
       >
+        <div
+          class="info-icon"
+          (click)="recommendMusic()"
+          *ngIf="currentStep === step.Music"
+        ></div>
         <h1 class="font-h1-kr">{{ title[currentStep].kr }}</h1>
         <h1 class="font-h1">{{ title[currentStep].en }}</h1>
       </div>
