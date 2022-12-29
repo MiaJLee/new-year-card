@@ -5,7 +5,7 @@ import { LoadingScreenService } from '../../services/loading-screen.service';
 
 @UntilDestroy()
 @Component({
-  selector: 'app-loading-screen',
+  selector: 'loading-screen',
   templateUrl: './loading-screen.component.html',
   styleUrls: ['./loading-screen.component.scss'],
 })
