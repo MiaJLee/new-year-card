@@ -15,6 +15,9 @@
         ></div>
         <h1 class="font-h1-kr">{{ title[currentStep].kr }}</h1>
         <h1 class="font-h1">{{ title[currentStep].en }}</h1>
+        <p *ngIf="currentStep === step.Preview" class="font-desc font-white">
+          카드를 탭하면 편지내용을 볼 수 있어요!
+        </p>
       </div>
 
       <div *ngIf="cardShape" class="preview-container" (click)="onToggleFlip()">
@@ -122,7 +125,7 @@
 
         <ng-template #preview>
           <button class="button-highlight" (click)="onSave()">
-            {{ "친구에게 보내기" }}
+            {{ "저장하기" }}
           </button>
         </ng-template>
       </div>

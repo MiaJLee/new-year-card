@@ -222,17 +222,20 @@ export class EditorComponent implements AfterViewInit, OnDestroy {
               .pipe(
                 switchMap((res) => {
                   if (res.cardId) {
-                    this.popupService.alert('카드가 성공적으로 저장되었어요!', {
-                      confirm: {
-                        text: '보러갈래요',
-                        fn: () =>
-                          this.router.navigate([
-                            '/card',
-                            res.cardId,
-                            'preview',
-                          ]),
-                      },
-                    });
+                    this.popupService.alert(
+                      '카드가 저장되었어요! \n확인하고 친구에게 공유하러 가볼까요?',
+                      {
+                        confirm: {
+                          text: '보러갈래요',
+                          fn: () =>
+                            this.router.navigate([
+                              '/card',
+                              res.cardId,
+                              'preview',
+                            ]),
+                        },
+                      }
+                    );
                   }
 
                   return EMPTY;

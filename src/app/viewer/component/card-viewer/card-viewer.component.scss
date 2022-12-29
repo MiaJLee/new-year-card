@@ -104,6 +104,11 @@
 @include mobile {
   .font-h1-kr {
     margin: 0 0 -4px 0;
+    font-size: 20px;
+  }
+
+  .font-h1 {
+    font-size: 25px;
   }
 
   .envelop {

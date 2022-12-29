@@ -50,7 +50,7 @@ export const EDITOR_TITLE: Title = {
   },
 };
 
-export const MAX_LENGTH = 300;
+export const MAX_LENGTH = 500;
 
 export const MUSICS: Array<Music> = [
   {

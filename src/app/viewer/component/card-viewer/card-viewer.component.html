@@ -3,10 +3,20 @@
   <ng-container *ngIf="!isNewYear; else year2023">
     <div class="card-container">
       <div class="title font-white">
-        <h1 class="font-h1-kr">{{ card.sender }}님이 보낸 새해 편지</h1>
-        <h1 class="font-h1">
-          New year's music & letter <br />from {{ card.sender }}
+        <h1 class="font-h1-kr">
+          {{ card.sender }}님이 {{ card.receiver }}님께 보내는 새해 편지
         </h1>
+        <h1 class="font-h1">
+          New year's music & letter <br />from {{ card.sender }} to
+          {{ card.receiver }}
+        </h1>
+        <p
+          *ngIf="isPreview"
+          style="margin-top: 20px"
+          class="font-desc font-white"
+        >
+          아래 버튼을 눌러 친구에게 공유해주세요!
+        </p>
       </div>
       <div class="envelop" (click)="openCard()">
         <p class="font-desc font-white">
