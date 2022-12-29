@@ -74,7 +74,7 @@
                   </div>
 
                   <p
-                    [innerHtml]="cardContent.text | newlineToBr"
+                    [innerHtml]="cardContent.text | newlineToBr | safe: 'html'"
                     class="font-card"
                   ></p>
                   <div class="input-from">

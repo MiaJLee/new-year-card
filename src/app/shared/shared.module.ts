@@ -7,6 +7,7 @@ import { BgCanvasComponent } from './component/bg-canvas/bg-canvas.component';
 import { NgParticlesModule } from 'ng-particles';
 import { CardObjectComponent } from './component/card-object/card-object.component';
 import { LoadingScreenComponent } from './component/loading-screen/loading-screen.component';
+import { SafePipe } from './services/safe.pipe';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { LoadingScreenComponent } from './component/loading-screen/loading-scree
     BgCanvasComponent,
     CardObjectComponent,
     LoadingScreenComponent,
+    SafePipe,
   ],
   exports: [
     NewlineToBrPipe,
@@ -22,6 +24,7 @@ import { LoadingScreenComponent } from './component/loading-screen/loading-scree
     BgCanvasComponent,
     CardObjectComponent,
     LoadingScreenComponent,
+    SafePipe,
   ],
   imports: [CommonModule, YouTubePlayerModule, NgParticlesModule],
 })
