@@ -8,6 +8,7 @@ import { NgParticlesModule } from 'ng-particles';
 import { CardObjectComponent } from './component/card-object/card-object.component';
 import { LoadingScreenComponent } from './component/loading-screen/loading-screen.component';
 import { SafePipe } from './services/safe.pipe';
+import { TextViewerComponent } from './component/text-viewer/text-viewer.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { SafePipe } from './services/safe.pipe';
     CardObjectComponent,
     LoadingScreenComponent,
     SafePipe,
+    TextViewerComponent,
   ],
   exports: [
     NewlineToBrPipe,
@@ -25,6 +27,7 @@ import { SafePipe } from './services/safe.pipe';
     CardObjectComponent,
     LoadingScreenComponent,
     SafePipe,
+    TextViewerComponent,
   ],
   imports: [CommonModule, YouTubePlayerModule, NgParticlesModule],
 })

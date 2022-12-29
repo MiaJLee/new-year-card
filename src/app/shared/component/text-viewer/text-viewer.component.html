@@ -1,0 +1,15 @@
+<div class="text-preview">
+  <div class="input-to">
+    <span class="font-sub">to. </span
+    ><span class="font-card">{{ receiver }}</span>
+  </div>
+  <p [innerHtml]="text | newlineToBr | safe : 'html'" class="font-card"></p>
+  <div class="input-from">
+    <span class="font-sub">from. </span
+    ><span class="font-card">{{ sender }}</span>
+  </div>
+
+  <div class="inform-music" *ngIf="music">
+    {{ music.name }} - {{ music.artist }}
+  </div>
+</div>
