@@ -10,25 +10,25 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormLetteringComponent } from './component/form-lettering/form-lettering.component';
 
 @NgModule({
-  declarations: [
-    EditorComponent,
-    FormCardShapeComponent,
-    FormCardBgComponent,
-    FormMusicPlaylistComponent,
-    FormLetteringComponent,
-  ],
-  exports: [
-    EditorComponent,
-    FormCardShapeComponent,
-    FormCardBgComponent,
-    FormMusicPlaylistComponent,
-  ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    PopupModule,
-    FormsModule,
-    ReactiveFormsModule,
-  ],
+	declarations: [
+		EditorComponent,
+		FormCardShapeComponent,
+		FormCardBgComponent,
+		FormMusicPlaylistComponent,
+		FormLetteringComponent,
+	],
+	exports: [
+		EditorComponent,
+		FormCardShapeComponent,
+		FormCardBgComponent,
+		FormMusicPlaylistComponent,
+	],
+	imports: [
+		CommonModule,
+		SharedModule,
+		PopupModule,
+		FormsModule,
+		ReactiveFormsModule,
+	],
 })
 export class EditorModule {}

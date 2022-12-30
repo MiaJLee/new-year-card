@@ -4,7 +4,7 @@ import { CardViewerComponent } from './component/card-viewer/card-viewer.compone
 import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-  declarations: [CardViewerComponent],
-  imports: [CommonModule, SharedModule],
+	declarations: [CardViewerComponent],
+	imports: [CommonModule, SharedModule],
 })
 export class ViewerModule {}

@@ -15,13 +15,9 @@ export type Title = {
 };
 
 export type Card = 'bunnya' | 'bunnyb' | 'bunnyc' | 'cloud' | 'heart' | 'oval';
-
 export type Lettering = 'default' | 'happyNewYear' | 'saeHaeBok';
-
 export type Background = 'white' | 'orange' | 'black' | 'gradient' | 'checker';
-
 export type Effect = 'none' | 'snow' | 'circles' | 'confetti' | 'kirakira';
-
 export type Popup = 'none' | 'alert' | 'confirm' | 'link';
 
 export interface Music {

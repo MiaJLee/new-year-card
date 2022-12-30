@@ -11,24 +11,24 @@ import { SafePipe } from './services/safe.pipe';
 import { TextViewerComponent } from './component/text-viewer/text-viewer.component';
 
 @NgModule({
-  declarations: [
-    NewlineToBrPipe,
-    YoutubePlayerComponent,
-    BgCanvasComponent,
-    CardObjectComponent,
-    LoadingScreenComponent,
-    SafePipe,
-    TextViewerComponent,
-  ],
-  exports: [
-    NewlineToBrPipe,
-    YoutubePlayerComponent,
-    BgCanvasComponent,
-    CardObjectComponent,
-    LoadingScreenComponent,
-    SafePipe,
-    TextViewerComponent,
-  ],
-  imports: [CommonModule, YouTubePlayerModule, NgParticlesModule],
+	declarations: [
+		NewlineToBrPipe,
+		YoutubePlayerComponent,
+		BgCanvasComponent,
+		CardObjectComponent,
+		LoadingScreenComponent,
+		SafePipe,
+		TextViewerComponent,
+	],
+	exports: [
+		NewlineToBrPipe,
+		YoutubePlayerComponent,
+		BgCanvasComponent,
+		CardObjectComponent,
+		LoadingScreenComponent,
+		SafePipe,
+		TextViewerComponent,
+	],
+	imports: [CommonModule, YouTubePlayerModule, NgParticlesModule],
 })
 export class SharedModule {}

@@ -65,17 +65,3 @@ h3 {
     font-size: 11px;
   }
 }
-
-@include tablet {
-  .media-query {
-    width: 200px;
-    background-color: green;
-  }
-}
-
-@include desktop {
-  .media-query {
-    width: 300px;
-    background-color: blue;
-  }
-}

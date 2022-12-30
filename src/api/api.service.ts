@@ -9,20 +9,20 @@ const api = 'https://black-bunny-card.herokuapp.com';
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {
-  constructor(protected http: HttpClient) {}
+	constructor(protected http: HttpClient) {}
 
-  postCard(body: Models.postCardReq): Observable<Models.postCardRes> {
-    return this.http.request<Models.postCardRes>('post', `${api}/card`, {
-      body,
-    });
-  }
+	postCard(body: Models.postCardReq): Observable<Models.postCardRes> {
+		return this.http.request<Models.postCardRes>('post', `${api}/card`, {
+			body,
+		});
+	}
 
-  getCard(
-    id: string | number
-  ): Observable<{ message: string; result: Models.getCardRes }> {
-    return this.http.request<{ message: string; result: Models.getCardRes }>(
-      'get',
-      `${api}/card/${id}`
-    );
-  }
+	getCard(
+		id: string | number
+	): Observable<{ message: string; result: Models.getCardRes }> {
+		return this.http.request<{ message: string; result: Models.getCardRes }>(
+			'get',
+			`${api}/card/${id}`
+		);
+	}
 }

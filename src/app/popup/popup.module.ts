@@ -4,8 +4,8 @@ import { PopupComponent } from './popup/popup.component';
 import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-  declarations: [PopupComponent],
-  exports: [PopupComponent],
-  imports: [CommonModule, SharedModule],
+	declarations: [PopupComponent],
+	exports: [PopupComponent],
+	imports: [CommonModule, SharedModule],
 })
 export class PopupModule {}

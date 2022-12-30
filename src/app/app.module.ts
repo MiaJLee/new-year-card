@@ -13,23 +13,23 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { LoadingScreenInterceptor } from './shared/services/loading.interceptor';
 
 @NgModule({
-  declarations: [AppComponent, LandingComponent, NotFoundComponent],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    PopupModule,
-    SharedModule,
-    EditorModule,
-    ViewerModule,
-    HttpClientModule,
-  ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: LoadingScreenInterceptor,
-      multi: true,
-    },
-  ],
-  bootstrap: [AppComponent],
+	declarations: [AppComponent, LandingComponent, NotFoundComponent],
+	imports: [
+		BrowserModule,
+		AppRoutingModule,
+		PopupModule,
+		SharedModule,
+		EditorModule,
+		ViewerModule,
+		HttpClientModule,
+	],
+	providers: [
+		{
+			provide: HTTP_INTERCEPTORS,
+			useClass: LoadingScreenInterceptor,
+			multi: true,
+		},
+	],
+	bootstrap: [AppComponent],
 })
 export class AppModule {}

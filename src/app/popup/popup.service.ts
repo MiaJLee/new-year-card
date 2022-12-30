@@ -3,60 +3,60 @@ import { Observable, of } from 'rxjs';
 import { PopupOption, Popup } from '../app.models';
 
 @Injectable({
-  providedIn: 'root',
+	providedIn: 'root',
 })
 export class PopupService {
-  openPopup: EventEmitter<boolean> = new EventEmitter();
+	openPopup: EventEmitter<boolean> = new EventEmitter();
 
-  private _popupType: Popup = 'none';
-  private _content?: string;
-  private _option: PopupOption = {};
+	private _popupType: Popup = 'none';
+	private _content?: string;
+	private _option: PopupOption = {};
 
-  constructor() {}
+	constructor() {}
 
-  isOpen(): boolean {
-    return this._popupType !== 'none';
-  }
+	isOpen(): boolean {
+		return this._popupType !== 'none';
+	}
 
-  getPopup(): Observable<{
+	getPopup(): Observable<{
     content: string;
     option: PopupOption;
     type: Popup;
   }> {
-    return of({
-      content: this._content ?? '테스트 메세지 입니다.',
-      option: this._option,
-      type: this._popupType,
-    });
-  }
+		return of({
+			content: this._content ?? '테스트 메세지 입니다.',
+			option: this._option,
+			type: this._popupType,
+		});
+	}
 
-  alert(content: string, option?: PopupOption): void {
-    this._popupType = 'alert';
-    this._setPopup(content, option);
-  }
+	alert(content: string, option?: PopupOption): void {
+		this._popupType = 'alert';
+		this._setPopup(content, option);
+	}
 
-  confirm(content: string, option?: PopupOption): void {
-    this._popupType = 'confirm';
-    this._setPopup(content, option);
-  }
+	confirm(content: string, option?: PopupOption): void {
+		this._popupType = 'confirm';
+		this._setPopup(content, option);
+	}
 
-  custom(type: Popup, option?: PopupOption): void {
-    this._popupType = type;
-    this._setPopup(undefined, option);
-  }
+	custom(type: Popup, option?: PopupOption): void {
+		this._popupType = type;
+		this._setPopup(undefined, option);
+	}
 
-  close(): void {
-    this._popupType = 'none';
-    this._setPopup(undefined, {});
-  }
+	close(): void {
+		this._popupType = 'none';
+		this._setPopup(undefined, {});
+	}
 
-  private _setPopup(content?: string, option?: PopupOption): void {
-    this._content = content;
+	private _setPopup(content?: string, option?: PopupOption): void {
+		this._content = content;
 
-    if (option) {
-      this._option = option;
-    }
+		if (option) {
+			this._option = option;
+		}
 
-    this.openPopup.emit(this.isOpen());
-  }
+		this.openPopup.emit(this.isOpen());
+	}
 }
