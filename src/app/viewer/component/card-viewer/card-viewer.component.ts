@@ -67,11 +67,11 @@ export class CardViewerComponent {
           }
 
           // @TODO 배포전 반드시 삭ㅈㅔ!!!!!!!!!
-          this.isNewYear = true;
+          // this.isNewYear = true;
 
           this.card = res.result;
           // @TODO 배포전 반드시 삭ㅈㅔ!!!!!!!!!
-          this.card = MOCK_CARD;
+          // this.card = MOCK_CARD;
         });
     }
 
