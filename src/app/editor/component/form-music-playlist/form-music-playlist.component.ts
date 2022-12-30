@@ -53,21 +53,14 @@ export class FormMusicPlaylistComponent {
 
   playMusic(music: any): void {
   	if (!this.showAlert) {
-  		this.popupService.confirm(
-  			`이 음악을 들어보시겠어요? ${
-  				isMobile()
-  					? '모바일에서는 나타나는 플레이어의의 재생 버튼을 한번 더 눌러주셔야 해요.'
-  					: ''
-  			}`,
-  			{
-  				confirm: {
-  					fn: () => {
-  						this.showAlert = true;
-  						this.initYoutubePlayer(music.id);
-  					},
+  		this.popupService.confirm('이 음악을 들어보시겠어요?', {
+  			confirm: {
+  				fn: () => {
+  					this.showAlert = true;
+  					this.initYoutubePlayer(music.id);
   				},
-  			}
-  		);
+  			},
+  		});
 
   		return;
   	}
