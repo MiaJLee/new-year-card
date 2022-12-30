@@ -1,7 +1,7 @@
 <ng-container *ngIf="videoId">
   <youtube-player
-    [height]="200"
-    [width]="200"
+    [height]="isMobile ? 140 : 200"
+    [width]="isMobile ? 140 : 200"
     videoId="{{ videoId }}"
     [playerVars]="{ autoplay: 1, controls: 0, color: 'white' }"
   ></youtube-player>
