@@ -9,26 +9,29 @@ import { CardObjectComponent } from './component/card-object/card-object.compone
 import { LoadingScreenComponent } from './component/loading-screen/loading-screen.component';
 import { SafePipe } from './services/safe.pipe';
 import { TextViewerComponent } from './component/text-viewer/text-viewer.component';
+import { CountdownTimerComponent } from './component/countdown-timer/countdown-timer.component';
 
 @NgModule({
-	declarations: [
-		NewlineToBrPipe,
-		YoutubePlayerComponent,
-		BgCanvasComponent,
-		CardObjectComponent,
-		LoadingScreenComponent,
-		SafePipe,
-		TextViewerComponent,
-	],
-	exports: [
-		NewlineToBrPipe,
-		YoutubePlayerComponent,
-		BgCanvasComponent,
-		CardObjectComponent,
-		LoadingScreenComponent,
-		SafePipe,
-		TextViewerComponent,
-	],
-	imports: [CommonModule, YouTubePlayerModule, NgParticlesModule],
+  declarations: [
+    NewlineToBrPipe,
+    YoutubePlayerComponent,
+    BgCanvasComponent,
+    CardObjectComponent,
+    LoadingScreenComponent,
+    SafePipe,
+    TextViewerComponent,
+    CountdownTimerComponent,
+  ],
+  exports: [
+    NewlineToBrPipe,
+    YoutubePlayerComponent,
+    BgCanvasComponent,
+    CardObjectComponent,
+    LoadingScreenComponent,
+    SafePipe,
+    TextViewerComponent,
+    CountdownTimerComponent,
+  ],
+  imports: [CommonModule, YouTubePlayerModule, NgParticlesModule],
 })
 export class SharedModule {}

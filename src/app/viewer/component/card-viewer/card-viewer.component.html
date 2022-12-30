@@ -1,59 +1,130 @@
 <ng-container *ngIf="card">
-  <!-- [workaround] 아직 2022년인 경우 -->
-  <ng-container *ngIf="!isNewYear; else year2023">
-    <div class="card-container">
-      <div class="title font-white">
+  <div class="card-container">
+    <!-- title 분기 처리 시작 -->
+    <div
+      class="title font-white"
+      [class.font-white]="
+        cardStatus !== 'opened' || card.background !== 'white'
+      "
+    >
+      <ng-container *ngIf="cardStatus !== 'opened'">
         <h1 class="font-h1-kr">
           {{ card.sender }}님이 {{ card.receiver }}님께 보내는 새해 편지
         </h1>
-        <h1 class="font-h1">
-          New year's music & letter <br />from {{ card.sender }} to
-          {{ card.receiver }}
-        </h1>
-        <p
-          *ngIf="isPreview"
-          style="margin-top: 20px"
-          class="font-desc font-white"
-        >
-          아래 버튼을 눌러 친구에게 공유해주세요!
-        </p>
-      </div>
-      <div class="envelop" (click)="openCard()">
-        <p class="font-desc font-white">
-          2023년 1월 1일 자정에 확인할 수 있어요!
-        </p>
-      </div>
-      <div class="button-container-right">
-        <button (click)="tryAgain()" class="button-default">
-          {{ isPreview ? "하나 더 만들기" : "나도 만들기" }}
-        </button>
-        <button *ngIf="isPreview" (click)="shareCard()" class="button-default">
-          편지 보내기
-        </button>
-      </div>
+        <h1 class="font-h1">New year's music & letter</h1>
+
+        <countdown-timer></countdown-timer>
+      </ng-container>
+      <ng-container *ngIf="cardStatus === 'opened'">
+        <h1 class="font-h1">Happy New Year!</h1>
+        <h1 class="font-h1-kr">새해 복 많이 받으세요!</h1>
+      </ng-container>
     </div>
-    <bg-canvas color="black" effect="none"></bg-canvas>
-  </ng-container>
-  <ng-template #year2023>
-    <div class="card-container">
-      <div class="flip-card selected-motion flipped-hover">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <img
-              *ngIf="card.shape"
-              class="preview"
-              src="../../assets/card_{{ card.shape }}.svg"
-            />
-          </div>
-          <!-- @TODO: 프리뷰 버전 편지 적용하기 (뒤집힌 카드에) -->
-          <div class="flip-card-back">
-            <span>to. {{ card.receiver }}</span>
-            <p>{{ card.text }}</p>
-            <span>from. {{ card.sender }}</span>
+    <!-- title 분기 처리 끝 -->
+
+    <!-- 카드 분기 처리 시작 -->
+    <ng-container *ngIf="cardStatus !== 'opened'; else cardOpened">
+      <div
+        *ngIf="cardStatus === 'enveloped'"
+        class="envelop"
+        (click)="openCard()"
+      ></div>
+      <object
+        *ngIf="cardStatus === 'opening'"
+        class="envelop-opening"
+        (click)="openCard()"
+        data="./assets/envelop/envelop-motion.svg"
+        height="400px"
+        width="400px"
+      ></object>
+    </ng-container>
+
+    <ng-template #cardOpened>
+      <div *ngIf="card" class="preview-container" (click)="onToggleFlip()">
+        <div
+          class="flip-card selected-motion"
+          [class.active-preview]="isActiveFlip"
+          [ngClass]="card.shape"
+        >
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <div class="preview">
+                <card-object
+                  [cardType]="card.shape"
+                  [lettering]="card.lettering"
+                ></card-object>
+              </div>
+            </div>
+            <div class="flip-card-back">
+              <div class="preview">
+                <card-object
+                  [cardType]="card.shape"
+                  [lettering]="'flipped'"
+                ></card-object>
+                <text-viewer
+                  [receiver]="card.receiver"
+                  [sender]="card.sender"
+                  [text]="card.text"
+                  [music]="selectedMusic"
+                ></text-viewer>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+    </ng-template>
+    <!-- 카드 분기 처리 끝 -->
+
+    <div class="button-container-right">
+      <button
+        *ngIf="!isPreview && cardStatus === 'opened'"
+        class="button-default"
+      >
+        카드 저장하기
+      </button>
+      <button (click)="tryAgain()" class="button-default">
+        {{ isPreview ? "하나 더 만들기" : "나도 카드 만들기" }}
+      </button>
+      <button *ngIf="isPreview" (click)="shareCard()" class="button-default">
+        편지 보내기
+      </button>
+
+      <p
+        *ngIf="cardStatus === 'opened' && !isActiveFlip"
+        class="font-desc font-white font-desc2"
+      >
+        카드를 {{ isMobile ? "탭" : "클릭" }}하여
+        {{ isPreview ? "" : "받은" }} 편지와 음악을 확인하세요
+      </p>
+      <p
+        *ngIf="cardStatus !== 'opened'"
+        class="font-desc font-white font-desc2"
+      >
+        {{
+          isPreview
+            ? "편지 보내기 버튼을 눌러 받는 분께 공유해주세요!"
+            : isNewYear
+            ? "카드를 탭하여 열어보세요!"
+            : ""
+        }}
+      </p>
     </div>
-    <bg-canvas [color]="card.background" [effect]="card.effect"></bg-canvas>
-  </ng-template>
+  </div>
+
+  <ng-container *ngIf="isActiveFlip">
+    <div *ngIf="selectedMusic" class="player-ui">
+      <div (click)="onToggleFlip()"></div>
+    </div>
+    <div id="player" class="playing-motion">
+      <app-youtube-player
+        *ngIf="selectedMusic"
+        [musicId]="selectedMusic.id"
+      ></app-youtube-player>
+    </div>
+  </ng-container>
+
+  <bg-canvas
+    [color]="!isNewYear || cardStatus !== 'opened' ? 'black' : card.background"
+    [effect]="!isNewYear || cardStatus !== 'opened' ? 'none' : card.effect"
+  ></bg-canvas>
 </ng-container>

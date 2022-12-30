@@ -1,6 +1,8 @@
 <ng-container *ngIf="currentStep$ | async as currentStep">
+  <!-- 폼 시작 -->
   <form [formGroup]="form">
     <div class="editor-container">
+      <!-- 타이틀 -->
       <div
         class="title"
         [class.font-white]="
@@ -15,11 +17,11 @@
         ></div>
         <h1 class="font-h1-kr">{{ title[currentStep].kr }}</h1>
         <h1 class="font-h1">{{ title[currentStep].en }}</h1>
-        <p *ngIf="currentStep === step.Preview" class="font-desc font-white">
+        <p *ngIf="currentStep === step.Preview" class="font-desc">
           카드를 탭하면 편지내용을 볼 수 있어요!
         </p>
       </div>
-
+      <!-- 카드 뷰어 -->
       <div *ngIf="cardShape" class="preview-container" (click)="onToggleFlip()">
         <div
           class="flip-card selected-motion"
@@ -36,6 +38,7 @@
                 ></card-object>
               </div>
             </div>
+            <!-- 편지 입력창 -->
             <div class="flip-card-back">
               <div class="preview">
                 <card-object
@@ -66,32 +69,22 @@
                     />
                   </div>
                 </div>
-                <!-- @TODO: 프리뷰 버전 편지 적용하기 (뒤집힌 카드에) -->
-                <div *ngIf="currentStep === step.Preview" class="text-preview">
-                  <div class="input-to">
-                    <span class="font-sub">to. </span
-                    ><span class="font-card">{{ cardContent.receiver }}</span>
-                  </div>
-
-                  <p
-                    [innerHtml]="cardContent.text | newlineToBr | safe: 'html'"
-                    class="font-card"
-                  ></p>
-                  <div class="input-from">
-                    <span class="font-sub">from. </span
-                    ><span class="font-card">{{ cardContent.sender }}</span>
-                  </div>
-
-                  <div class="inform-music" *ngIf="selectedMusic">
-                    {{ selectedMusic.name }} - {{ selectedMusic.artist }}
-                  </div>
-                </div>
+                <text-viewer
+                  *ngIf="currentStep === step.Preview"
+                  [receiver]="cardContent.receiver"
+                  [sender]="cardContent.sender"
+                  [text]="cardContent.text"
+                  [music]="selectedMusic"
+                ></text-viewer>
               </div>
             </div>
+            <!-- 편지 입력창 끝 -->
           </div>
         </div>
       </div>
+      <!-- 카드 뷰어 끝 -->
 
+      <!-- 에디터 버튼 -->
       <div class="editor-controls">
         <ng-container [ngSwitch]="currentStep">
           <ng-container *ngSwitchCase="step.Card">
@@ -111,6 +104,7 @@
         </ng-container>
       </div>
 
+      <!-- 페이지 이동 버튼 -->
       <div class="button-container">
         <button class="button-default" (click)="onClickPrev()">
           {{ currentStep === step.Card ? "첫 화면으로" : "이전 단계" }}
@@ -130,23 +124,26 @@
         </ng-template>
       </div>
     </div>
+
+    <!-- 배경화면 미리보기 -->
+    <bg-canvas
+      *ngIf="currentStep === step.Background || currentStep === step.Preview"
+      [color]="bgColor"
+      [effect]="bgEffect"
+    ></bg-canvas>
+
+    <!-- 음악 미리듣기 -->
+    <ng-container *ngIf="currentStep === step.Preview && isActiveFlip">
+      <div *ngIf="musicId" class="player-ui">
+        <div (click)="onToggleFlip()"></div>
+      </div>
+      <div id="player" class="playing-motion">
+        <app-youtube-player
+          *ngIf="musicId"
+          [musicId]="musicId"
+        ></app-youtube-player>
+      </div>
+    </ng-container>
   </form>
-
-  <bg-canvas
-    *ngIf="currentStep === step.Background || currentStep === step.Preview"
-    [color]="bgColor"
-    [effect]="bgEffect"
-  ></bg-canvas>
-
-  <ng-container *ngIf="currentStep === step.Preview && isActiveFlip">
-    <div *ngIf="musicId" class="player-ui">
-      <div (click)="onToggleFlip()"></div>
-    </div>
-    <div id="player" class="playing-motion">
-      <app-youtube-player
-        *ngIf="musicId"
-        [musicId]="musicId"
-      ></app-youtube-player>
-    </div>
-  </ng-container>
+  <!-- 폼 끝 -->
 </ng-container>

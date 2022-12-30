@@ -61,10 +61,9 @@ export class BgCanvasComponent {
   		.map((_, i) => i);
   }
 
-  particlesLoaded(_container: any): void {}
+  particlesLoaded(_: unknown): void {}
 
   async particlesInit(engine: any): Promise<void> {
-
   	// Starting from 1.19.0 you can add custom presets or shape here, using the current tsParticles instance (main)
   	// this loads the tsparticles package bundle, it's the easiest method for getting everything ready
   	// starting from v2 you can add only the features you need reducing the bundle size

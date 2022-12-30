@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { PopupService } from '../popup/popup.service';
+import { Component } from '@angular/core';
 
 @Component({
 	selector: 'app-landing',

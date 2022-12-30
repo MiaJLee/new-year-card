@@ -14,12 +14,12 @@
   top: 0;
   left: 0;
   overflow: hidden;
-  background: #ffffff;
+  background: $color-white;
   z-index: -1;
 
   &.black {
     background: radial-gradient(ellipse at bottom, #333 0%, #1b1b1b 100%);
-    filter: drop-shadow(0 0 10px white);
+    filter: drop-shadow(0 0 10px $color-white);
   }
 
   &.orange {

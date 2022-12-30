@@ -212,6 +212,7 @@ button {
   .button-container {
     bottom: 0;
     width: 100vw;
+    border-top: 1px solid $color-black;
   }
 
   .button-container-right {
@@ -222,9 +223,13 @@ button {
     button {
       border: none;
 
-      &:nth-child(1) {
-        border-right: 1px solid $color-black;
+      &:nth-child(2) {
+        border-left: 1px solid $color-black;
       }
+    }
+
+    .button-default {
+      border: none;
     }
   }
 
@@ -240,8 +245,8 @@ button {
 
   #player {
     position: fixed;
-    width: 150px;
-    height: 150px;
+    width: 140px;
+    height: 140px;
     top: 20px;
     right: 20px;
     border-radius: 100%;

@@ -1,5 +1,9 @@
 @import "src/styles";
 
+:host ::ng-deep .active-preview .text-preview {
+  opacity: 1;
+}
+
 .editor-container {
   width: 100vw;
   height: 100vh;
@@ -193,63 +197,6 @@
   }
 }
 
-.text-preview {
-  @extend .text-editor;
-  left: calc(50% - 170px);
-  top: calc(50% - 200px);
-  padding: 20px 20px 30px;
-  background: rgba(255, 255, 255, 0.375);
-  box-shadow: 0 0.75rem 2rem 0 rgba(0, 0, 0, 0.1);
-  border-radius: 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.125);
-
-  p {
-    width: 300px;
-    height: 350px;
-    display: inline-block;
-    overflow-y: scroll;
-    pointer-events: all;
-    text-align: start;
-
-    &::-webkit-scrollbar {
-      display: none;
-    }
-  }
-
-  .inform-music {
-    position: absolute;
-    bottom: 7px;
-    right: 20px;
-    font-size: 13px;
-
-    &:before {
-      content: "";
-      background-image: url("/assets/icon-note.png");
-      background-size: 15px 15px;
-      width: 15px;
-      height: 15px;
-      display: inline-block;
-    }
-  }
-
-  .font-sub {
-    font-size: 25px;
-  }
-
-  .font-card {
-    font-size: 18px;
-    line-height: 1.3;
-    font-family: "Noto Sans KR";
-  }
-
-  opacity: 0;
-  transition: opacity 0.5s 1s ease-in-out;
-}
-
-.active-preview .text-preview {
-  opacity: 1;
-}
-
 .editor-controls {
   width: 100%;
   position: fixed;
@@ -265,6 +212,12 @@
 
     .font-h1-kr {
       margin: 0 0 -10px 0;
+    }
+  }
+
+  .button-container {
+    button {
+      border: none;
     }
   }
 
@@ -302,14 +255,6 @@
     padding-top: 40px;
   }
 
-  // .preview-container {
-  //   padding-bottom: 120px;
-  //   min-width: 1000px;
-  //   display: flex;
-  //   justify-content: center;
-  //   flex-direction: column;
-  // }
-
   .title {
     .info-icon {
       left: 15px;
@@ -317,14 +262,6 @@
       height: 18px;
     }
   }
-
-  // .preview {
-  //   height: 600px;
-  //   background-repeat: no-repeat;
-  //   background-size: auto 100%;
-  //   position: relative;
-  //   pointer-events: none;
-  // }
 
   /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
   .flip-card {
@@ -345,30 +282,4 @@
       height: 200px;
     }
   }
-
-  .text-preview {
-    top: calc(50% - 150px);
-    left: calc(50% - 145px);
-
-    p {
-      width: 250px;
-      height: 200px;
-      display: inline-block;
-      overflow-y: scroll;
-    }
-
-    .font-sub {
-      font-size: 25px;
-    }
-
-    .font-card {
-      font-size: 15px;
-    }
-  }
-}
-
-@include tablet {
-}
-
-@include desktop {
 }

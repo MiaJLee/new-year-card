@@ -9,24 +9,24 @@ import { Music } from '../../../app.models';
 
 @UntilDestroy()
 @Component({
-	selector: 'form-music-playlist',
-	templateUrl: './form-music-playlist.component.html',
-	styleUrls: ['./form-music-playlist.component.scss'],
+  selector: 'form-music-playlist',
+  templateUrl: './form-music-playlist.component.html',
+  styleUrls: ['./form-music-playlist.component.scss'],
 })
 export class FormMusicPlaylistComponent {
   @Input() controlName = '';
   readonly musics: Music[] = MUSICS.sort((a, b) =>
-  	a.name.localeCompare(b.name)
+    a.name.localeCompare(b.name)
   );
 
   get selectedId(): number | undefined {
-  	const selectedId = this.ctrl.value;
+    const selectedId = this.ctrl.value;
 
-  	if (!isNil(selectedId) && !isEmpty(selectedId)) {
-  		return parseInt(selectedId);
-  	}
+    if (!isNil(selectedId) && !isEmpty(selectedId)) {
+      return parseInt(selectedId);
+    }
 
-  	return;
+    return;
   }
 
   playingMusic?: number;
@@ -34,50 +34,55 @@ export class FormMusicPlaylistComponent {
   showAlert = false;
 
   get isMobileView(): boolean {
-  	return isMobile();
+    return isMobile();
   }
 
   constructor(
     private rootFormGroup: FormGroupDirective,
     private popupService: PopupService
   ) {
-  	this.ctrl.setValue(this.rootFormGroup.control.value.musicId);
-  	this.ctrl.valueChanges.pipe(untilDestroyed(this)).subscribe((v) => {
-  		this.rootFormGroup.control.get(this.controlName)?.setValue(v);
-  	});
+    this.ctrl.setValue(this.rootFormGroup.control.value.musicId);
+    this.ctrl.valueChanges.pipe(untilDestroyed(this)).subscribe((v) => {
+      this.rootFormGroup.control.get(this.controlName)?.setValue(v);
+    });
   }
 
   selectMusic(music: any): void {
-  	this.ctrl.setValue(music.id);
+    this.ctrl.setValue(music.id);
   }
 
   playMusic(music: any): void {
-  	if (!this.showAlert) {
-  		this.popupService.confirm('이 음악을 들어보시겠어요?', {
-  			confirm: {
-  				fn: () => {
-  					this.showAlert = true;
-  					this.initYoutubePlayer(music.id);
-  				},
-  			},
-  		});
+    if (!this.showAlert) {
+      this.popupService.confirm(
+        `이 음악을 들어보시겠어요? ${
+          isMobile() ? '\n나타나는 플레이어의 재생버튼을 탭해주세요.' : ''
+        }`,
+        {
+          confirm: {
+            fn: () => {
+              this.showAlert = true;
+              this.initYoutubePlayer(music.id);
+            },
+          },
+        }
+      );
 
-  		return;
-  	}
+      return;
+    }
 
-  	this.initYoutubePlayer(music.id);
+    this.initYoutubePlayer(music.id);
   }
 
   onClose() {
-  	this.playingMusic = undefined;
+    this.playingMusic = undefined;
   }
 
   private initYoutubePlayer(musicId: number): void {
-  	this.playingMusic = undefined;
+    this.playingMusic = undefined;
 
-  	// [workaround] youtube-player를 DOM에서 삭제 후 새로 그리기 위함.
-  	setTimeout(() => {
-  		this.playingMusic = musicId;
-  	}, 10);
+    // [workaround] youtube-player를 DOM에서 삭제 후 새로 그리기 위함.
+    setTimeout(() => {
+      this.playingMusic = musicId;
+    }, 10);
   }
 }
