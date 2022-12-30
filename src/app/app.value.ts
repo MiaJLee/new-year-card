@@ -218,7 +218,7 @@ export const MUSICS: Array<Music> = [
 	},
 	{
 		id: 16,
-		name: 'Get Lucky (feat. Pharrell Williams & Nile Rodgers)',
+		name: 'Get Lucky',
 		artist: 'Daft Punk',
 		spotifyLink: 'https://open.spotify.com/track/69kOkLUCkxIZYexIgSG8rq',
 		image: 'https://i.scdn.co/image/ab67616d0000b2739b9b36b0e22870b9f542d937',
