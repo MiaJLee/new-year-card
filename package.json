@@ -7,6 +7,7 @@
     "start": "npm run config -- --environment=dev && ng serve",
     "start-host": "ng serve --host 172.30.1.42",
     "build": "npm run config -- --environment=prod && ng build",
+    "lint": "eslint .",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -41,7 +42,10 @@
     "@angular/compiler-cli": "^15.0.4",
     "@types/jasmine": "~3.6.11",
     "@types/node": "~10.12.0",
+    "@typescript-eslint/eslint-plugin": "^5.47.1",
+    "@typescript-eslint/parser": "^5.47.1",
     "dotenv": "^16.0.3",
+    "eslint": "^8.30.0",
     "jasmine-core": "~3.7.1",
     "karma": "~6.3.20",
     "karma-chrome-launcher": "~3.1.1",
