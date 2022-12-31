@@ -117,10 +117,6 @@ export class CardViewerComponent {
     setTimeout(() => {
       this.cardStatus = 'opened';
     }, 1000);
-
-    // @TODO: animation 카드 오픈
-
-    // this.cardStatus = 'opened';
   }
 
   onToggleFlip(): void {

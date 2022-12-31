@@ -12,8 +12,9 @@
           {{ card.sender }}님이 {{ card.receiver }}님께 보내는 새해 편지
         </h1>
         <h1 class="font-h1">New year's music & letter</h1>
-
-        <countdown-timer></countdown-timer>
+        <ng-container *ngIf="!isNewYear">
+          <countdown-timer></countdown-timer>
+        </ng-container>
       </ng-container>
       <ng-container *ngIf="cardStatus === 'opened'">
         <h1 class="font-h1">Happy New Year!</h1>
@@ -76,12 +77,6 @@
     <!-- 카드 분기 처리 끝 -->
 
     <div class="button-container-right">
-      <button
-        *ngIf="!isPreview && cardStatus === 'opened'"
-        class="button-default"
-      >
-        카드 저장하기
-      </button>
       <button (click)="tryAgain()" class="button-default">
         {{ isPreview ? "하나 더 만들기" : "나도 카드 만들기" }}
       </button>
@@ -93,21 +88,20 @@
         *ngIf="cardStatus === 'opened' && !isActiveFlip"
         class="font-desc font-white font-desc2"
       >
-        카드를 {{ isMobile ? "탭" : "클릭" }}하여
-        {{ isPreview ? "" : "받은" }} 편지와 음악을 확인하세요
+        카드를 {{ isMobile ? "탭" : "클릭" }}하여<br />편지와 음악을 확인하세요
       </p>
       <p
         *ngIf="cardStatus !== 'opened'"
         class="font-desc font-white font-desc2"
-      >
-        {{
-          isPreview
-            ? "편지 보내기 버튼을 눌러 받는 분께 공유해주세요!"
+        [innerHtml]="
+          (isPreview
+            ? '편지 보내기 버튼을 눌러\n받는 분께 공유해주세요!'
             : isNewYear
-            ? "카드를 탭하여 열어보세요!"
-            : ""
-        }}
-      </p>
+            ? '카드를 탭하여 열어보세요!'
+            : ''
+          ) | newlineToBr
+        "
+      ></p>
     </div>
   </div>
 
