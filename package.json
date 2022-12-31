@@ -5,7 +5,7 @@
     "ng": "ng",
     "config": "ts-node ./src/assets/scripts/setEnv.ts",
     "start": "npm run config -- --environment=dev && ng serve",
-    "start-host": "ng serve --host 172.30.1.42",
+    "start-host": "ng serve --host 172.30.1.84",
     "build": "npm run config -- --environment=prod && ng build",
     "lint": "eslint .",
     "watch": "ng build --watch --configuration development",

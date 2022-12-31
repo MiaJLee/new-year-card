@@ -520,7 +520,7 @@ export const MUSICS: Array<Music> = [
   },
   {
     id: 45,
-    name: 'WHATTA LIFE',
+    name: '잘 먹고 잘 사는 법',
     artist: '더블 V(송은이,김숙)',
     spotifyLink: 'https://open.spotify.com/track/7z0823fi7mCXmurq0Dwm6x',
     image: 'https://i.scdn.co/image/ab67616d0000b27355514ba73c9069a1dadbe5ef',
@@ -591,5 +591,85 @@ export const MUSICS: Array<Music> = [
     lyrics: '사랑이란 말 잘 몰라요\n후회를 삼켜봐야 뭐겠어요',
     youtubeLink:
       'https://www.youtube.com/watch?v=AdThTn2iBCs&list=PLMOnBPx_op0Um_NXofYyx26WGAG6ApwZI&index=52&ab_channel=Redoor-Topic',
+  },
+  {
+    id: 52,
+    name: 'Graduation',
+    artist: 'NCT DREAM',
+    spotifyLink: 'https://open.spotify.com/track/35ytd9cmG15jXG0RKWC9p4',
+    image: 'https://i.scdn.co/image/ab67616d0000b27358a75e46b114389a2fe762f6',
+    lyrics: '기억해 이 벅찬 감정,\n손 흔들어 안녕 마지막 인사하고',
+    youtubeLink:
+      'https://www.youtube.com/watch?v=EznbdoHi0Zs&list=PLMOnBPx_op0Um_NXofYyx26WGAG6ApwZI&index=61&ab_channel=NCTDREAM-Topic',
+  },
+  {
+    id: 53,
+    name: 'Beautiful',
+    artist: 'NCT 2021',
+    spotifyLink: 'https://open.spotify.com/track/6NBbpQfD2MZcCNBOy7iE7Q',
+    image: 'https://i.scdn.co/image/ab67616d0000b27335eac2d54ef01359bc752da3',
+    lyrics: '새롭게 시작해요 두려워도 말고\n모든 게 잘 될 테니 걱정하지 마요',
+    youtubeLink:
+      'https://www.youtube.com/watch?v=Eo6d_oHepE0&list=PLMOnBPx_op0Um_NXofYyx26WGAG6ApwZI&index=60&ab_channel=NCTU-Topic',
+  },
+  {
+    id: 54,
+    name: 'The Youngest Day',
+    artist: '김나영',
+    spotifyLink: 'https://open.spotify.com/track/2eV326QQILReuueEekaIcF',
+    image: 'https://i.scdn.co/image/ab67616d0000b273f934782caad37fb95f697bab',
+    lyrics: 'Today is The Youngest Day\n오늘이 가장 젊은 날이야	',
+    youtubeLink:
+      'https://www.youtube.com/watch?v=VqstBfKZ_kk&list=PLMOnBPx_op0Um_NXofYyx26WGAG6ApwZI&index=59&ab_channel=KimNa-young-Topic',
+  },
+  {
+    id: 55,
+    name: 'LO$ER=LO♡ER',
+    artist: 'TOMORROW X TOGETHER',
+    spotifyLink: 'https://open.spotify.com/track/21aOLk12MksET8AsbU0SI6',
+    image: 'https://i.scdn.co/image/ab67616d0000b2735137378ed49327e5dec7406f',
+    lyrics: '눈물은 이제 Goodbye',
+    youtubeLink:
+      'https://www.youtube.com/watch?v=5U3GbdUuAZo&list=PLMOnBPx_op0Um_NXofYyx26WGAG6ApwZI&index=58&ab_channel=TOMORROWXTOGETHER-Topic',
+  },
+  {
+    id: 56,
+    name: '북극성 Never Goodbye',
+    artist: 'NCT DREAM',
+    spotifyLink: 'https://open.spotify.com/track/5EAfUqytXYbH0yUZR3QGli',
+    image: 'https://i.scdn.co/image/ab67616d0000b273c013775f357bb9ad1eb9e1a7',
+    lyrics: '많은 계절을 마주칠 너에게\n이 마음 하날 비춰주려 해',
+    youtubeLink:
+      'https://www.youtube.com/watch?v=Pw3kmK0i-Os&list=PLMOnBPx_op0Um_NXofYyx26WGAG6ApwZI&index=57&ab_channel=NCTDREAM-Topic',
+  },
+  {
+    id: 57,
+    name: '교환일기 (두밧두 와리와리)',
+    artist: 'TOMORROW X TOGETHER',
+    spotifyLink: 'https://open.spotify.com/track/3XoYQvTJK5KT0ynrq7mcCN',
+    image: 'https://i.scdn.co/image/ab67616d0000b2735137378ed49327e5dec7406f',
+    lyrics: '펼쳐질 내일도\n환하게 빛이 날 거야',
+    youtubeLink:
+      'https://www.youtube.com/watch?v=4U1GjRFgDSg&list=PLMOnBPx_op0Um_NXofYyx26WGAG6ApwZI&index=56&ab_channel=TOMORROWXTOGETHER-Topic',
+  },
+  {
+    id: 58,
+    name: '행복했으면 좋겠어',
+    artist: '이상이',
+    spotifyLink: 'https://open.spotify.com/track/4XCTQTJ0yZ76BZZyW8JZTQ',
+    image: 'https://i.scdn.co/image/ab67616d0000b27343ade4ecf56944f40e90819f',
+    lyrics: '난 네가 행복했으면 좋겠어',
+    youtubeLink:
+      'https://www.youtube.com/watch?v=rfuuIirNmsk&list=PLMOnBPx_op0Um_NXofYyx26WGAG6ApwZI&index=54&ab_channel=VariousArtists-Topic',
+  },
+  {
+    id: 59,
+    name: 'Loveable',
+    artist: '조유리',
+    spotifyLink: 'https://open.spotify.com/track/087TC6IfJ8z7fBItvglRRs',
+    image: 'https://i.scdn.co/image/ab67616d0000b27391fea0ad00b58cfe3835bf3d',
+    lyrics: '세상의 눈치 볼 필요 없어\n스스로 빚는 네 맘의 Weather',
+    youtubeLink:
+      'https://www.youtube.com/watch?v=46OZn8cYXCI&list=PLMOnBPx_op0Um_NXofYyx26WGAG6ApwZI&index=55&ab_channel=JOYURI-Topic',
   },
 ];
