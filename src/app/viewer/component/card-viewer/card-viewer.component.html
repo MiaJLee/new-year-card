@@ -12,9 +12,9 @@
           {{ card.sender }}님이 {{ card.receiver }}님께 보내는 새해 편지
         </h1>
         <h1 class="font-h1">New year's music & letter</h1>
-        <ng-container *ngIf="!isNewYear">
+        <!-- <ng-container *ngIf="!isNewYear">
           <countdown-timer></countdown-timer>
-        </ng-container>
+        </ng-container> -->
       </ng-container>
       <ng-container *ngIf="cardStatus === 'opened'">
         <h1 class="font-h1">Happy New Year!</h1>
