@@ -77,6 +77,9 @@
     <!-- 카드 분기 처리 끝 -->
 
     <div class="button-container-right">
+      <button (click)="eventOpen()" *ngIf="!isPreview" class="button-default">
+        이벤트 보기
+      </button>
       <button (click)="tryAgain()" class="button-default">
         {{ isPreview ? "하나 더 만들기" : "나도 카드 만들기" }}
       </button>
