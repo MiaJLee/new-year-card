@@ -672,4 +672,76 @@ export const MUSICS: Array<Music> = [
     youtubeLink:
       'https://www.youtube.com/watch?v=46OZn8cYXCI&list=PLMOnBPx_op0Um_NXofYyx26WGAG6ApwZI&index=55&ab_channel=JOYURI-Topic',
   },
+  {
+    id: 60,
+    name: '행운을 빌어줘',
+    artist: '원필',
+    spotifyLink: 'https://open.spotify.com/track/23vWOqFhwanTnQbf7EASkc',
+    image: 'https://i.scdn.co/image/ab67616d0000b273b5d83bef4a3f0bfcb3b00bf2',
+    lyrics: '아무쪼록 행운을 빌어 줘\n내 앞길에 행복을 빌어 줘',
+    youtubeLink:
+      'https://www.youtube.com/watch?v=hrXCP0xeoA8&list=PLMOnBPx_op0Um_NXofYyx26WGAG6ApwZI&index=62&ab_channel=Wonpil%28DAY6%29-Topic',
+  },
+  {
+    id: 61,
+    name: 'FOREVER 1',
+    artist: '소녀시대',
+    spotifyLink: 'https://open.spotify.com/track/1oen3GpTcA486fTHaT7neg',
+    image: 'https://i.scdn.co/image/ab67616d0000b273aea29200523b1ee4d5b2c035',
+    lyrics: '다시 태어나도 널 사랑할게',
+    youtubeLink:
+      'https://www.youtube.com/watch?v=QiziJ40kTz0&list=PLMOnBPx_op0Um_NXofYyx26WGAG6ApwZI&index=63&ab_channel=Girls%27Generation-Topic',
+  },
+  {
+    id: 62,
+    name: 'With',
+    artist: '김태리, 남주혁, 보나(우주소녀), 최현욱, 이주명',
+    spotifyLink: 'https://open.spotify.com/track/73ZHqY7Ma03NpKiKs26yQU',
+    image: 'https://i.scdn.co/image/ab67616d0000b2735ccb1b40b2081fff238473bb',
+    lyrics:
+      '내 손을 꼭 잡아요\n그리고 서로를 믿어요\n그 누가 뭐라 해도 걱정 말아요\n우리의 길을 가요',
+    youtubeLink:
+      'https://www.youtube.com/watch?v=-pmrMJjUCnI&list=PLMOnBPx_op0Um_NXofYyx26WGAG6ApwZI&index=65&ab_channel=VariousArtists-Topic',
+  },
+  {
+    id: 63,
+    name: '청사진',
+    artist: '스트레이키즈',
+    spotifyLink: 'https://open.spotify.com/track/2JzOF5Ex1BfufuZ6DgvOPe',
+    image: 'https://i.scdn.co/image/ab67616d0000b273fad8c4176e8df7173479f959',
+    lyrics: '난 언제나 청사진 속 꿈을 꾸곤 해\n보란 듯 이뤄내고 말 거라고',
+    youtubeLink:
+      'https://www.youtube.com/watch?v=THkrRwMa_xM&list=PLMOnBPx_op0Um_NXofYyx26WGAG6ApwZI&index=66&ab_channel=StrayKids-Topic',
+  },
+  {
+    id: 64,
+    name: '거침없이',
+    artist: '부석순(세븐틴)',
+    spotifyLink: 'https://open.spotify.com/track/57ITlzpnOMkSE6oHGbvTqi',
+    image: 'https://i.scdn.co/image/ab67616d0000b273a7f9d52b950f0e7d927e04ab',
+    lyrics: '거침없이 난 달려가지',
+    youtubeLink:
+      'https://www.youtube.com/watch?v=f1_0IOzDhq8&list=PLMOnBPx_op0Um_NXofYyx26WGAG6ApwZI&index=64&ab_channel=BSS%28SEVENTEEN%29-Topic',
+  },
+  {
+    id: 65,
+    name: 'STEP',
+    artist: 'KARA',
+    spotifyLink: 'https://open.spotify.com/track/3YxK7NqMCWDpmrQ82Wvx25',
+    image: 'https://i.scdn.co/image/ab67616d0000b2735c35ba8d71af90f12fb5cc08',
+    lyrics: '다시 시작이야\n앞질러 갈래',
+    youtubeLink:
+      'https://www.youtube.com/watch?v=wcHbR--EkGA&list=PLMOnBPx_op0Um_NXofYyx26WGAG6ApwZI&index=67&ab_channel=KARA-Topic',
+  },
+  {
+    id: 66,
+    name: 'Surf',
+    artist: '하이라이트',
+    spotifyLink: 'https://open.spotify.com/track/1bdwAw470DRWXrDP6Ktxk5',
+    image: 'https://i.scdn.co/image/ab67616d0000b2738c87f6100979ad4466ff31ed',
+    lyrics:
+      '이제는 그 어떤 파도들이 우리에게 와도\n휩쓸리지 않도록 지금처럼 파도타자',
+    youtubeLink:
+      'https://www.youtube.com/watch?v=jMeWMz6YEds&list=PLMOnBPx_op0Um_NXofYyx26WGAG6ApwZI&index=68&ab_channel=Highlight-Topic',
+  },
 ];
