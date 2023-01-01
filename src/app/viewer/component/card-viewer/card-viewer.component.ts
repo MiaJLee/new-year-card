@@ -77,6 +77,10 @@ export class CardViewerComponent {
 
     if (location.href.includes('preview')) {
       this.isPreview = true;
+    } else {
+      this.popupService.alert(
+        '1월 21일 이후 카드 조회를 할 수 없어요. \n소중한 편지를 꼭 캡쳐해두시기 바래요!'
+      );
     }
   }
 
@@ -88,12 +92,6 @@ export class CardViewerComponent {
         receiver: this.card?.receiver,
       },
     });
-  }
-
-  eventOpen(): void {
-    this.popupService.alert(
-      '인스타그램 스토리에 @playthings.kr을 태그하여\n받은 카드를 인증해주세요!\n1분께 선물받은 음악을 구매하실 수 있게\n상품권을 선물해드려요 :) \n\n* 이벤트 기간 1월 1일 ~ 1월 10일 *'
-    );
   }
 
   tryAgain(): void {
