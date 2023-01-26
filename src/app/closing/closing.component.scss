@@ -1,0 +1,54 @@
+@import "src/styles";
+
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  text-align: center;
+
+  strong {
+    font-family: guyot-headline, sans-serif;
+  }
+}
+
+h3 {
+  margin-top: 20px;
+  text-align: center;
+
+  strong {
+    font-weight: bold;
+    color: $color-primary;
+  }
+}
+
+.instagram-link {
+  font-size: 13px;
+  position: fixed;
+  bottom: 20px;
+  color: $color-black;
+}
+
+.instagram-link a {
+  color: $color-black;
+  text-decoration: underline;
+}
+
+@include mobile {
+  h3 {
+    margin-top: 10px;
+  }
+
+  .instagram-link {
+    font-size: 11px;
+  }
+}
