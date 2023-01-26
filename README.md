@@ -5,6 +5,9 @@
 https://velog.io/@hyounglee/DJ-blackbunny
 개발 과정에서 느꼈던 것들, 개발/배포 과정에서의 이슈에 대해 풀어낸 글입니다.
 
+# 서버 레포지토리 Server Repository
+https://github.com/MiaJLee/new-year-card-server
+
 # 프레임워크 Framework
 - Angular v15
 
